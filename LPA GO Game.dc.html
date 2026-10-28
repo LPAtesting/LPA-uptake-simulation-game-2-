@@ -28,7 +28,10 @@
         <h1 style="margin:0;line-height:0;display:{{logoOn}}"><img alt="LPA GO!" src="{{logoUrl}}" style="display:block;height:44px;width:auto;image-rendering:pixelated"></h1>
         <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-300)">Playable build · concept v0.2</div>
       </div>
-      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(236,228,214,0.6)">Six days to Legacy Day · Tenang, Singapore</div>
+      <div style="display:flex;align-items:baseline;gap:16px">
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(236,228,214,0.6)">Six days to Legacy Day · Tenang, Singapore</div>
+        <button type="button" onClick="{{toggleMusic}}" title="Music on or off" style="display:{{musicBtnOn}};font-family:'Pixelify Sans',ui-monospace,monospace;font-size:12px;line-height:1;padding:4px 9px;color:{{musicInk}};background:transparent;border:2px solid rgba(243,202,98,0.5);border-radius:2px;cursor:pointer;white-space:nowrap">{{musicLabel}}</button>
+      </div>
     </div>
 
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 0 0">
@@ -461,6 +464,8 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Heartland&quot;,&quot;options&quot;:[&quot;Kampung&quot;,&quot;Heartland&quot;,&quot;Kiasu&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Difficulty&quot;},&quot;dayMinutes&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:6,&quot;min&quot;:4,&quot;max&quot;:8,&quot;step&quot;:1,&quot;unit&quot;:&quot;min&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Difficulty&quot;},&quot;showGrades&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Design team&quot;}}">
 const T = 16, TW = 90, TH = 36, VW = 576, VH = 384, DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const PHASES = { M: 'Morning', D: 'Midday', E: 'Evening', N: 'Night' };
+// the outdoor loop for each part of the day; indoors, every room has its own (lpa-go-soundtrack.js)
+const OUT_MUSIC = { M: 'morning', D: 'tenang', E: 'evening', N: 'night' };
 const DIRS = { u: [0, -1], d: [0, 1], l: [-1, 0], r: [1, 0] };
 const SAVE = 'lpa-go-v1';
 const phaseOf = m => { const h = (m % 1440) / 60; return h >= 6 && h < 11 ? 'M' : h >= 11 && h < 15 ? 'D' : h >= 15 && h < 20 ? 'E' : 'N'; };
@@ -840,6 +845,8 @@ class Component extends DCLogic {
       window.addEventListener('keydown', this.onKey); window.addEventListener('keyup', this.onKeyUp);
       this.startLoop();
     }).catch(e => console.error(e));
+    // the soundtrack is optional: without it the game plays on in silence
+    import(new URL('lpa-go-soundtrack.js', base).href).then(M => { this.music = new M.Soundtrack(new URL('assets/music/', base).href); this.setState({ musicOn: this.music.on }); }).catch(e => console.warn('music unavailable', e));
   }
   startLoop() {
     cancelAnimationFrame(this.raf);
@@ -848,12 +855,12 @@ class Component extends DCLogic {
     // taken a moment earlier, and a negative dt used to poison the animation clocks.
     const loop = t => {
       const dt = Math.max(0, Math.min(0.1, (t - this.last) / 1000)); this.last = t;
-      try { this.tick(dt); this.draw(); } catch (e) { console.error('frame skipped', e); }
+      try { this.tick(dt); this.musicTick(); this.draw(); } catch (e) { console.error('frame skipped', e); }
       this.raf = requestAnimationFrame(loop);
     };
     this.raf = requestAnimationFrame(loop);
   }
-  componentWillUnmount() { cancelAnimationFrame(this.raf); window.removeEventListener('keydown', this.onKey); window.removeEventListener('keyup', this.onKeyUp); }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); window.removeEventListener('keydown', this.onKey); window.removeEventListener('keyup', this.onKeyUp); if (this.music) this.music.dispose(); }
   // ---- world ----
   buildMap() {
     const A = this.A, MW = TW * T, MH = TH * T, P = new A.Px(MW, MH), solid = new Uint8Array(TW * TH), O = A.O;
@@ -1302,6 +1309,7 @@ class Component extends DCLogic {
     if (this.mg) { this.mg = null; this.mgJson = null; }
     this.fs = null; this.setState({ mg: null, fs: null, chFs: null });
     const g = this.g, n = g.npcs[ch.id], def = this.S.NPCS.find(x => x.id === ch.id), L = LESSON[ch.gid];
+    if (L && L.c && !g.cards[L.c]) this.sting('card');
     n.warm = true; if (L && L.c) g.cards[L.c] = 1; this.save();
     this.talk(def);
   }
@@ -1417,7 +1425,7 @@ class Component extends DCLogic {
     const x1 = fi.junk ? POT.x - 39 : POT.x + POT.w / 2, y1 = fi.junk ? POT.y - 7 : POT.y - POT.h + 7;
     f.fly = { t: 0, dur: fi.junk ? 1 : 1.15, x0: f.fx, y0: f.fy2, x1, y1, item: fi, peak: 92 + Math.random() * 28 };
     f.ph = 'fly'; f.taut = false; f.msg = fi.junk ? 'Up it comes' : 'Up she comes';
-    f.msgT = 1.2; this.fsSync(); this.save();
+    f.msgT = 1.2; this.fsSync(); this.save(); this.sting('catch');
   }
   fsStow() {
     const f = this.fs, fi = f.fly.item;
@@ -1430,7 +1438,7 @@ class Component extends DCLogic {
   }
   fsLose(why) {
     const f = this.fs;
-    f.ph = 'result'; f.wait = 1.5; f.fish = null; f.msg = why; f.msgT = 2; this.fsSync();
+    f.ph = 'result'; f.wait = 1.5; f.fish = null; f.msg = why; f.msgT = 2; this.fsSync(); this.sting('lose');
     if (this.ch) this.fsChallengeEnd(why);
   }
   fsReset() { const f = this.fs; f.ph = 'cast'; f.ten = 0; f.prog = 0; f.hold = 0; f.fish = null; f.fly = null; this.fsShoal(false); this.fsSync(); }
@@ -2669,6 +2677,34 @@ class Component extends DCLogic {
   enter(id) { const p = this.g.player; p.out = { tx: p.tx, ty: p.ty }; p.room = id; p.tx = p.ttx = 10; p.ty = p.tty = 12; p.px = p.tx * T; p.py = p.ty * T; p.dir = 'u'; p.moving = false; this.setHint(ROOMS[id].name + '. Walk back onto the red mat to leave.' + (id === 'hall' ? ' Both courts are glowing — stand in a marker and press Enter to play.' : '')); this.save(); }
   leave() { const p = this.g.player, o = p.out || { tx: 33, ty: 7 }; p.room = null; p.tx = p.ttx = o.tx; p.ty = p.tty = o.ty; p.px = p.tx * T; p.py = p.ty * T; p.dir = 'd'; p.moving = false; this.save(); }
   setHint(h, bad) { this.g.hintT = 6; this.setState({ hint: h, hintBad: !!bad }); }
+  // ---- music ----
+  // The loop that fits the moment, from the top of the stack down: a result screen
+  // falls silent so its sting stands alone, and the chope tune stops when the round does.
+  musicCue() {
+    const st = this.state, g = this.g; if (!g) return null;
+    if (st.screen === 'title') return 'title';
+    if (st.end) return st.end.tier === 'No tier' ? 'legacyQuiet' : 'legacy';
+    if (this.fb) return this.fb.over ? null : this.fb.sport;
+    if (this.fs) return this.fs.ph === 'fight' ? 'reel' : 'jetty';
+    if (this.mg) { const s = this.mg.s; if (s.over) return null; if (this.mg.id === 'chope') return s.ph === 'music' ? 'chope' : s.ph === 'scramble' ? 'scramble' : null; return this.mg.id; }
+    if (st.ev && st.ev.mus) return st.ev.mus;
+    if (st.nb) return 'notebook';
+    if (st.dlg && !st.dlg.simple) return 'doubt';
+    return g.player.room || OUT_MUSIC[phaseOf(g.time)];
+  }
+  musicTick() {
+    if (!this.music) return;
+    const cue = this.musicCue();
+    this.music.want(cue, this.mCue === 'chope' && cue === 'scramble'); this.mCue = cue;
+    // the mini-games and matches keep their own score: sting once when a result lands
+    const m = this.mg, o = m ? (m.id === 'chop' ? m.s.grade : m.s.over) : this.fb && this.fb.over ? this.fb : null;
+    if (o && o !== this.mDone) {
+      const won = this.fb ? o.over === 'win' : m.id === 'mrt' ? !o.out && o.alighted : m.id === 'chop' ? (o.walked ? false : o.pct >= 84 ? true : null) : o.won;
+      if (won != null) this.sting(won ? 'win' : 'lose');
+    }
+    this.mDone = o;
+  }
+  sting(id) { if (this.music) this.music.sting(id); }
   // ---- simulation ----
   tick(dt) {
     const g = this.g; if (!g) return;
@@ -2827,27 +2863,29 @@ class Component extends DCLogic {
     else if (opt.g === 'X') { g.walkoffs++; if (this.mode() !== 'Kampung') g.time += 30; n.coolUntil = nextPhase(g.time); }
     this.speakT = Math.max(1.2, Math.min(6, opt.re.length * 0.045));
     this.setState({ dlg: Object.assign({}, d, { picked: i, booked, unlocked }) });
+    this.sting(opt.g === 'Y' ? 'good' : opt.g === 'X' ? 'backfire' : 'okay');
     this.save();
   }
   closeDlg() {
     const d = this.state.dlg; this.setState({ dlg: null });
     if (d && d.challenge) { this.startChallenge(d.id, d.challenge); return; }
-    if (d && d.booked) { const def = this.S.NPCS.find(n => n.id === d.id); this.setHint(def.title + ' takes a Roadshow Flyer and heads to the CC noticeboard. Booked for Legacy Day.'); }
+    if (d && d.booked) { const def = this.S.NPCS.find(n => n.id === d.id); this.setHint(def.title + ' takes a Roadshow Flyer and heads to the CC noticeboard. Booked for Legacy Day.'); this.sting('booked'); }
     else if (d && d.picked != null) { const def = this.S.NPCS.find(n => n.id === d.id), opt = def.enc[d.enc].opts[d.picked]; if (opt.g === 'X') this.setHint('Backfire. ' + (this.mode() === 'Kampung' ? '' : 'Thirty minutes lost. ') + def.name + ' is cooling off until ' + PHASES[phaseOf(this.g.npcs[d.id].coolUntil)] + '.', true); else if (opt.g === 'Y') this.setHint('Doubt cleared.' + (d.unlocked.length ? ' Fact Card ' + d.unlocked.join(', ') + ' added to the Notebook.' : '')); else this.setHint('True, but it did not land. Find ' + def.name + ' again.'); }
+    if (d && !d.booked && d.unlocked && d.unlocked.length) this.sting('card');
   }
   sleep() {
     const g = this.g, day = Math.floor(g.time / 1440); g.time = (day + 1) * 1440 + 360;
     if (g.time >= END) { this.finish(); return; }
-    Object.values(g.npcs).forEach(n => { n.vis = false; }); this.save(); this.setHint('Slept. ' + DAYS[Math.min(6, day + 1)] + ' morning.');
+    Object.values(g.npcs).forEach(n => { n.vis = false; }); this.save(); this.setHint('Slept. ' + DAYS[Math.min(6, day + 1)] + ' morning.'); this.sting('newday');
   }
-  fire(key) { const e = this.S.EVENTS[key]; if (e.card) this.g.cards[e.card] = 1; this.setState({ ev: { title: e.title, text: e.text, card: e.card } }); this.save(); }
+  fire(key) { const e = this.S.EVENTS[key]; if (e.card) this.g.cards[e.card] = 1; this.setState({ ev: { title: e.title, text: e.text, card: e.card, mus: 'news' } }); this.save(); }
   fate() {
     const g = this.g, cand = this.S.NPCS.filter(n => !g.npcs[n.id].booked && !g.npcs[n.id].lost); if (!cand.length) return;
     const tot = cand.reduce((a, n) => a + n.age, 0); let r = Math.random() * tot, pick = cand[0]; for (const n of cand) { r -= n.age; if (r <= 0) { pick = n; break; } }
     g.npcs[pick.id].lost = true;
-    this.setState({ ev: { title: 'Thursday morning: a Fate Event', text: pick.title + ' was taken to Tenang General overnight. A doctor has certified that ' + pick.name + ' lacks capacity. It is too late to make an LPA; the family will have to apply to court for a deputy.', card: null } }); this.save();
+    this.setState({ ev: { title: 'Thursday morning: a Fate Event', text: pick.title + ' was taken to Tenang General overnight. A doctor has certified that ' + pick.name + ' lacks capacity. It is too late to make an LPA; the family will have to apply to court for a deputy.', card: null, mus: 'fate' } }); this.save();
   }
-  closeEv() { this.setState({ ev: null }); }
+  closeEv() { const ev = this.state.ev; this.setState({ ev: null }); if (ev && ev.card) this.sting('card'); }
   finish() {
     const g = this.g, S = this.S, list = S.NPCS.map(n => Object.assign({ def: n }, g.npcs[n.id]));
     const booked = list.filter(n => n.booked).length;
@@ -3036,7 +3074,10 @@ class Component extends DCLogic {
       pageBg: PAGE_BG[liveTier], frameRule: FRAME_RULE[liveTier],
       endBg: et.bg, endInk: et.ink, endMuted: et.muted, endAcc: et.acc, endRule: et.rule, endGhost: et.ghost, endFrame: et.frame, endGhostNum: e ? String(e.booked) : '',
       endOn: on(e), tier: e ? e.tier : '', tierNote, statusStrip: strip, endList, restart: () => this.restart(),
-      padU: padOn('u'), padD: padOn('d'), padL: padOn('l'), padR: padOn('r'), padOff: () => { this.keys = { shift: this.keys.shift }; }, actionBtn: () => this.action()
+      padU: padOn('u'), padD: padOn('d'), padL: padOn('l'), padR: padOn('r'), padOff: () => { this.keys = { shift: this.keys.shift }; }, actionBtn: () => this.action(),
+      // the button gives focus back, so Space and Enter stay with the game
+      musicBtnOn: this.music ? 'inline-block' : 'none', musicLabel: st.musicOn === false ? '♪ Music off' : '♪ Music on', musicInk: st.musicOn === false ? 'rgba(236,228,214,0.55)' : '#f3ca62',
+      toggleMusic: e => { if (e && e.currentTarget) e.currentTarget.blur(); if (this.music) this.setState({ musicOn: this.music.toggle() }); }
     };
   }
 }
