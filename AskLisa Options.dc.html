@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/styles.css">
+<script src="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap">
+<style>body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}a{color:#8a5a14}a:hover{color:#c8963c}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-note{margin:0 0 24px;max-width:880px;font:12px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.6)}.dv-opts{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:12px;scroll-margin-top:16px;width:402px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:600 12px/1.3 system-ui,sans-serif;color:#1a1a1a}.dv-odesc{margin:-4px 0 0;font:11.5px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.55)}.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}.dv-next{margin:26px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}</style>
+</helmet>
+<section class="dv-turn" id="t3">
+  <div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Phone web app in Chrome, based on 1a</span></div>
+  <p class="dv-note"><a class="dv-oid" href="#1a">1a</a> set up as a web page for Chrome on phones. Lisa is half a step smaller, about 37% of the screen height (44% before), and stands just above the question chips so her feet stay in view; the Water, Tea and Read buttons sit beside her. Buttons and chips are 44px tall for thumbs, the keyboard shows a Send key and closes after sending so her answer is visible, and Lisa keeps her size while the keyboard is open. AskLisa.dc.html uses this layout on any screen narrower than 900px; desktop Chrome still gets <a class="dv-oid" href="#2a">2a</a>. The phoneLisaSize tweak tries other sizes.</p>
+  <div class="dv-opts">
+    <div class="dv-opt" id="3a" style="width:auto">
+      <div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>1a in Chrome on Android, Lisa half a step smaller</div>
+      <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" width="{{ phoneW }}" height="{{ phoneH }}" hint-size="412px,915px">
+            <div style="height:100%;display:flex;flex-direction:column;background:#2c2a3a">
+              <div style="height:56px;flex:none;display:flex;align-items:center;gap:14px;padding:0 14px 0 16px;background:#f7f5f0;box-shadow:inset 0 -1px 0 #dedad1;font-family:system-ui,sans-serif">
+                <div style="flex:1;min-width:0;height:40px;border-radius:20px;background:#ebe7de;display:flex;align-items:center;gap:10px;padding:0 14px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4a4740" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+                  <span style="font-size:15px;color:#2b2925;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">asklisa.lpago.sg</span>
+                </div>
+                <div style="width:20px;height:20px;box-sizing:border-box;border:2px solid #4a4740;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#4a4740">1</div>
+                <svg width="4" height="18" viewBox="0 0 4 18"><circle cx="2" cy="2" r="2" fill="#4a4740"></circle><circle cx="2" cy="9" r="2" fill="#4a4740"></circle><circle cx="2" cy="16" r="2" fill="#4a4740"></circle></svg>
+              </div>
+              <div style="flex:1;min-height:0;position:relative">
+                <dc-import name="AskLisa" layout="phone" safe-top="0" safe-bottom="0" lisa-zoom="{{ phoneZoom }}" time-of-day="{{ timeOfDay }}" ai-answers="{{ aiAnswers }}" sound="{{ sound }}" hint-size="100%,100%" style="position:absolute;inset:0"></dc-import>
+              </div>
+            </div>
+          </x-import>
+          <span class="dv-odesc">Standard Android phone · 412 × 915</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" width="{{ smallW }}" height="{{ smallH }}" hint-size="360px,800px">
+            <div style="height:100%;display:flex;flex-direction:column;background:#2c2a3a">
+              <div style="height:56px;flex:none;display:flex;align-items:center;gap:14px;padding:0 14px 0 16px;background:#f7f5f0;box-shadow:inset 0 -1px 0 #dedad1;font-family:system-ui,sans-serif">
+                <div style="flex:1;min-width:0;height:40px;border-radius:20px;background:#ebe7de;display:flex;align-items:center;gap:10px;padding:0 14px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4a4740" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+                  <span style="font-size:15px;color:#2b2925;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">asklisa.lpago.sg</span>
+                </div>
+                <div style="width:20px;height:20px;box-sizing:border-box;border:2px solid #4a4740;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#4a4740">1</div>
+                <svg width="4" height="18" viewBox="0 0 4 18"><circle cx="2" cy="2" r="2" fill="#4a4740"></circle><circle cx="2" cy="9" r="2" fill="#4a4740"></circle><circle cx="2" cy="16" r="2" fill="#4a4740"></circle></svg>
+              </div>
+              <div style="flex:1;min-height:0;position:relative">
+                <dc-import name="AskLisa" layout="phone" safe-top="0" safe-bottom="0" lisa-zoom="{{ phoneZoom }}" time-of-day="{{ timeOfDay }}" ai-answers="{{ aiAnswers }}" sound="{{ sound }}" hint-size="100%,100%" style="position:absolute;inset:0"></dc-import>
+              </div>
+            </div>
+          </x-import>
+          <span class="dv-odesc">Smaller Android phone · 360 × 800</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="dv-turn" id="t2">
+  <div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Smaller Lisa, plus a desktop web version</span></div>
+  <p class="dv-note">Lisa is one zoom step smaller in all three phone layouts below (1a now 44% of the screen, 1b 33%, 1c 55%). On desktop Chrome, AskLisa.dc.html now switches itself to a wide layout above 900px: the whole room fills the window, Lisa is about 40% of the window height, the conversation sits in a side panel, and the action buttons move to the left edge. Phones still get <a class="dv-oid" href="#1a">1a</a>.</p>
+  <div class="dv-opts">
+    <div class="dv-opt" id="2a" style="width:1280px">
+      <div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Desktop web, Chrome at 1280 × 800</div>
+      <x-import component-from-global-scope="ChromeWindow" from="./browser-window.jsx" width="{{ webW }}" height="{{ webH }}" url="asklisa.lpago.sg" tabs="{{ tabs }}" hint-size="1280px,800px">
+        <dc-import name="AskLisa" layout="web" safe-top="0" safe-bottom="0" time-of-day="{{ timeOfDay }}" ai-answers="{{ aiAnswers }}" sound="{{ sound }}" hint-size="100%,100%" style="position:relative;width:100%;height:100%"></dc-import>
+      </x-import>
+    </div>
+  </div>
+  <p class="dv-next">Try next: "use the <a class="dv-oid" href="#1c">1c</a> dialogue box on desktop too" · "make Lisa a step bigger on desktop" · "put the chat at the bottom instead of the side"</p>
+</section>
+<section class="dv-turn" id="t1">
+  <div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">AskLisa: three ways to talk to Lisa at home</span></div>
+  <p class="dv-note">All three are live. Lisa keeps her own routine (waters the money plant, takes a tea break in the armchair, reads, dozes off) and drops it to come over when you start typing. Answers come from Claude, limited to the LPA GO! Fact Bank, and each one unlocks the Fact Cards it cites; without the model she quotes the cards directly. Tap Lisa to poke her, or tap the plant, armchair, lamp or clock. In the intro video she is about 31% of the frame height; here she is 33 to 55%.</p>
+  <div class="dv-opts">
+    <div class="dv-opt" id="1a">
+      <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Talking-Tom room</div>
+      <p class="dv-odesc">Full-bleed room, Lisa at 4× (44% of the screen). Speech bubble over her head, follow-up questions above the input, and Talking-Tom side buttons to send her off to water, make tea or read.</p>
+      <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+        <dc-import name="AskLisa" layout="bubble" safe-top="62" safe-bottom="28" time-of-day="{{ timeOfDay }}" ai-answers="{{ aiAnswers }}" sound="{{ sound }}" hint-size="402px,874px" style="position:absolute;inset:0"></dc-import>
+      </x-import>
+    </div>
+    <div class="dv-opt" id="1b">
+      <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Room above, chat below</div>
+      <p class="dv-odesc">Lisa at 3× in the top half (33% of the screen); a game-style dialogue panel holds the whole conversation and cited Fact Cards. Best for longer reading and scrolling back.</p>
+      <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+        <dc-import name="AskLisa" layout="log" safe-top="62" safe-bottom="28" time-of-day="{{ timeOfDay }}" ai-answers="{{ aiAnswers }}" sound="{{ sound }}" hint-size="402px,874px" style="position:absolute;inset:0"></dc-import>
+      </x-import>
+    </div>
+    <div class="dv-opt" id="1c">
+      <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Close-up, RPG dialogue</div>
+      <p class="dv-odesc">Camera at 5× follows her around the room (55% of the screen). Answers type out in an LPA GO! dialogue box, then two follow-up questions appear as a choice menu, like the game's replies.</p>
+      <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+        <dc-import name="AskLisa" layout="closeup" safe-top="62" safe-bottom="28" time-of-day="{{ timeOfDay }}" ai-answers="{{ aiAnswers }}" sound="{{ sound }}" hint-size="402px,874px" style="position:absolute;inset:0"></dc-import>
+      </x-import>
+    </div>
+  </div>
+  <p class="dv-next">Try next: "go with <a class="dv-oid" href="#1a">1a</a> but keep the transcript from <a class="dv-oid" href="#1b">1b</a>" · "add the choice menu from <a class="dv-oid" href="#1c">1c</a> to <a class="dv-oid" href="#1a">1a</a>" · "make a tablet / web layout"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;phoneLisaSize&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;auto&quot;, &quot;2.5x&quot;, &quot;3x&quot;, &quot;3.5x&quot;, &quot;4x&quot;], &quot;default&quot;: &quot;auto&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Phone (3a)&quot;}, &quot;timeOfDay&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;live&quot;, &quot;morning&quot;, &quot;day&quot;, &quot;evening&quot;, &quot;night&quot;], &quot;default&quot;: &quot;live&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Room&quot;}, &quot;aiAnswers&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Answers&quot;}, &quot;sound&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Answers&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { timeOfDay: this.props.timeOfDay ?? 'live', aiAnswers: this.props.aiAnswers ?? true, sound: this.props.sound ?? true, tabs: [{ title: 'Ask Lisa · LPA GO!' }], webW: 1280, webH: 800, phoneZoom: this.props.phoneLisaSize ?? 'auto', phoneW: 412, phoneH: 915, smallW: 360, smallH: 800 };
+  }
+}
+</script>
+</body>
+</html>

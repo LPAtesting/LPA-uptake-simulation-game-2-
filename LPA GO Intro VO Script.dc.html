@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/styles.css">
+<script src="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  html, body { margin: 0; background: var(--color-bg); color: var(--color-text); }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+</style>
+</helmet>
+<div style="min-height: 100vh; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body);">
+  <div style="max-width: 880px; margin: 0 auto; padding: 64px 28px 112px; box-sizing: border-box;">
+    <div style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700);">LPA GO! intro video (Final) · Voice-over</div>
+    <sc-if value="{{ onlyNew }}" hint-placeholder-val="{{ true }}">
+      <h1 style="font-family: var(--font-heading); font-weight: 400; font-size: 54px; line-height: 1.05; margin: 14px 0 0;">Lisa and Dinesh in the demo</h1>
+      <p style="font-size: 18px; line-height: 1.65; max-width: 62ch; margin: 22px 0 0; text-align: justify; hyphens: auto; text-wrap: pretty;">Dinesh's first four lines are in the video. These last two are still to record: copy the block into Text to Speech with the same Prakash voice, generate it as one take and upload the MP3.</p>
+      <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 40px;">
+        <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="2">
+          <div style="display: flex; flex-direction: column; gap: 18px; border-top: 1px solid var(--color-text); padding-top: 18px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+              <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
+                <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: 30px; line-height: 1.1;">{{ b.who }}</h2>
+                <span style="font-size: 16px; color: var(--color-neutral-700);">{{ b.voice }}</span>
+              </div>
+              <button type="button" class="btn btn-primary" style="min-width: 120px;" onClick="{{ b.copy }}">{{ b.label }}</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 16px; padding: 22px 24px; border: 1px solid var(--color-divider); border-radius: var(--radius-md);">
+              <sc-for list="{{ b.paras }}" as="pa" hint-placeholder-count="4">
+                <div style="font-size: 18px; line-height: 30px; text-wrap: pretty;"><sc-for list="{{ pa }}" as="p" hint-placeholder-count="1"><sc-if value="{{ p.isTag }}"><span style="color: var(--color-accent-700); font-size: 16px;">{{ p.t }}</span></sc-if><sc-if value="{{ p.isPron }}"><span>{{ p.t }}</span></sc-if><sc-if value="{{ p.isText }}" hint-placeholder-val="{{ true }}"><span>{{ p.t }}</span></sc-if></sc-for></div>
+              </sc-for>
+            </div>
+            <div style="font-size: 14px; color: var(--color-neutral-700);">{{ b.note }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ showAll }}">
+    <h1 style="font-family: var(--font-heading); font-weight: 400; font-size: 54px; line-height: 1.05; margin: 14px 0 0;">Lisa's lines for ElevenLabs</h1>
+    <p style="font-size: 18px; line-height: 1.65; max-width: 62ch; margin: 22px 0 0; text-align: justify; hyphens: auto; text-wrap: pretty;">Thirty-eight narration lines, one clip each, in the order they play, then ten short lines of Lisa and Dinesh talking inside the live demo. Copy a line into Text to Speech, generate it, and save the clip under the file name shown. The words match the on-screen dialogue; numbers are written out and a few names are respelled for pronunciation.</p>
+    </sc-if>
+
+    <sc-if value="{{ showAll }}">
+    <div style="margin-top: 40px; border-top: 1px solid var(--color-text);">
+      <div style="display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); column-gap: 24px; padding: 13px 0; border-bottom: 1px solid var(--color-divider); font-size: 16px; line-height: 1.55;">
+        <div style="font-family: var(--font-heading); font-weight: 600; font-size: 18px;">Voice</div>
+        <div>Fena – Girly, Young and Sassy Hero</div>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); column-gap: 24px; padding: 13px 0; border-bottom: 1px solid var(--color-divider); font-size: 16px; line-height: 1.55;">
+        <div style="font-family: var(--font-heading); font-weight: 600; font-size: 18px;">Dinesh</div>
+        <div style="text-wrap: pretty;">Your pick of a male voice: 29, a food-delivery rider, quick and friendly, a little out of breath. Same voice and settings for all six of his lines. Each line has a few seconds in the demo, so keep the pace brisk.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); column-gap: 24px; padding: 13px 0; border-bottom: 1px solid var(--color-divider); font-size: 16px; line-height: 1.55;">
+        <div style="font-family: var(--font-heading); font-weight: 600; font-size: 18px;">Model</div>
+        <div>Eleven v4</div>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); column-gap: 24px; padding: 13px 0; border-bottom: 1px solid var(--color-divider); font-size: 16px; line-height: 1.55;">
+        <div style="font-family: var(--font-heading); font-weight: 600; font-size: 18px;">Settings</div>
+        <div>Match your first take: speed 1.04, stability 32, similarity 60.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); column-gap: 24px; padding: 13px 0; border-bottom: 1px solid var(--color-divider); font-size: 16px; line-height: 1.55;">
+        <div style="font-family: var(--font-heading); font-weight: 600; font-size: 18px;">Language</div>
+        <div>English</div>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); column-gap: 24px; padding: 13px 0; border-bottom: 1px solid var(--color-divider); font-size: 16px; line-height: 1.55;">
+        <div style="font-family: var(--font-heading); font-weight: 600; font-size: 18px;">Takes</div>
+        <div style="text-wrap: pretty;">Same voice and settings for every line. If a take sounds off, generate it again and keep the best one.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); column-gap: 24px; padding: 13px 0; border-bottom: 1px solid var(--color-divider); font-size: 16px; line-height: 1.55;">
+        <div style="font-family: var(--font-heading); font-weight: 600; font-size: 18px;">Names</div>
+        <div>
+          <sc-if value="{{ showKey }}" hint-placeholder-val="{{ true }}">
+            <div style="display: flex; flex-wrap: wrap; column-gap: 22px; row-gap: 4px;">
+              <sc-for list="{{ key }}" as="k" hint-placeholder-count="5">
+                <span style="white-space: nowrap;">{{ k.word }} <span style="color: var(--color-neutral-600);">→</span> <em>{{ k.say }}</em></span>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ plainNames }}">
+            <div>Left as written.</div>
+          </sc-if>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); column-gap: 24px; padding: 13px 0; border-bottom: 1px solid var(--color-divider); font-size: 16px; line-height: 1.55;">
+        <div style="font-family: var(--font-heading); font-weight: 600; font-size: 18px;">Files</div>
+        <div>MP3 is fine. Name each clip as shown under its line.</div>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-for list="{{ scenes }}" as="s" hint-placeholder-count="3">
+      <div style="margin-top: 56px;">
+        <div style="display: flex; align-items: baseline; gap: 14px; padding-bottom: 10px;">
+          <span style="font-family: var(--font-heading); font-size: 16px; letter-spacing: 0.08em; color: var(--color-accent-700); font-feature-settings: 'tnum' 1;">{{ s.no }}</span>
+          <h2 style="margin: 0; font-family: var(--font-heading); font-weight: 500; font-size: 30px; line-height: 1.1;">{{ s.name }}</h2>
+        </div>
+        <sc-for list="{{ s.lines }}" as="line" hint-placeholder-count="2">
+          <div style="display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; column-gap: 18px; align-items: start; padding: 18px 0; border-top: 1px solid var(--color-divider);">
+            <div style="font-family: var(--font-heading); font-size: 22px; line-height: 30px; color: var(--color-accent-700); font-feature-settings: 'tnum' 1;">{{ line.num }}</div>
+            <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0;">
+              <sc-if value="{{ line.hasWho }}"><div style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">{{ line.who }}</div></sc-if>
+              <div style="font-size: 18px; line-height: 30px; text-wrap: pretty;">
+                <sc-for list="{{ line.parts }}" as="p" hint-placeholder-count="1"><sc-if value="{{ p.isTag }}"><span style="color: var(--color-accent-700); font-size: 16px;">{{ p.t }}</span></sc-if><sc-if value="{{ p.isPron }}"><em>{{ p.t }}</em></sc-if><sc-if value="{{ p.isText }}" hint-placeholder-val="{{ true }}"><span>{{ p.t }}</span></sc-if></sc-for>
+              </div>
+              <div style="font-size: 14px; color: var(--color-neutral-700); font-feature-settings: 'tnum' 1;">{{ line.file }}</div>
+            </div>
+            <button type="button" class="btn btn-secondary" style="min-width: 84px;" onClick="{{ line.copy }}">{{ line.label }}</button>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;show&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;New lines only&quot;,&quot;Everything&quot;],&quot;default&quot;:&quot;New lines only&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;pronunciation&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Respelled&quot;,&quot;IPA (v4)&quot;,&quot;As written&quot;],&quot;default&quot;:&quot;Respelled&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const PRON = {
+  Tenang: ['Tuh-nahng', '"/təˈnaŋ/"', 'Tenang'],
+  kampung: ['kahm-pong', '"/ˈkɑmpʊŋ/"', 'kampung'],
+  Kampung: ['Kahm-pong', '"/ˈkɑmpʊŋ/"', 'Kampung'],
+  Kiasu: ['Kee-ah-soo', '"/kiˈɑsu/"', 'Kiasu'],
+  Fauzi: ['Fow-zee', '"/ˈfaʊzi/"', 'Fauzi'],
+  donee: ['doh-nee', '"/doʊˈniː/"', 'donee']
+};
+const KEY = ['Tenang', 'kampung', 'Kiasu', 'Fauzi', 'donee'];
+const SCENES = [
+  ['02', 'Hello', [
+    '[gasps] Wait. [whispers] Before you press Start.',
+    "[cheerfully] Hi! I'm Lisa. [playfully] Around {Tenang} they call me LPA Lisa. [giggles]"]],
+  ['03', 'Your host', [
+    "[warmly] I'm a social-work student on placement at the {Tenang} Community Club.",
+    '[earnestly] My job this week is to get my neighbours to make a Lasting Power of Attorney.']],
+  ['04', 'Tenang', [
+    '[proudly] This is {Tenang}: {kampung} houses, HDB blocks and a hawker centre.',
+    '[excited] On Sunday at nine a.m. our CC is holding Legacy Day, with a doctor and lawyer coming to certify LPAs for us.',
+    '[determined] I have six days to get twelve neighbours there.']],
+  ['05', 'Why now', [
+    "[curious] Why the rush? Take Andy. He's twenty-three.",
+    '[wistfully] The years go by. Forty-five. Sixty-eight. Eighty-two.',
+    '[gently] One day he may lose mental capacity, and can no longer decide for himself.',
+    "[serious] By then it's too late to make an LPA."]],
+  ['06', 'The neighbours', [
+    '[cheerfully] Twelve neighbours, from Andy, twenty-three, to {Fauzi}, fifty-nine.',
+    "[thoughtful] Each has three Doubts: the reasons they haven't made one yet.",
+    "[excited] Clear all three and they're booked. [mischievously] Let's try Dinesh."]],
+  ['07', 'Live demo', [
+    '[excited] In I go!',
+    '[conversational] The clock runs while I walk, and stops while we talk.',
+    '[confidentially] Of the three replies, one is right, one misses the point and one is a myth.',
+    '[pleased] The right reply clears a Doubt and unlocks a Fact Card.',
+    '[groans] A myth backfires! [sheepishly] I lose thirty minutes, and he needs space till the next phase.',
+    "[triumphantly] Third Doubt cleared. Dinesh takes a flyer, and he's booked!"]],
+  // the conversation inside the game: shorter than the on-screen text; Lisa's take numbers carry on after 38
+  ['07', 'Live demo · Lisa and Dinesh', [
+    { who: 'Dinesh', rec: true, t: "[friendly] Hi, I'm Dinesh. I deliver food, so I'm quite busy." },
+    { who: 'Lisa', t: '[quickly] Sunday at the CC. Free, doctor and lawyer on site.' },
+    { who: 'Dinesh', rec: true, t: "[relieved] Oh, that's easy. Find me tonight, we can talk more." },
+    { who: 'Dinesh', rec: true, t: "[unsure] OK, I'm here. But I only rent a room. Is an LPA for me?" },
+    { who: 'Lisa', t: "[gently] It's a cash-flow document. In hospital, a {donee} runs your account." },
+    { who: 'Dinesh', rec: true, t: '[curious] Oh, I see. Can my brother be my {donee}?' },
+    { who: 'Lisa', t: "[brightly] Yes, if he's twenty-one and not bankrupt." },
+    { who: 'Dinesh', t: "[casual] I asked my brother. He said if anything happens, he'll just handle it." },
+    { who: 'Lisa', t: "[kindly] He means it, but the bank won't accept 'just handle'. An LPA, they will." },
+    { who: 'Dinesh', t: "[convinced] Oh, I didn't know. OK, I'll come on Sunday." }]],
+  ['08', 'The week', [
+    '[casually] One day here is six real minutes, and everyone keeps a routine.',
+    '[helpfully] My Notebook keeps a hint of where everyone was seen.',
+    "[excited] Let's see what's on this week!",
+    '[matter-of-fact] Pick a pace. {Kampung} gives hints, Heartland is the standard, [teasing] {Kiasu} is short and harsh.']],
+  ['09', 'Side games', [
+    '[amused] Five neighbours want a game before they talk.',
+    '[brightly] The MRT. Seats come and go, like capacity. [warmly] Giving up the priority seat is what a {donee} does.',
+    '[excited] The hawker centre. Chope a table before the music stops: [earnestly] choose your {donee} while you still can.',
+    '[playfully] Chicken rice, cut as ordered. A {donee} shares out your money by your rules.',
+    '[upbeat] Tray return. Remind people in time. A plan works when people know about it.',
+    '[calmly] Fishing. Pull too hard and the line snaps. Pressure backfires with people too.',
+    '[startled] Whoa! [shouting] Heads up!',
+    "[embarrassed laugh] Sorry! A glitch in the fishing game. That fish wasn't meant to leave the jetty."]],
+  ['10', 'Sport', [
+    '[breezy] Sports are optional: football, basketball and badminton. Step into a glowing marker to play.']],
+  ['11', 'Cheat sheet', [
+    '[friendly, explaining] Watch above their heads. Question marks are Doubts left, a cloud means not now, a tick means booked.',
+    '[excited] Six booked is Bronze, nine is Silver, twelve is Gold. [whispers] No backfires at all for Platinum.']],
+  ['12', 'Share', [
+    '[warmly] Proud of your week? You can share your progress any time.',
+    '[cheerfully] Send your card to a group chat, or post it to your story.',
+    '[mischievously] Then race your friends to Platinum. [playful challenge] Can you get all twelve there without a single backfire?']]
+];
+
+class Component extends DCLogic {
+  state = { copied: -1 };
+  componentWillUnmount() { clearTimeout(this._t); }
+  copy(text, i) {
+    const done = () => {
+      this.setState({ copied: i });
+      clearTimeout(this._t);
+      this._t = setTimeout(() => this.setState({ copied: -1 }), 1500);
+    };
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      ta.remove(); done();
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  }
+  renderVals() {
+    const tagsOn = this.props.tags ?? true;
+    const pm = this.props.pronunciation ?? 'Respelled';
+    const mode = pm === 'IPA (v4)' ? 1 : pm === 'As written' ? 2 : 0;
+    let k = 0, lisaX = 38, din = 0, row = 0;
+    const scenes = SCENES.map(([no, name, lines]) => ({
+      no, name,
+      lines: lines.map(entry => {
+        const i = row++, raw = typeof entry === 'string' ? entry : entry.t, who = typeof entry === 'string' ? '' : entry.who;
+        const fnum = !who ? ++k : who === 'Lisa' ? ++lisaX : ++din;
+        const parts = [];
+        raw.split(/(\[[^\]]+\]|\{[A-Za-z]+\})/).forEach(seg => {
+          if (!seg) return;
+          if (seg[0] === '[') { if (tagsOn) parts.push({ t: seg, isTag: true }); return; }
+          if (seg[0] === '{') { const w = PRON[seg.slice(1, -1)]; parts.push(mode === 2 ? { t: w[2], isText: true } : { t: w[mode], isPron: true }); return; }
+          parts.push({ t: seg, isText: true });
+        });
+        const say = parts.map(p => p.t).join('').replace(/\s+/g, ' ').trim();
+        const nn = String(fnum).padStart(2, '0'), isD = who === 'Dinesh';
+        return { num: isD ? 'D' + fnum : nn, who, hasWho: !!who, rec: typeof entry === 'object' && !!entry.rec, parts, file: (isD ? 'dinesh-el-' : 'lisa-el-') + nn + '.mp3', label: this.state.copied === i ? 'Copied' : 'Copy', copy: () => this.copy(say, i) };
+      })
+    }));
+    const onlyNew = (this.props.show ?? 'New lines only') !== 'Everything';
+    const demo = scenes.find(s => s.name.includes('Dinesh'));
+    const VOICE = { Lisa: 'Fena – Girly, Young and Sassy Hero · speed 1.04, stability 32, similarity 60', Dinesh: 'A male voice you pick: 29, delivery rider, quick and friendly' };
+    const blocks = ['Dinesh'].map((who, bi) => {
+      const ls = demo.lines.filter(l => l.who === who && !l.rec), text = ls.map(l => l.parts.map(p => p.t).join('').replace(/\s+/g, ' ').trim()).join('\n\n');
+      const id = 100 + bi;
+      return { who, voice: VOICE[who], paras: ls.map(l => l.parts), note: ls.length + ' lines · upload as ' + (who === 'Lisa' ? 'one Lisa take' : 'one Dinesh take'), label: this.state.copied === id ? 'Copied' : 'Copy block', copy: () => this.copy(text, id) };
+    });
+    return {
+      onlyNew, showAll: !onlyNew, blocks,
+      scenes: onlyNew ? [] : scenes,
+      showKey: mode !== 2,
+      plainNames: mode === 2,
+      key: KEY.map(w => ({ word: w, say: PRON[w][mode] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

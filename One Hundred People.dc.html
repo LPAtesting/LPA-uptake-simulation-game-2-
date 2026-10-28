@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/styles.css">
+<script src="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  body { margin: 0; background: var(--color-bg); }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);padding:0 32px 72px">
+
+  <div style="max-width:1080px;margin:0 auto">
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0 14px;border-bottom:1px solid var(--color-divider)">
+      <div style="font-family:var(--font-heading);font-size:15px;letter-spacing:0.02em">Lasting Power of Attorney</div>
+      <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 50%, transparent);font-feature-settings:'tnum'">A simulation · Singapore</div>
+    </div>
+
+    <div style="padding:56px 0 40px;border-bottom:1px solid var(--color-divider)">
+      <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:20px;font-feature-settings:'tnum'">Five phases · Fifty years</div>
+      <h1 style="font-family:var(--font-heading);font-weight:400;font-size:76px;line-height:1.02;letter-spacing:-0.02em;margin:0 0 22px;max-width:15ch">One hundred people</h1>
+      <p style="font-size:19px;line-height:1.5;max-width:52ch;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">An LPA is signed while you still have capacity — that is the whole point of it. Watch a hundred lives run forward fifty years, and see how much gentler it is for the families of the people who took an hour to sign one.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:52px;padding:36px 0 44px;border-bottom:1px solid var(--color-divider)">
+      <p style="margin:0;text-align:justify;hyphens:auto;font-size:15px;line-height:1.68">One hundred people, all aged forty, all well. Every phase moves them ten years on. Some will die. Some will lose the capacity to make their own decisions, through dementia, stroke or injury. Nobody knows in advance which square is theirs — which is exactly why the document exists.</p>
+      <p style="margin:0;text-align:justify;hyphens:auto;font-size:15px;line-height:1.68">The one thing you can change here is how many signed an LPA at the start, before anything happened. It changes nothing about who falls ill and nothing about who dies. It changes only what the people who love them have to do next: act on the authority they were given, or apply to the Family Justice Courts for it.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:start;padding:44px 0 0">
+
+      <div>
+        <div style="display:grid;grid-template-columns:repeat(10, {{cellW}}px);gap:4px;padding:18px;border:1px solid var(--color-divider);background:var(--color-neutral-100)">
+          <sc-for list="{{people}}" as="p" hint-placeholder-count="100">
+            <div style="position:relative;width:{{p.w}}px;height:{{p.h}}px;background:{{p.bg}};transition:background 420ms ease">
+              <div style="position:absolute;left:{{p.ox}}px;top:{{p.oy}}px;width:{{p.px}}px;height:{{p.px}}px;color:{{p.color}};box-shadow:{{p.shadow}};transition:color 420ms ease"></div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:20px">
+          <sc-for list="{{legend}}" as="l" hint-placeholder-count="5">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="position:relative;width:{{l.w}}px;height:{{l.h}}px;background:{{l.bg}};flex:0 0 auto;border:1px solid var(--color-divider)">
+                <div style="position:absolute;left:{{l.ox}}px;top:{{l.oy}}px;width:{{l.px}}px;height:{{l.px}}px;color:{{l.color}};box-shadow:{{l.shadow}}"></div>
+              </div>
+              <div style="font-size:12.5px;line-height:1.35;color:color-mix(in srgb, var(--color-text) 72%, transparent)">{{l.label}}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:0">
+
+        <div style="display:flex;align-items:baseline;gap:16px">
+          <div style="font-family:var(--font-heading);font-size:44px;font-weight:400;line-height:1;font-feature-settings:'tnum'">{{phaseAge}}</div>
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 50%, transparent);font-feature-settings:'tnum'">{{phaseLabel}}</div>
+        </div>
+
+        <p style="margin:18px 0 0;font-size:16.5px;line-height:1.62;max-width:46ch;min-height:5.3em">{{caption}}</p>
+
+        <div style="height:1px;background:var(--color-divider);margin:26px 0 22px"></div>
+
+        <div style="display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:22px 34px;max-width:460px">
+          <sc-for list="{{counters}}" as="c" hint-placeholder-count="4">
+            <div style="padding-left:13px;border-left:2px solid {{c.rule}}">
+              <div style="font-family:var(--font-heading);font-size:38px;font-weight:400;line-height:1;font-feature-settings:'tnum';color:{{c.ink}}">{{c.value}}</div>
+              <div style="font-size:11.5px;line-height:1.4;margin-top:7px;color:color-mix(in srgb, var(--color-text) 62%, transparent)">{{c.label}}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="height:1px;background:var(--color-divider);margin:28px 0 22px"></div>
+
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 50%, transparent);margin-bottom:12px">How many signed before phase one</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px">
+          <button type="button" class="btn {{u0cls}}" onClick="{{setU0}}">1 in 10 — roughly today</button>
+          <button type="button" class="btn {{u1cls}}" onClick="{{setU1}}">1 in 2</button>
+          <button type="button" class="btn {{u2cls}}" onClick="{{setU2}}">All hundred</button>
+        </div>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+          <button type="button" class="btn btn-primary" onClick="{{togglePlay}}" style="min-width:104px">{{playLabel}}</button>
+          <button type="button" class="btn btn-secondary" onClick="{{back}}" disabled="{{atStart}}">Back</button>
+          <button type="button" class="btn btn-secondary" onClick="{{next}}" disabled="{{atEnd}}">Next phase</button>
+          <button type="button" class="btn btn-ghost" onClick="{{reset}}">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{showLedger}}" hint-placeholder-val="{{ true }}">
+      <div style="padding:56px 0 0">
+        <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:18px">The ledger</div>
+        <table class="table" style="width:100%;font-feature-settings:'tnum'">
+          <thead>
+            <tr>
+              <th style="text-align:left">Phase</th>
+              <th style="text-align:left">Age</th>
+              <th style="text-align:right">Living</th>
+              <th style="text-align:right">Living without capacity</th>
+              <th style="text-align:right">Covered by an LPA</th>
+              <th style="text-align:right">Needed a deputyship</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{rows}}" as="r" hint-placeholder-count="5">
+              <tr style="opacity:{{r.opacity}}">
+                <td style="text-align:left">{{r.phase}}</td>
+                <td style="text-align:left">{{r.age}}</td>
+                <td style="text-align:right">{{r.living}}</td>
+                <td style="text-align:right">{{r.incap}}</td>
+                <td style="text-align:right;color:var(--color-accent-700)">{{r.covered}}</td>
+                <td style="text-align:right">{{r.court}}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+        <div style="font-size:11.5px;margin-top:12px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Cumulative figures for the cohort. The last two columns count everyone who has lost capacity at any point in the run, including those since deceased.</div>
+      </div>
+    </sc-if>
+
+    <div style="padding:64px 0 0">
+      <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:22px">What the two routes cost</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+        <div class="card" style="padding:26px 28px">
+          <div class="card-kicker" style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 50%, transparent);margin-bottom:10px">Signed in advance</div>
+          <h3 style="font-family:var(--font-heading);font-weight:400;font-size:31px;margin:0 0 14px;font-feature-settings:'tnum'">S$0 <span style="font-size:19px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">+ a witness fee</span></h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.62;text-align:justify;hyphens:auto">Since 1 April 2026 the registration fee for LPA Form 1 is permanently waived for Singapore citizens. You still pay a certificate issuer to witness and certify it — among the most-visited accredited practitioners that has typically been around S$50 or less. One appointment, three to six weeks at the OPG, no annual fee, and the donee is someone you chose yourself.</p>
+        </div>
+        <div class="card" style="padding:26px 28px;border-color:color-mix(in srgb, var(--color-text) 30%, transparent)">
+          <div class="card-kicker" style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 50%, transparent);margin-bottom:10px">Applied for afterwards</div>
+          <h3 style="font-family:var(--font-heading);font-weight:400;font-size:31px;margin:0 0 14px;font-feature-settings:'tnum'">S$5,000–S$15,000</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.62;text-align:justify;hyphens:auto">With no LPA, the family applies to the Family Justice Courts for a deputyship order under the Mental Capacity Act. Indicative legal costs run from S$5,000 to S$15,000, six to twelve months is common before anyone can act, and the deputy reports to the Public Guardian every year after that.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:34px;padding:28px 0 0;border-top:1px solid var(--color-divider);display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:start">
+        <div>
+          <div style="font-family:var(--font-heading);font-size:52px;font-weight:400;line-height:1;font-feature-settings:'tnum'">{{courtBill}}</div>
+          <div style="font-size:11px;line-height:1.4;margin-top:9px;max-width:22ch;color:color-mix(in srgb, var(--color-text) 62%, transparent)">Deputyship costs carried by this cohort, at the mid-point of the indicative range</div>
+        </div>
+        <p style="margin:0;font-size:16px;line-height:1.62;max-width:50ch;text-align:justify;hyphens:auto">{{closing}}</p>
+      </div>
+
+      <div style="font-size:11px;line-height:1.5;margin-top:36px;color:color-mix(in srgb, var(--color-text) 48%, transparent);max-width:74ch">LPA Form 1 registration fee waived for Singapore citizens from 1 April 2026 (Office of the Public Guardian, MSF); certificate issuer fees are set by the professional, not the OPG. Deputyship costs and timelines are indicative practitioner ranges, not quotations. Mortality and capacity-loss rates in this simulation are illustrative, and uptake figures are rounded.</div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;pixelScale&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:3,&quot;max&quot;:8,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Pixel grid&quot;},&quot;phaseSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.8,&quot;min&quot;:0.8,&quot;max&quot;:4,&quot;step&quot;:0.2,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Playback&quot;},&quot;showLedger&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+const N = 100;
+const PHASES = [
+  { age: '40', label: 'Today', caption: 'Everyone here is well, and everyone here can still choose. An LPA is made by a person who has capacity — so today is exactly the kind of day it gets signed.' },
+  { age: '55', label: 'Phase one', caption: 'The first losses. One person\u2019s capacity goes early, after a stroke — a reminder that this is not only about old age. Their family already knows who to call.' },
+  { age: '65', label: 'Phase two', caption: 'Dementia starts to appear. Each family now finds out which path it is on: a donee the person chose, or an application to the courts to have one appointed.' },
+  { age: '75', label: 'Phase three', caption: 'More people can no longer manage their own affairs. Where an LPA exists, the bank and the hospital have someone to speak to on the very first day.' },
+  { age: '85', label: 'Phase four', caption: 'Half the cohort is gone. Among those still living, needing help with decisions is now ordinary rather than unlucky.' },
+  { age: '95', label: 'Phase five', caption: 'The run is over. Look at the grey squares: behind every one of them was an ordinary afternoon, decades earlier, when signing was still possible.' }
+];
+const NEW_LOSS = [0, 1, 4, 9, 18, 12];
+const NEW_DEATH = [0, 3, 5, 13, 27, 34];
+const UPTAKE = [0.1, 0.5, 1];
+const DEPUTY_COST = 10000;
+const WITNESS_FEE = 50;
+
+const SPRITE = [[2,0],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[4,2],[1,3],[2,3],[3,3],[1,4],[2,4],[3,4],[1,5],[3,5],[1,6],[3,6]];
+const GONE = [[2,5],[0,6],[1,6],[2,6],[3,6],[4,6]];
+
+function shadowOf(cells, s) {
+  return cells.map(function (c) { return (c[0] * s) + 'px ' + (c[1] * s) + 'px 0 0 currentColor'; }).join(',');
+}
+
+class Component extends DCLogic {
+  state = { phase: 0, uptake: 0, playing: true };
+
+  constructor(props) {
+    super(props);
+    this.fates = this.simulate();
+  }
+
+  simulate() {
+    let seed = 20260831;
+    const rnd = function () { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    const people = [];
+    for (let i = 0; i < N; i++) people.push({ i: i, r: rnd(), loss: 99, death: 99, k: rnd() });
+    const ord = people.slice().sort(function (a, b) { return a.k - b.k; }).map(function (p) { return p.i; });
+    // LPA order: a fixed shuffle. The first round(N * uptake) of it hold an LPA,
+    // so the count always matches the stated ratio and stays monotone.
+    const lpaOrd = people.slice().sort(function (a, b) { return a.r - b.r; }).map(function (p) { return p.i; });
+    lpaOrd.forEach(function (id, rank) { people[id].rank = rank; });
+
+    for (let t = 1; t < PHASES.length; t++) {
+      let want = NEW_LOSS[t];
+      for (let j = 0; j < ord.length && want > 0; j++) {
+        const p = people[ord[j]];
+        if (p.loss === 99 && p.death === 99) { p.loss = t; want--; }
+      }
+      let deaths = NEW_DEATH[t];
+      // Deaths first among people who lost capacity at least one phase ago, then
+      // among the well. Nobody dies in the same phase they lose capacity, so each
+      // tinted state dwells on the board for at least one full phase.
+      let budget = Math.round(NEW_DEATH[t] * 0.35);
+      for (let j = ord.length - 1; j >= 0 && budget > 0 && deaths > 0; j--) {
+        const p = people[ord[j]];
+        if (p.death === 99 && p.loss < t) { p.death = t; deaths--; budget--; }
+      }
+      for (let j = ord.length - 1; j >= 0 && deaths > 0; j--) {
+        const p = people[ord[j]];
+        if (p.death === 99 && p.loss === 99) { p.death = t; deaths--; }
+      }
+      for (let j = ord.length - 1; j >= 0 && deaths > 0; j--) {
+        const p = people[ord[j]];
+        if (p.death === 99 && p.loss < t) { p.death = t; deaths--; }
+      }
+    }
+    return people;
+  }
+
+  componentDidUpdate() { this.sync(); }
+  componentDidMount() { this.sync(); }
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  sync() {
+    const on = this.state.playing && this.state.phase < PHASES.length - 1;
+    if (on && !this.timer) {
+      const ms = Math.round((this.props.phaseSeconds != null ? this.props.phaseSeconds : 1.8) * 1000);
+      this.timer = setInterval(() => {
+        this.setState(function (s) {
+          const n = s.phase + 1;
+          return n >= PHASES.length - 1 ? { phase: PHASES.length - 1, playing: false } : { phase: n };
+        });
+      }, ms);
+    } else if (!on && this.timer) { clearInterval(this.timer); this.timer = null; }
+  }
+
+  money(n) { return 'S$' + Math.round(n).toLocaleString('en-SG'); }
+
+  renderVals() {
+    const s = this.props.pixelScale != null ? Number(this.props.pixelScale) : 5;
+    const t = this.state.phase;
+    const cutoff = Math.round(N * UPTAKE[this.state.uptake]);
+    const hasLPA = function (p) { return p.rank < cutoff; };
+    const w = 5 * s + 8, h = 7 * s + 6;
+    const pshadow = shadowOf(SPRITE, s), gshadow = shadowOf(GONE, s);
+    const geom = { w: w, h: h, px: s, ox: 4, oy: 3 };
+
+    const paint = (p) => {
+      const has = hasLPA(p);
+      if (p.death <= t) return Object.assign({}, geom, { shadow: gshadow, color: 'var(--color-neutral-300)', bg: 'transparent' });
+      if (p.loss <= t) return has
+        ? Object.assign({}, geom, { shadow: pshadow, color: 'var(--color-accent-700)', bg: 'var(--color-accent-200)' })
+        : Object.assign({}, geom, { shadow: pshadow, color: 'var(--color-neutral-900)', bg: 'var(--color-neutral-300)' });
+      return Object.assign({}, geom, { shadow: pshadow, color: has ? 'var(--color-accent)' : 'var(--color-neutral-400)', bg: 'transparent' });
+    };
+
+    const people = this.fates.map(paint);
+
+    let living = 0, incap = 0, covered = 0, court = 0, everCourt = 0, everLoss = 0, lpaCount = 0;
+    this.fates.forEach((p) => {
+      const has = hasLPA(p);
+      if (has) lpaCount++;
+      if (p.death > t) living++;
+      if (p.loss <= t) {
+        everLoss++;
+        if (!has) everCourt++;
+        if (p.death > t) { incap++; if (has) covered++; else court++; }
+      }
+    });
+
+    const rows = PHASES.slice(1).map((ph, k) => {
+      const pt = k + 1;
+      let lv = 0, ic = 0, cv = 0, ct = 0;
+      this.fates.forEach((p) => {
+        const has = hasLPA(p);
+        if (p.death > pt) lv++;
+        if (p.loss <= pt) { ic += p.death > pt ? 1 : 0; if (has) cv++; else ct++; }
+      });
+      return { phase: ph.label.replace('Phase ', ''), age: ph.age, living: lv, incap: ic, covered: cv, court: ct, opacity: pt <= t ? 1 : 0.28 };
+    });
+
+    const legendGeom = { w: w, h: h, px: s, ox: 4, oy: 3 };
+    const legend = [
+      Object.assign({}, legendGeom, { shadow: pshadow, color: 'var(--color-accent)', bg: 'transparent', label: 'Living, capacity intact, LPA signed' }),
+      Object.assign({}, legendGeom, { shadow: pshadow, color: 'var(--color-neutral-400)', bg: 'transparent', label: 'Living, capacity intact, nothing signed' }),
+      Object.assign({}, legendGeom, { shadow: pshadow, color: 'var(--color-accent-700)', bg: 'var(--color-accent-200)', label: 'Lost capacity — donee already appointed' }),
+      Object.assign({}, legendGeom, { shadow: pshadow, color: 'var(--color-neutral-900)', bg: 'var(--color-neutral-300)', label: 'Lost capacity — family must apply to the courts' }),
+      Object.assign({}, legendGeom, { shadow: gshadow, color: 'var(--color-neutral-300)', bg: 'transparent', label: 'Died' })
+    ];
+
+    const counters = [
+      { value: living, label: 'Still living', rule: 'var(--color-divider)', ink: 'var(--color-text)' },
+      { value: lpaCount, label: 'Signed an LPA at the start', rule: 'var(--color-accent)', ink: 'var(--color-accent-700)' },
+      { value: covered, label: 'Without capacity, donee ready to act', rule: 'var(--color-accent-400)', ink: 'var(--color-accent-700)' },
+      { value: court, label: 'Without capacity, waiting on the courts', rule: 'var(--color-neutral-800)', ink: 'var(--color-text)' }
+    ];
+
+    const bill = everCourt * DEPUTY_COST;
+    const closing = everCourt === 0
+      ? 'Nobody in this run needed a court order. Every family had a name, a registered document and a first day on which they could simply help. Witnessing an LPA for all one hundred would have come to roughly ' + this.money(N * WITNESS_FEE) + ' — one deputyship, spread across a hundred lives.'
+      : everCourt + ' of these hundred lost capacity with nothing signed, and ' + everCourt + ' families had to ask a court for permission to help someone they loved. Witnessing an LPA for all one hundred, years before any of it happened, would have come to roughly ' + this.money(N * WITNESS_FEE) + ' — about the cost of a single deputyship.';
+
+    const set = (i) => () => this.setState({ uptake: i });
+    const cls = (i) => this.state.uptake === i ? 'btn-primary' : 'btn-secondary';
+
+    return {
+      people: people, legend: legend, counters: counters, rows: rows,
+      cellW: w,
+      phaseAge: PHASES[t].age, phaseLabel: PHASES[t].label, caption: PHASES[t].caption,
+      showLedger: this.props.showLedger !== false,
+      courtBill: this.money(bill), closing: closing,
+      playLabel: this.state.playing ? 'Pause' : (t >= PHASES.length - 1 ? 'Run it again' : (t === 0 ? 'Start' : 'Resume')),
+      atStart: t === 0, atEnd: t >= PHASES.length - 1,
+      u0cls: cls(0), u1cls: cls(1), u2cls: cls(2),
+      setU0: set(0), setU1: set(1), setU2: set(2),
+      next: () => this.setState({ phase: Math.min(PHASES.length - 1, this.state.phase + 1), playing: false }),
+      back: () => this.setState({ phase: Math.max(0, this.state.phase - 1), playing: false }),
+      reset: () => this.setState({ phase: 0, playing: false }),
+      togglePlay: () => this.setState((st) => st.phase >= PHASES.length - 1 ? { phase: 0, playing: true } : { playing: !st.playing })
+    };
+  }
+}
+
+</script>
+</body>
+</html>

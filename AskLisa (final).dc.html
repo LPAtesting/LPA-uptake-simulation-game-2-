@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/styles.css">
+<script src="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap">
+<style>
+  @keyframes al-dot { 0%, 70%, 100% { opacity: .25 } 35% { opacity: 1 } }
+  @keyframes al-bob { 50% { transform: translateY(3px) } }
+</style>
+</helmet>
+<div style="position:relative;top:{{ rootTop }}px;width:100%;height:{{ rootH }};background:#2c2a3a;overflow:hidden">
+<div style="position:relative;width:100%;height:100%;max-width:{{ maxW }};margin:0 auto;overflow:hidden;background:#e8dcc2;font-family:'Pixelify Sans',monospace;color:#2c2a3a;-webkit-tap-highlight-color:transparent;user-select:none;touch-action:manipulation">
+  <div ref="{{ stageRef }}" onPointerDown="{{ onStagePointer }}" style="position:absolute;inset:0;overflow:hidden;touch-action:manipulation;cursor:pointer">
+    <canvas ref="{{ canvasRef }}" style="position:absolute;left:0;top:0;image-rendering:pixelated;will-change:transform"></canvas>
+  </div>
+
+  <div style="position:absolute;left:0;right:0;top:{{ st }}px;bottom:{{ sb }}px;pointer-events:none">
+
+    <div style="position:absolute;left:14px;right:{{ topR }}px;top:8px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;z-index:4">
+      <div style="pointer-events:auto;display:flex;flex-direction:column;gap:3px;padding:7px 12px 7px 10px;background:#f6eed8;box-shadow:0 0 0 3px #2c2a3a, 4px 4px 0 3px rgba(44,42,58,0.18);min-width:0">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="width:8px;height:8px;background:#c8963c;box-shadow:0 0 0 2px #2c2a3a;flex:none"></span>
+          <span style="font-family:'Silkscreen',monospace;font-size:13px;line-height:14px;letter-spacing:0.08em">ASK LISA</span>
+        </div>
+        <span style="font-size:12px;line-height:14px;color:#6b6252;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ status }}</span>
+      </div>
+      <div style="pointer-events:auto;display:flex;gap:10px;padding-top:2px">
+        <button onClick="{{ openCards }}" title="The full conversation toolkit" style="height:44px;padding:0 12px;display:flex;align-items:center;gap:6px;border:none;cursor:pointer;background:#f6eed8;box-shadow:0 0 0 3px #2c2a3a, 3px 3px 0 3px rgba(44,42,58,0.18);font-family:'Silkscreen',monospace;font-size:12px;color:#2c2a3a" style-hover="background:#efe4c8" style-active="transform:translate(2px,2px)">
+          <svg width="14" height="16" viewBox="0 0 14 16" shape-rendering="crispEdges"><path d="M1 1h12v14H1z" fill="#fffaf0" stroke="#2c2a3a" stroke-width="2"></path><path d="M4 4h6v2H4zM4 8h6v1H4zM4 10h4v1H4z" fill="#c8963c"></path></svg>
+          <span>Toolkit</span>
+        </button>
+        <sc-if value="{{ showChatBtn }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ openChat }}" title="Chat history" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;background:#f6eed8;box-shadow:0 0 0 3px #2c2a3a, 3px 3px 0 3px rgba(44,42,58,0.18)" style-hover="background:#efe4c8" style-active="transform:translate(2px,2px)">
+            <svg width="18" height="16" viewBox="0 0 18 16" shape-rendering="crispEdges"><path d="M2 2h14v9H9v2H8v1H6v-3H2z" fill="#fffaf0" stroke="#2c2a3a" stroke-width="2"></path><path d="M5 5h8v1H5zM5 8h5v1H5z" fill="#8a5a14"></path></svg>
+          </button>
+        </sc-if>
+        <button onClick="{{ toggleSound }}" title="Sound" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;background:#f6eed8;box-shadow:0 0 0 3px #2c2a3a, 3px 3px 0 3px rgba(44,42,58,0.18)" style-hover="background:#efe4c8" style-active="transform:translate(2px,2px)">
+          <sc-if value="{{ soundOn }}" hint-placeholder-val="{{ true }}"><svg width="18" height="16" viewBox="0 0 18 16" shape-rendering="crispEdges"><path d="M2 5h3l4-3v12l-4-3H2z" fill="#2c2a3a"></path><path d="M11 6h1v4h-1zM13 4h1v8h-1zM15 2h1v12h-1z" fill="#8a5a14"></path></svg></sc-if>
+          <sc-if value="{{ soundOff }}" hint-placeholder-val="{{ false }}"><svg width="18" height="16" viewBox="0 0 18 16" shape-rendering="crispEdges"><path d="M2 5h3l4-3v12l-4-3H2z" fill="#2c2a3a"></path><path d="M11 5h2v2h-2zM15 5h2v2h-2zM13 7h2v2h-2zM11 9h2v2h-2zM15 9h2v2h-2z" fill="#c84848"></path></svg></sc-if>
+        </button>
+      </div>
+    </div>
+
+    <sc-if value="{{ showActions }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:{{ actL }};right:{{ actR }};top:{{ actT }};display:flex;flex-direction:column;gap:14px;pointer-events:auto;z-index:3">
+        <sc-for list="{{ actions }}" as="a" hint-placeholder-count="3">
+          <button onClick="{{ a.go }}" title="{{ a.label }}" style="width:50px;height:50px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:none;cursor:pointer;background:#f6eed8;box-shadow:0 0 0 3px #2c2a3a, 3px 3px 0 3px rgba(44,42,58,0.18)" style-hover="background:#efe4c8" style-active="transform:translate(2px,2px)">
+            <img src="{{ a.icon }}" alt="" style="width:{{ a.w }}px;height:{{ a.h }}px;image-rendering:pixelated">
+            <span style="font-family:'Silkscreen',monospace;font-size:8px;line-height:9px;color:#6b6252">{{ a.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ showBubble }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ skipTyping }}" style="position:absolute;left:14px;right:14px;bottom:{{ bubbleBottom }}px;display:flex;flex-direction:column;pointer-events:auto;z-index:5">
+        <div style="background:#fffaf0;box-shadow:0 0 0 3px #2c2a3a, 5px 5px 0 3px rgba(44,42,58,0.18);padding:12px 14px;max-height:{{ bubbleMax }}px;overflow-y:auto;display:flex;flex-direction:column;gap:9px">
+          <sc-if value="{{ thinking }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:7px;padding:4px 0">
+              <span style="width:8px;height:8px;background:#8a5a14;animation:al-dot 1.1s infinite"></span>
+              <span style="width:8px;height:8px;background:#8a5a14;animation:al-dot 1.1s .18s infinite"></span>
+              <span style="width:8px;height:8px;background:#8a5a14;animation:al-dot 1.1s .36s infinite"></span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ hasCur }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:15px;line-height:21px;text-wrap:pretty"><span>{{ shown }}</span><span style="opacity:0">{{ hidden }}</span></div>
+          </sc-if>
+          <sc-if value="{{ showCurCards }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ curCards }}" as="c" hint-placeholder-count="0">
+                <div style="display:flex;flex-direction:column;gap:6px;padding:10px 12px;background:#f6eed8;box-shadow:0 0 0 2px #c8963c">
+                  <span style="font-family:'Silkscreen',monospace;font-size:10px;line-height:13px;letter-spacing:0.06em;color:#8a5a14">{{ c.kicker }}</span>
+                  <span style="font-family:'Pixelify Sans',monospace;font-size:16px;line-height:22px;color:#2c2a3a;text-wrap:pretty">{{ c.quote }}</span>
+                  <sc-if value="{{ c.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Pixelify Sans',monospace;font-size:13px;line-height:18px;color:#6b6252;text-wrap:pretty">{{ c.note }}</span></sc-if>
+                  <button onClick="{{ c.copy }}" style="align-self:flex-start;min-height:36px;border:none;cursor:pointer;background:#fffaf0;box-shadow:0 0 0 2px #2c2a3a;padding:0 12px;font-family:'Silkscreen',monospace;font-size:10px;color:#2c2a3a" style-hover="background:#efe4c8" style-active="transform:translate(1px,1px)">{{ c.copyLabel }}</button>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <div ref="{{ tailRef }}" style="position:relative;left:160px;width:26px;height:14px;margin-top:-1px">
+          <svg width="26" height="14" viewBox="0 0 26 14" shape-rendering="crispEdges" style="display:block"><path d="M2 0h20v3h-3v3h-3v3h-3v3H9V0z" fill="#2c2a3a"></path><path d="M5 0h14v2h-3v3h-3v3h-2V0z" fill="#fffaf0"></path></svg>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ showPanel }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:{{ pnL }};right:{{ pnR }};width:{{ pnW }};top:{{ pnT }}px;bottom:{{ pnB }}px;display:flex;flex-direction:column;pointer-events:auto;background:#f6eed8;box-shadow:0 0 0 3px #fffaf0, 0 0 0 6px #2c2a3a, 7px 7px 0 6px rgba(44,42,58,0.18);z-index:2">
+        <div style="position:absolute;left:14px;top:-19px;padding:5px 12px;background:#c8963c;box-shadow:0 0 0 3px #2c2a3a;font-family:'Silkscreen',monospace;font-size:13px;line-height:14px;letter-spacing:0.06em">LPA LISA</div>
+        <div ref="{{ logRef }}" style="flex:1;min-height:0;overflow-y:auto;padding:24px 14px {{ logPad }}px;display:flex;flex-direction:column;gap:13px">
+          <sc-for list="{{ logItems }}" as="m" hint-placeholder-count="2">
+            <sc-if value="{{ m.isUser }}" hint-placeholder-val="{{ false }}">
+              <div style="align-self:flex-end;max-width:84%;padding:8px 11px;background:#efe4c8;box-shadow:0 0 0 2px #2c2a3a;font-size:14px;line-height:19px">{{ m.text }}</div>
+            </sc-if>
+            <sc-if value="{{ m.isLisa }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:7px;max-width:96%">
+                <div style="font-size:15px;line-height:21px;text-wrap:pretty"><span>{{ m.shown }}</span><span style="opacity:0">{{ m.hidden }}</span></div>
+                <sc-if value="{{ m.hasCards }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:10px">
+                    <sc-for list="{{ m.cards }}" as="c" hint-placeholder-count="0">
+                      <div style="display:flex;flex-direction:column;gap:6px;padding:10px 12px;background:#f6eed8;box-shadow:0 0 0 2px #c8963c">
+                  <span style="font-family:'Silkscreen',monospace;font-size:10px;line-height:13px;letter-spacing:0.06em;color:#8a5a14">{{ c.kicker }}</span>
+                  <span style="font-family:'Pixelify Sans',monospace;font-size:16px;line-height:22px;color:#2c2a3a;text-wrap:pretty">{{ c.quote }}</span>
+                  <sc-if value="{{ c.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Pixelify Sans',monospace;font-size:13px;line-height:18px;color:#6b6252;text-wrap:pretty">{{ c.note }}</span></sc-if>
+                  <button onClick="{{ c.copy }}" style="align-self:flex-start;min-height:36px;border:none;cursor:pointer;background:#fffaf0;box-shadow:0 0 0 2px #2c2a3a;padding:0 12px;font-family:'Silkscreen',monospace;font-size:10px;color:#2c2a3a" style-hover="background:#efe4c8" style-active="transform:translate(1px,1px)">{{ c.copyLabel }}</button>
+                </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+            <sc-if value="{{ m.isAside }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13px;line-height:18px;color:#6b6252;font-style:italic">{{ m.text }}</div>
+            </sc-if>
+          </sc-for>
+          <sc-if value="{{ thinking }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:7px;padding:4px 0">
+              <span style="width:8px;height:8px;background:#8a5a14;animation:al-dot 1.1s infinite"></span>
+              <span style="width:8px;height:8px;background:#8a5a14;animation:al-dot 1.1s .18s infinite"></span>
+              <span style="width:8px;height:8px;background:#8a5a14;animation:al-dot 1.1s .36s infinite"></span>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ showDialog }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ skipTyping }}" style="position:absolute;left:14px;right:14px;bottom:70px;display:flex;flex-direction:column;pointer-events:auto;background:#f6eed8;box-shadow:0 0 0 3px #fffaf0, 0 0 0 6px #2c2a3a, 7px 7px 0 6px rgba(44,42,58,0.18);z-index:5">
+        <div style="position:absolute;left:14px;top:-19px;padding:5px 12px;background:#c8963c;box-shadow:0 0 0 3px #2c2a3a;font-family:'Silkscreen',monospace;font-size:13px;line-height:14px;letter-spacing:0.06em">LPA LISA</div>
+        <div style="padding:24px 16px 16px;max-height:{{ dialogMax }}px;min-height:84px;overflow-y:auto;display:flex;flex-direction:column;gap:12px">
+          <sc-if value="{{ thinking }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:8px;padding:6px 0">
+              <span style="width:9px;height:9px;background:#8a5a14;animation:al-dot 1.1s infinite"></span>
+              <span style="width:9px;height:9px;background:#8a5a14;animation:al-dot 1.1s .18s infinite"></span>
+              <span style="width:9px;height:9px;background:#8a5a14;animation:al-dot 1.1s .36s infinite"></span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ hasCur }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:16px;line-height:23px;text-wrap:pretty"><span>{{ shown }}</span><span style="opacity:0">{{ hidden }}</span></div>
+          </sc-if>
+          <sc-if value="{{ showCurCards }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ curCards }}" as="c" hint-placeholder-count="0">
+                <div style="display:flex;flex-direction:column;gap:6px;padding:10px 12px;background:#f6eed8;box-shadow:0 0 0 2px #c8963c">
+                  <span style="font-family:'Silkscreen',monospace;font-size:10px;line-height:13px;letter-spacing:0.06em;color:#8a5a14">{{ c.kicker }}</span>
+                  <span style="font-family:'Pixelify Sans',monospace;font-size:16px;line-height:22px;color:#2c2a3a;text-wrap:pretty">{{ c.quote }}</span>
+                  <sc-if value="{{ c.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Pixelify Sans',monospace;font-size:13px;line-height:18px;color:#6b6252;text-wrap:pretty">{{ c.note }}</span></sc-if>
+                  <button onClick="{{ c.copy }}" style="align-self:flex-start;min-height:36px;border:none;cursor:pointer;background:#fffaf0;box-shadow:0 0 0 2px #2c2a3a;padding:0 12px;font-family:'Silkscreen',monospace;font-size:10px;color:#2c2a3a" style-hover="background:#efe4c8" style-active="transform:translate(1px,1px)">{{ c.copyLabel }}</button>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ showChoices }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:2px;border-top:2px solid #d8ccb0;padding-top:8px">
+              <sc-for list="{{ choices }}" as="c" hint-placeholder-count="0">
+                <button onClick="{{ c.go }}" style="display:flex;align-items:center;gap:10px;border:none;cursor:pointer;background:transparent;padding:7px 6px;font-family:'Pixelify Sans',monospace;font-size:16px;line-height:20px;color:#2c2a3a;text-align:left" style-hover="background:rgba(200,150,60,0.16);color:#8a5a14">
+                  <span style="font-family:'Silkscreen',monospace;font-size:11px;color:#c8963c">&gt;</span><span>{{ c.text }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <sc-if value="{{ showCaret }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;right:16px;bottom:8px;font-size:14px;color:#c8963c;animation:al-bob 0.9s steps(2) infinite">▼</div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <div style="position:absolute;left:{{ dockL }}px;right:{{ dockR }}px;bottom:{{ dockY }}px;display:flex;flex-direction:column;gap:10px;z-index:6">
+      <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ true }}">
+        <div style="pointer-events:auto;display:flex;gap:10px;overflow-x:auto;padding:4px 4px 8px 4px;margin:0 -4px;scrollbar-width:none">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="3">
+            <button onClick="{{ c.go }}" style="flex:none;border:none;cursor:pointer;background:#f6eed8;box-shadow:0 0 0 2px #2c2a3a, 3px 3px 0 2px rgba(44,42,58,0.16);height:44px;padding:0 14px;display:flex;align-items:center;font-family:'Pixelify Sans',monospace;font-size:15px;line-height:18px;color:#2c2a3a;white-space:nowrap" style-hover="background:#efe4c8;color:#8a5a14" style-active="transform:translate(2px,2px)">{{ c.text }}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+      <div style="pointer-events:auto;display:flex;gap:12px;align-items:center">
+        <div style="flex:1;min-width:0;height:46px;display:flex;align-items:center;padding:0 12px;background:#fffaf0;box-shadow:0 0 0 3px #2c2a3a, 4px 4px 0 3px rgba(44,42,58,0.18)">
+          <input ref="{{ inputRef }}" value="{{ input }}" onChange="{{ onInput }}" onKeyDown="{{ onKey }}" onFocus="{{ onFocus }}" onBlur="{{ onBlur }}" placeholder="Ask Lisa, or type what they said…" maxLength="240" enterKeyHint="send" autoComplete="off" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:'Pixelify Sans',monospace;font-size:16px;color:#2c2a3a;user-select:text">
+        </div>
+        <button onClick="{{ onSend }}" disabled="{{ sendOff }}" title="Send" style="width:46px;height:46px;flex:none;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;background:#c8963c;box-shadow:0 0 0 3px #2c2a3a, 4px 4px 0 3px rgba(44,42,58,0.18);opacity:{{ sendOpacity }}" style-hover="background:#e8c27e" style-active="transform:translate(2px,2px)">
+          <svg width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges"><path d="M2 7h7V3h1v1h1v1h1v1h1v1h1v2h-1v1h-1v1h-1v1h-1v1H9V9H2z" fill="#2c2a3a"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeSheet }}" style="position:absolute;inset:0;background:rgba(44,42,58,0.4);z-index:20"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:76%;max-width:{{ shMax }};margin:0 auto;z-index:21;display:flex;flex-direction:column;background:#f6eed8;box-shadow:0 -3px 0 0 #2c2a3a, 0 -6px 0 0 #fffaf0, 0 -9px 0 0 #2c2a3a">
+      <div style="display:flex;align-items:center;gap:10px;padding:18px 16px 12px">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2">
+          <button onClick="{{ t.go }}" style="border:none;cursor:pointer;padding:7px 12px;font-family:'Silkscreen',monospace;font-size:12px;letter-spacing:0.04em;color:#2c2a3a;background:{{ t.bg }};box-shadow:0 0 0 2px #2c2a3a">{{ t.label }}</button>
+        </sc-for>
+        <span style="flex:1"></span>
+        <button onClick="{{ closeSheet }}" title="Close" style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;background:#fffaf0;box-shadow:0 0 0 2px #2c2a3a" style-hover="background:#efe4c8">
+          <svg width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges"><path d="M1 1h2v1h1v1h1v1h2V3h1V2h1V1h2v2h-1v1h-1v1H8v2h1v1h1v1h1v2H9v-1H8V9H7V8H5v1H4v1H3v1H1V9h1V8h1V7h1V5H3V4H2V3H1z" fill="#2c2a3a"></path></svg>
+        </button>
+      </div>
+      <div style="flex:1;min-height:0;overflow-y:auto;padding:4px 16px {{ sheetPad }}px">
+        <sc-if value="{{ sheetChat }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <sc-if value="{{ noMsgs }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:15px;line-height:21px;color:#6b6252">Nothing yet. Ask Lisa something and your chat is kept here.</p></sc-if>
+            <sc-for list="{{ historyItems }}" as="m" hint-placeholder-count="2">
+              <div style="display:flex;flex-direction:column;gap:3px;padding-bottom:10px;border-bottom:2px solid #d8ccb0">
+                <span style="font-family:'Silkscreen',monospace;font-size:10px;letter-spacing:0.06em;color:{{ m.whoColor }}">{{ m.who }}</span>
+                <span style="font-size:15px;line-height:21px;text-wrap:pretty">{{ m.text }}</span>
+              </div>
+            </sc-for>
+            <sc-if value="{{ hasMsgs }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ clearChat }}" style="align-self:flex-start;border:none;cursor:pointer;background:transparent;box-shadow:0 0 0 2px #2c2a3a;padding:7px 12px;font-family:'Silkscreen',monospace;font-size:11px;color:#2c2a3a" style-hover="background:#efe4c8">Clear chat</button>
+            </sc-if>
+          </div>
+        </sc-if>
+        <sc-if value="{{ sheetCards }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0;font-family:'Pixelify Sans',monospace;font-size:18px;line-height:24px;color:#2c2a3a;text-wrap:pretty">How do I start a conversation with trusted people to convince them to become my donee?</p>
+            <sc-for list="{{ sections }}" as="s" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;gap:10px;padding-top:8px">
+                <span style="font-family:'Pixelify Sans',monospace;font-size:15px;line-height:20px;font-weight:600;color:#8a5a14;text-wrap:pretty">{{ s.title }}</span>
+                <sc-for list="{{ s.items }}" as="c" hint-placeholder-count="3">
+                <div style="display:flex;flex-direction:column;gap:6px;padding:10px 12px;background:#f6eed8;box-shadow:0 0 0 2px #c8963c">
+                  <span style="font-family:'Silkscreen',monospace;font-size:10px;line-height:13px;letter-spacing:0.06em;color:#8a5a14">{{ c.kicker }}</span>
+                  <span style="font-family:'Pixelify Sans',monospace;font-size:16px;line-height:22px;color:#2c2a3a;text-wrap:pretty">{{ c.quote }}</span>
+                  <sc-if value="{{ c.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Pixelify Sans',monospace;font-size:13px;line-height:18px;color:#6b6252;text-wrap:pretty">{{ c.note }}</span></sc-if>
+                  <button onClick="{{ c.copy }}" style="align-self:flex-start;min-height:36px;border:none;cursor:pointer;background:#fffaf0;box-shadow:0 0 0 2px #2c2a3a;padding:0 12px;font-family:'Silkscreen',monospace;font-size:10px;color:#2c2a3a" style-hover="background:#efe4c8" style-active="transform:translate(1px,1px)">{{ c.copyLabel }}</button>
+                </div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ cardOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeCard }}" style="position:absolute;inset:0;background:rgba(44,42,58,0.45);z-index:30"></div>
+    <div style="position:absolute;left:22px;right:22px;top:50%;transform:translateY(-50%);max-width:560px;margin:0 auto;z-index:31;max-height:78%;overflow-y:auto;background:#f6eed8;box-shadow:0 0 0 3px #fffaf0, 0 0 0 6px #2c2a3a, 8px 8px 0 6px rgba(44,42,58,0.25);padding:22px 20px 18px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <span style="font-family:'Silkscreen',monospace;font-size:12px;letter-spacing:0.08em;color:#8a5a14">FACT CARD · {{ cardId }}</span>
+        <button onClick="{{ closeCard }}" title="Close" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;background:#fffaf0;box-shadow:0 0 0 2px #2c2a3a" style-hover="background:#efe4c8">
+          <svg width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges"><path d="M1 1h2v1h1v1h1v1h2V3h1V2h1V1h2v2h-1v1h-1v1H8v2h1v1h1v1h1v2H9v-1H8V9H7V8H5v1H4v1H3v1H1V9h1V8h1V7h1V5H3V4H2V3H1z" fill="#2c2a3a"></path></svg>
+        </button>
+      </div>
+      <p style="margin:0;font-size:16px;line-height:23px;text-wrap:pretty">{{ cardText }}</p>
+      <div style="border-top:2px solid #d8ccb0;padding-top:10px;font-family:'Silkscreen',monospace;font-size:10px;line-height:15px;color:#6b6252">{{ cardSrc }}</div>
+    </div>
+  </sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;layout&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;auto&quot;, &quot;phone&quot;, &quot;web&quot;, &quot;bubble&quot;, &quot;log&quot;, &quot;closeup&quot;], &quot;default&quot;: &quot;auto&quot;, &quot;tsType&quot;: &quot;'auto' | 'phone' | 'web' | 'bubble' | 'log' | 'closeup'&quot;, &quot;section&quot;: &quot;Layout&quot;}, &quot;lisaZoom&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;auto&quot;, &quot;2.5x&quot;, &quot;3x&quot;, &quot;3.5x&quot;, &quot;4x&quot;, &quot;4.5x&quot;], &quot;default&quot;: &quot;auto&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Layout&quot;}, &quot;timeOfDay&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;live&quot;, &quot;morning&quot;, &quot;day&quot;, &quot;evening&quot;, &quot;night&quot;], &quot;default&quot;: &quot;live&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Room&quot;}, &quot;idleChat&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Room&quot;}, &quot;aiAnswers&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Answers&quot;}, &quot;readCards&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Answers&quot;}, &quot;voice&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Answers&quot;}, &quot;sound&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Answers&quot;}, &quot;music&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Answers&quot;}, &quot;safeTop&quot;: {&quot;editor&quot;: null, &quot;default&quot;: 0, &quot;tsType&quot;: &quot;number&quot;}, &quot;safeBottom&quot;: {&quot;editor&quot;: null, &quot;default&quot;: 0, &quot;tsType&quot;: &quot;number&quot;}}">
+const POSE = { explain: 'present', instruct: 'point', myth: 'hip', unsure: 'shrug', cheer: 'cheer', greet: 'wave' };
+const ACTIONS = [['water', 'can', 'Water'], ['tea', 'mug', 'Tea'], ['read', 'book', 'Read']];
+// idle chatter: a general pool on a slow timer, plus a line for some of her routines (keyed by stage status)
+const IDLE = ["Take your time. I'm not going anywhere.", 'Who would you trust with the big decisions?', 'Practising out loud really helps.', 'No rush. Big talks need a calm moment.', "Pick a starter when you're ready.", 'Still here if you need me!', "Hmm, I wonder who you'll ask."];
+const IDLE_AFTER = ['Want to try another one?', 'Try saying that one out loud.'];
+const ACK = ['Hmm, let me see.', 'Ooh, good one!'];
+const IDLE_AT = { 'Watering the money plant': ['Grow, little money plant!'], 'Tea break': ['Ahh, nothing like a hot cup of tea.'], 'Reading': ['Talk early, talk often. Good advice, this book.'], 'Dozing off': ['Mm... five more minutes...'], 'Stretching': ['Okay! Back to it.'], 'Petting the cat': ["Who's a good kitty?"] };
+const MUSIC = 0.5, IDLE_MAX = 10;
+class Component extends DCLogic {
+  state = { msgs: [], input: '', phase: 'idle', cur: null, typed: 0, typingId: null, status: 'Saying hi', geom: null, sheet: null, card: null, soundOn: true, focus: false, chips: null, unlocked: [], icons: null, ready: false };
+  stageRef = React.createRef(); canvasRef = React.createRef(); tailRef = React.createRef(); logRef = React.createRef(); inputRef = React.createRef();
+  layoutFor(w) { const l = this.props.layout || 'auto'; return l !== 'auto' ? l : (w || window.innerWidth) >= 900 ? 'web' : 'phone'; }
+  layout() { return this.curLayout || this.layoutFor(this.state.geom && this.state.geom.w); }
+  panelW(w) { return Math.round(Math.max(340, Math.min(440, w * 0.3))); }
+  key() { return 'lisatalk:' + (this.props.layout || 'auto') + ':msgs'; }
+  componentDidMount() {
+    this.standalone = this.props.safeTop == null;
+    if (this.standalone) this.setupPage();
+    let msgs = [], unlocked = [];
+    try { msgs = JSON.parse(localStorage.getItem(this.key()) || '[]').filter(m => !m.temp && !/^Hi! I'm Lisa\. Ask me anything/.test(m.text)); unlocked = JSON.parse(localStorage.getItem('lisatalk:seen') || '[]'); } catch (e) { }
+    this.setState({ msgs: Array.isArray(msgs) ? msgs : [], unlocked: Array.isArray(unlocked) ? unlocked : [], soundOn: this.props.sound !== false });
+    this.lastAct = Date.now(); this.idleN = 0;
+    this.onAct = () => { this.lastAct = Date.now(); this.idleN = 0; this.unlockAudio(); };
+    window.addEventListener('pointerdown', this.onAct, true); window.addEventListener('keydown', this.onAct, true);
+    this.onVis = () => { if (!this.ac) return; if (document.hidden) this.ac.suspend().catch(() => { }); else if (this.state.soundOn) this.ac.resume().catch(() => { }); };
+    document.addEventListener('visibilitychange', this.onVis);
+    const base = document.baseURI;
+    Promise.all([import(new URL('lpa-lisa-room.js', base).href), import(new URL('lpa-lisa-toolkit.js', base).href)]).then(([R, B]) => {
+      if (this.dead) return;
+      this.R = R; this.B = B;
+      this.stage = R.createStage(this.canvasRef.current, {
+        layout: this.layout(), tod: this.props.timeOfDay || 'live', zoom: parseFloat(this.props.lisaZoom) || 0, lift: 0.1,
+        onStatus: s => { this.setState({ status: s }); this.onIdleStatus(s); },
+        onEvent: e => this.onStageEvent(e),
+        onFrame: a => this.onFrame(a)
+      });
+      this.ro = new ResizeObserver(() => this.measure()); this.ro.observe(this.stageRef.current); this.measure();
+      const icons = {}; ['can', 'mug', 'book'].forEach(k => { icons[k] = R.propIcon(k); });
+      this.setState({ ready: true, icons }, () => this.scrollLog());
+      setTimeout(() => this.scrollLog(), 300);
+      this.greetT = setTimeout(() => this.greet(), 1100);
+      this.scheduleIdle(); this.loadVO(); this.musT = setTimeout(() => this.loadMusic(), 1400);
+    }).catch(e => console.error('AskLisa failed to load', e));
+  }
+  componentDidUpdate() {
+    if (this.props.music !== this.lastMusic) { this.lastMusic = this.props.music; this.mix(); this.startMusic(); }
+    const p = this.props, l = this.lastP || {};
+    this.lastP = { layout: p.layout, timeOfDay: p.timeOfDay, safeTop: p.safeTop, safeBottom: p.safeBottom, lisaZoom: p.lisaZoom };
+    if (!this.stage || !this.lastPSet) { this.lastPSet = !!this.stage; return; }
+    if (l.layout !== p.layout) { this.curLayout = null; this.measure(); }
+    if (l.timeOfDay !== p.timeOfDay) this.stage.setTod(p.timeOfDay || 'live');
+    if (l.safeTop !== p.safeTop || l.safeBottom !== p.safeBottom) this.measure();
+    if (l.lisaZoom !== p.lisaZoom) { this.stage.setZoom(parseFloat(p.lisaZoom) || 0); this.measure(); }
+    const S = this.state, sig = S.msgs.length + '|' + S.typed + '|' + S.phase + '|' + (S.chips ? S.chips.length : -1) + '|' + this.curLayout;
+    if (sig !== this.scrollSig) { this.scrollSig = sig; this.scrollLog(); }
+    if (this.state.msgs !== this.savedMsgs) { this.savedMsgs = this.state.msgs; try { localStorage.setItem(this.key(), JSON.stringify(this.state.msgs.filter(m => !m.temp).slice(-40))); } catch (e) { } }
+  }
+  scrollLog() {
+    const go = () => { const lg = this.logRef.current; if (lg) lg.scrollTop = lg.scrollHeight; };
+    requestAnimationFrame(() => { go(); requestAnimationFrame(go); });
+    const lg = this.logRef.current;
+    if (lg && this.logRO_el !== lg && window.ResizeObserver) {
+      this.logRO && this.logRO.disconnect(); this.logRO_el = lg;
+      this.logRO = new ResizeObserver(() => { if (lg.scrollHeight - lg.clientHeight - lg.scrollTop < 160) lg.scrollTop = lg.scrollHeight; });
+      this.logRO.observe(lg); Array.from(lg.children).forEach(c => this.logRO.observe(c));
+    }
+  }
+  componentWillUnmount() {
+    this.dead = true; this.stage && this.stage.destroy(); this.ro && this.ro.disconnect(); this.logRO && this.logRO.disconnect(); this.safeProbe && this.safeProbe.remove();
+    if (this.onVV && window.visualViewport) { window.visualViewport.removeEventListener('resize', this.onVV); window.visualViewport.removeEventListener('scroll', this.onVV); }
+    clearTimeout(this.copyT);
+    [this.greetT, this.holdT, this.asideT, this.unlistenT, this.idleT, this.musT].forEach(clearTimeout); clearInterval(this.tw); cancelAnimationFrame(this.lipRAF);
+    window.removeEventListener('pointerdown', this.onAct, true); window.removeEventListener('keydown', this.onAct, true); document.removeEventListener('visibilitychange', this.onVis);
+    try { this.ac && this.ac.close(); } catch (e) { }
+    try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) { }
+  }
+  // opened on its own (a phone or desktop browser): own the page, the viewport and the safe areas
+  setupPage() {
+    const d = document, head = d.head;
+    const meta = (name, content) => { let m = head.querySelector('meta[name="' + name + '"]'); if (!m) { m = d.createElement('meta'); m.setAttribute('name', name); head.appendChild(m); } m.setAttribute('content', content); };
+    meta('viewport', 'width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content');
+    meta('theme-color', '#e8dcc2');
+    meta('mobile-web-app-capable', 'yes');
+    d.title = 'Ask Lisa · Talk to your donee';
+    Object.assign(d.documentElement.style, { height: '100%', overscrollBehavior: 'none', background: '#2c2a3a' });
+    Object.assign(d.body.style, { margin: '0', height: '100%', overflow: 'hidden', overscrollBehavior: 'none', background: '#2c2a3a' });
+    const p = d.createElement('div');
+    p.style.cssText = 'position:fixed;left:0;top:0;width:0;height:0;visibility:hidden;pointer-events:none;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)';
+    d.body.appendChild(p); this.safeProbe = p;
+    meta('apple-mobile-web-app-capable', 'yes'); meta('apple-mobile-web-app-status-bar-style', 'default');
+    // iOS doesn't resize the page for the keyboard: follow the visual viewport so the input and Lisa stay above it
+    const vv = window.visualViewport;
+    if (vv) {
+      this.onVV = () => { const h = Math.round(vv.height), t = Math.round(vv.offsetTop); if (h !== this.state.vvH || t !== this.state.vvTop) this.setState({ vvH: h, vvTop: t }); };
+      vv.addEventListener('resize', this.onVV); vv.addEventListener('scroll', this.onVV); this.onVV();
+    }
+  }
+  readSafe() {
+    if (!this.safeProbe) return null;
+    const cs = getComputedStyle(this.safeProbe), t = parseFloat(cs.paddingTop) || 0, b = parseFloat(cs.paddingBottom) || 0, s = this.state.safe;
+    if (!s || s.t !== t || s.b !== b) this.setState({ safe: { t, b } });
+    return { t, b };
+  }
+  safeTB() {
+    if (this.props.safeTop != null) return { t: +this.props.safeTop || 0, b: +this.props.safeBottom || 0 };
+    return this.state.safe || { t: 0, b: 0 };
+  }
+  fullText(m) {
+    const B = this.B; if (!B || !m.cards || !m.cards.length) return m.text;
+    return [m.text].concat(m.cards.map(id => { const it = B.item(id); return it ? it.quote + (it.note ? ' ' + it.note : '') : ''; })).join(' ');
+  }
+  copyLine(id, text) {
+    try { navigator.clipboard && navigator.clipboard.writeText(text).catch(() => { }); } catch (e) { }
+    this.setState({ copied: id }); clearTimeout(this.copyT); this.copyT = setTimeout(() => !this.dead && this.setState({ copied: null }), 1600);
+  }
+  measure() {
+    const el = this.stageRef.current; if (!el || !this.stage) return;
+    const w = el.clientWidth, h = el.clientHeight; if (!w || !h) return;
+    const lay = this.layoutFor(w);
+    if (lay !== this.curLayout) { this.curLayout = lay; this.stage.setLayout(lay); }
+    const sf = (this.standalone && this.readSafe()) || this.safeTB();
+    const g = this.stage.resize(w, h, sf.t, sf.b, lay === 'web' ? this.panelW(w) + 24 : 0);
+    this.setState({ geom: Object.assign({ w, h }, g) });
+  }
+  onFrame(a) {
+    const t = this.tailRef.current; if (!t) return;
+    const w = (this.state.geom && this.state.geom.w) || 402;
+    t.style.left = Math.round(Math.max(14, Math.min(w - 70, a.x - 27))) + 'px';
+  }
+  // ---- sound
+  unlockAudio() {
+    try {
+      if (!this.ac) { this.ac = new (window.AudioContext || window.webkitAudioContext)(); this.musG = this.ac.createGain(); this.musG.gain.value = 0; this.musG.connect(this.ac.destination); }
+      if (this.ac.state === 'suspended') { if (!document.hidden) this.ac.resume().then(() => { this.startMusic(); this.playPending(); }).catch(() => { }); } else { this.startMusic(); this.playPending(); }
+    } catch (e) { }
+  }
+  // the LPA GO! music bed (lpa-calm-audio.js), looped under the room and dipped while Lisa talks
+  loadMusic() {
+    import(new URL('lpa-calm-audio.js', document.baseURI).href).then(A => A.renderScore(() => new Promise(r => setTimeout(r, 0))).then(c => {
+      if (this.dead) return;
+      const b = new AudioBuffer({ length: c.L.length, sampleRate: A.SR, numberOfChannels: 2 }); b.copyToChannel(c.L, 0); b.copyToChannel(c.R, 1);
+      this.score = b; this.startMusic();
+    })).catch(e => console.error('music bed', e));
+  }
+  startMusic() {
+    const ac = this.ac; if (!ac || ac.state !== 'running' || !this.score || this.bed) return;
+    const src = ac.createBufferSource(), g = ac.createGain(), t = ac.currentTime;
+    src.buffer = this.score; src.loop = true; src.connect(g); g.connect(this.musG);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(1, t + 3); src.start(t);
+    this.bed = src; this.mix();
+  }
+  mix() {
+    if (!this.musG || !this.ac) return;
+    const on = this.state.soundOn && this.props.music !== false;
+    this.musG.gain.setTargetAtTime(on ? MUSIC * (this.voicing ? 0.35 : this.talkOn ? 0.6 : 1) : 0, this.ac.currentTime, 0.25);
+  }
+  // recorded lines: any assets/vo/manifest.json entry whose text matches what Lisa says word for word
+  loadVO() {
+    fetch(new URL('assets/vo/manifest.json', document.baseURI).href).then(r => r.ok ? r.json() : null).then(m => {
+      if (!m || this.dead) return; const map = {}; (m.lines || []).forEach(l => { map[l.text] = l.file || l.id + '.wav'; }); this.voMap = map; this.playPending();
+    }).catch(() => { });
+  }
+  // a line said before audio could start (no tap yet, or manifest still loading) plays once it can, if still on screen
+  playPending() {
+    const p = this.pendingVO; if (!p || !this.voMap || !this.ac || this.ac.state !== 'running') return; this.pendingVO = null;
+    const S = this.state, t = p.list[0], showing = (S.cur && S.cur.text === t) || S.msgs.some(m => (m.temp || m.role === 'lisa') && m.text === t);
+    if (showing && Date.now() - p.t < 20000) this.playClip(t, p.list.slice(1));
+  }
+  stopClip() { this.pendingVO = null; const c = this.clip; this.clip = null; this.clipTok = null; this.voicing = false; cancelAnimationFrame(this.lipRAF); if (c) { try { c.stop(); } catch (e) { } this.stage && this.stage.setMouth(null); } this.mix(); }
+  // loudness per 20 ms, 0..1 against the clip's own loud end, for the mouth
+  envOf(b) {
+    const x = b.getChannelData(0), F = Math.round(b.sampleRate / 50), env = [];
+    for (let i = 0; i < x.length; i += F) { let s = 0; const e = Math.min(x.length, i + F); for (let j = i; j < e; j++) s += x[j] * x[j]; env.push(Math.sqrt(s / (e - i))); }
+    const ref = env.slice().sort((a, b) => a - b)[Math.floor(env.length * 0.95)] || 1;
+    return env.map((v, i) => Math.min(1, (0.6 * v + 0.4 * (env[i + 1] || 0)) / ref));
+  }
+  // recorded keys for a line: the whole text, or for 'Lead: “quote”' the lead and the quote separately
+  voiceKeys(list) {
+    const out = [];
+    list.forEach(t => {
+      if (!t) return; if (this.voMap[t]) { out.push(t); return; }
+      const m = /^(.*?)\s*\u201C(.+)\u201D$/.exec(t); if (m) [m[1], m[2]].forEach(x => this.voMap[x] && out.push(x));
+    });
+    return out;
+  }
+  // plays one line, then any following lines (e.g. the toolkit quotes she reads out), with the mouth on the clip's loudness
+  playClip(text, rest, noPend) {
+    if (!this.state.soundOn) return false;
+    const list = [text].concat(rest || []);
+    if (!this.voMap || !this.ac || this.ac.state !== 'running') { if (!noPend) this.pendingVO = { list, t: Date.now() }; return false; }
+    const keys = this.voiceKeys(list); this.pendingVO = null; if (!keys.length) return false;
+    this.stopClip(); this.voicing = true; const tok = this.clipTok = {}, cache = this.clips || (this.clips = {});
+    const load = f => cache[f] || (cache[f] = fetch(new URL('assets/vo/' + f, document.baseURI).href).then(r => r.ok ? r.arrayBuffer() : Promise.reject())
+      .then(ab => this.ac.decodeAudioData(ab)).then(b => ({ b, env: this.envOf(b) })).catch(e => { delete cache[f]; throw e; }));
+    const live = () => !this.dead && this.clipTok === tok && this.state.soundOn;
+    const end = () => { if (!live()) return; this.clip = null; this.voicing = false; cancelAnimationFrame(this.lipRAF); this.mix(); if (this.stage) { this.stage.setMouth(null); this.stage.setTalking(!!this.tw || !!this.talkOn); } };
+    keys.forEach(k => load(this.voMap[k]).catch(() => { }));
+    const step = i => {
+      if (!live()) return; if (i >= keys.length) { end(); return; }
+      load(this.voMap[keys[i]]).then(q => {
+        if (!live()) return;
+        const s = this.ac.createBufferSource(), t0 = this.ac.currentTime + (i ? 0.35 : 0.01); s.buffer = q.b; s.connect(this.ac.destination); s.start(t0); this.clip = s; this.voicing = true; this.mix();
+        this.stage && this.stage.setTalking(true);
+        const lip = () => {
+          if (this.clip !== s || !this.stage) return;
+          const v = q.env[Math.floor((this.ac.currentTime - t0) * 50)];
+          this.stage.setMouth(v == null || v < 0.18 ? 0 : v < 0.55 ? 1 : 2); this.lipRAF = requestAnimationFrame(lip);
+        };
+        cancelAnimationFrame(this.lipRAF); lip();
+        s.onended = () => { if (this.clip === s) step(i + 1); };
+      }).catch(() => step(i + 1));
+    };
+    step(0); return true;
+  }
+  // ---- idle chatter
+  idleOk() {
+    const S = this.state;
+    return this.props.idleChat !== false && !!this.stage && !this.dead && !this.busy && S.phase === 'idle' && !S.cur && !S.input && !S.focus && !S.sheet && !S.card
+      && !this.voicing && !document.hidden && Date.now() - this.lastAct > 8000 && Date.now() - (this.lastIdle || 0) > 10000 && this.idleN < IDLE_MAX;
+  }
+  idleSay(pool) {
+    const recent = this.idleRecent || (this.idleRecent = []), fresh = pool.filter(t => !recent.includes(t)), list = fresh.length ? fresh : pool;
+    const t = list[Math.floor(Math.random() * list.length)];
+    recent.push(t); if (recent.length > 4) recent.shift();
+    this.idleN++; this.lastIdle = Date.now(); this.aside(t, [], false, true);
+  }
+  scheduleIdle() { clearTimeout(this.idleT); this.idleT = setTimeout(() => { if (this.idleOk()) this.idleSay(this.state.msgs.some(m => m.role === 'user') ? IDLE.concat(IDLE_AFTER) : IDLE); this.scheduleIdle(); }, 12000 + Math.random() * 8000); }
+  onIdleStatus(s) { const pool = IDLE_AT[s]; if (pool && Math.random() < 0.6) setTimeout(() => { if (this.idleOk()) this.idleSay(pool); }, 900); }
+  blip(f) {
+    if (!this.state.soundOn || !this.ac || this.ac.state !== 'running' || this.voicing) return;
+    const t = this.ac.currentTime, o = this.ac.createOscillator(), g = this.ac.createGain();
+    o.type = 'square'; o.frequency.value = f || 540 + Math.random() * 170;
+    g.gain.setValueAtTime(0.02, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
+    o.connect(g); g.connect(this.ac.destination); o.start(t); o.stop(t + 0.06);
+  }
+  speak(text) {
+    if (!this.props.voice || !this.state.soundOn || !window.speechSynthesis) return;
+    try {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text), vs = window.speechSynthesis.getVoices();
+      u.voice = vs.find(v => /en-SG/i.test(v.lang)) || vs.find(v => /en-GB/i.test(v.lang) && /female|samantha|serena|kate|libby|sonia/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || null;
+      u.rate = 1.03; u.pitch = 1.15; window.speechSynthesis.speak(u);
+    } catch (e) { }
+  }
+  // ---- Lisa says something
+  typeOut(item, done) {
+    clearInterval(this.tw);
+    this.setState({ cur: item, typed: 0, typingId: item.msgId || null });
+    this.stage && this.stage.setTalking(true); this.talkOn = true; this.mix();
+    let n = 0; const total = item.text.length;
+    this.finishTyping = () => { clearInterval(this.tw); this.tw = null; this.finishTyping = null; this.stage && this.stage.setTalking(!!this.clip); this.talkOn = false; this.mix(); this.setState({ typed: total, typingId: null }); done && done(); this.scrollLog(); setTimeout(() => this.scrollLog(), 120); };
+    this.tw = setInterval(() => {
+      n = Math.min(total, n + 2); this.setState({ typed: n }); if (n % 12 === 0) this.scrollLog();
+      if (n % 4 === 0 && /\S/.test(item.text[n - 1] || '')) this.blip();
+      if (n >= total) this.finishTyping();
+    }, 34);
+  }
+  greet() {
+    if (this.state.phase !== 'idle' || this.state.cur) return;
+    const back = this.state.msgs.some(m => m.role === 'user');
+    const text = back ? 'Welcome back! Want to keep practising the talk with your donee?' : "Hi! I'm Lisa. Thinking of asking someone you trust to be your donee? I can help you start that conversation.";
+    this.aside(text, [], true);
+  }
+  aside(text, cards, greeting, idle) {
+    const S = this.state;
+    if (S.phase === 'thinking' || S.phase === 'talking' || !this.stage) return;
+    clearTimeout(this.asideT);
+    if (cards && cards.length) this.unlock(cards);
+    this.playClip(text);
+    if (this.layout() === 'log' || this.layout() === 'web') {
+      this.setState(s => ({ msgs: s.msgs.filter(m => !m.temp || (!greeting && !m.idle)).concat({ id: Date.now(), role: greeting ? 'lisa' : 'aside', text, cards: cards || [], temp: true, idle: !!idle }) }));
+      this.stage.setTalking(true); this.talkOn = true; this.mix();
+      this.asideT = setTimeout(() => { this.stage && this.stage.setTalking(!!this.clip); this.talkOn = false; this.mix(); }, Math.min(2600, 60 * text.length));
+      for (let i = 0; i < 4; i++) setTimeout(() => this.blip(), i * 90);
+      this.scrollLog();
+      return;
+    }
+    this.typeOut({ kind: 'aside', text, cards: cards || [] }, () => {
+      this.asideT = setTimeout(() => { if (this.state.cur && this.state.cur.kind === 'aside' && (this.state.phase === 'idle' || this.state.phase === 'listen')) this.setState({ cur: null }); }, greeting ? 9000 : 3800);
+    });
+  }
+  unlock(ids) {
+    const u = new Set(this.state.unlocked); let ch = false; (ids || []).forEach(id => { if (!u.has(id)) { u.add(id); ch = true; } });
+    if (ch) { const arr = Array.from(u); this.setState({ unlocked: arr }); try { localStorage.setItem('lisatalk:seen', JSON.stringify(arr)); } catch (e) { } }
+  }
+  onStageEvent(e) {
+    if (!this.B) return;
+    if (e.target === 'head' || e.target === 'body') { this.blip(880); const p = this.B.poke(e.target); this.aside(p.text, p.cards); return; }
+    const t = this.B.tapLine(e.target); if (t) this.aside(t.text);
+  }
+  // ---- asking
+  listen() {
+    clearTimeout(this.unlistenT); clearTimeout(this.holdT);
+    if (!this.stage) return;
+    if (this.state.phase === 'idle' || this.state.phase === 'hold') { this.setState({ phase: 'listen' }); this.stage.setMode('listen'); }
+  }
+  unlisten(delay) {
+    clearTimeout(this.unlistenT);
+    this.unlistenT = setTimeout(() => {
+      if (this.state.phase === 'listen' && !this.state.input && !this.state.focus) { this.setState(s => ({ phase: 'idle', cur: s.cur && s.cur.kind === 'answer' ? s.cur : null })); this.stage && this.stage.setMode('idle'); this.scheduleRest(6000); }
+    }, delay);
+  }
+  scheduleRest(ms) {
+    clearTimeout(this.holdT);
+    this.holdT = setTimeout(() => { if (this.voicing) { this.scheduleRest(1500); return; } if ((this.state.phase === 'hold' || this.state.phase === 'idle') && !this.state.input && !this.state.focus) { this.setState({ phase: 'idle', cur: null }); this.stage && this.stage.setMode('idle'); } }, ms);
+  }
+  async send(text) {
+    const q = String(text != null ? text : this.state.input).trim();
+    if (!q || this.busy || !this.B) return;
+    this.busy = true; this.unlockAudio(); this.stopClip();
+    if (this.inputRef.current && window.matchMedia && window.matchMedia('(pointer: coarse)').matches) this.inputRef.current.blur(); clearTimeout(this.holdT); clearTimeout(this.asideT); clearTimeout(this.unlistenT); clearInterval(this.tw);
+    const history = this.state.msgs;
+    this.setState(s => ({ msgs: s.msgs.concat({ id: Date.now(), role: 'user', text: q }), input: '', phase: 'thinking', cur: null, chips: [] }));
+    this.stage.setMode('think'); this.scrollLog();
+    if (Math.random() < 0.6) this.playClip(ACK[Math.floor(Math.random() * ACK.length)], null, true);
+    const t0 = Date.now();
+    let r; try { r = await this.B.ask(q, history, { ai: this.props.aiAnswers !== false }); } catch (e) { r = this.B.offline(q); }
+    while (!this.dead && !this.stage.arrived() && Date.now() - t0 < 2600) await new Promise(f => setTimeout(f, 80));
+    if (this.dead) return;
+    const msg = { id: Date.now() + 1, role: 'lisa', text: r.say, cards: r.cards || [], src: r.src };
+    this.unlock(r.cards);
+    this.setState(s => ({ msgs: s.msgs.concat(msg), phase: 'talking' }));
+    this.stage.setMode('talk', POSE[r.mood] || 'present');
+    const quotes = this.props.readCards === false ? [] : (r.cards || []).map(id => this.B.ITEMS[id] && this.B.ITEMS[id].quote);
+    if (this.voicing) { const w = Date.now(); while (!this.dead && this.voicing && Date.now() - w < 700) await new Promise(f => setTimeout(f, 60)); }
+    if (!this.playClip(r.say, quotes)) this.speak(r.say);
+    this.typeOut({ kind: 'answer', text: r.say, cards: r.cards || [], msgId: msg.id }, () => {
+      this.busy = false;
+      this.setState({ phase: 'hold', chips: (r.next && r.next.length ? r.next : this.B.STARTERS.slice(0, 2)) });
+      this.stage && this.stage.setMode('hold');
+      this.scheduleRest(9000 + r.say.length * 35);
+    });
+  }
+  renderVals() {
+    const S = this.state, P = this.props, lay = this.layout(), B = this.B;
+    const sf = this.safeTB(), st = sf.t, sb = sf.b, g = S.geom || { w: 402, h: 874, z: 5, head: st + 254 };
+    const isPhone = lay === 'phone', isBubble = lay === 'bubble' || isPhone, isLog = lay === 'log', isClose = lay === 'closeup', isWeb = lay === 'web', pw = this.panelW(g.w);
+    const safeH = g.h - st - sb, cur = S.cur, txt = cur ? cur.text : '', typed = Math.min(S.typed, txt.length);
+    const thinking = S.phase === 'thinking', typingDone = !!cur && typed >= txt.length;
+    const chipsOf = ids => (ids || []).map(id => { const c = B && B.item(id); if (!c) return null; return { kicker: c.kicker, quote: c.quote, note: c.note, hasNote: !!c.note, copyLabel: S.copied === id ? 'Copied' : 'Copy line', copy: e => { e && e.stopPropagation && e.stopPropagation(); this.copyLine(id, c.plain); } }; }).filter(Boolean);
+    const go = t => () => this.send(t);
+    const starters = B ? B.STARTERS : ['How do I start the conversation?', "They're worried about something", 'Guiding principles'];
+    const nextQs = S.chips && S.chips.length ? S.chips : starters.slice(0, 3);
+    const busyNow = thinking || S.phase === 'talking';
+    const choicesOn = isClose && !!cur && cur.kind === 'answer' && typingDone && S.phase !== 'thinking';
+    const dialogOn = isClose && (thinking || !!cur);
+    const dockChips = !busyNow && !(isClose && dialogOn);
+    const headSafe = g.head - st, faceBottom = headSafe + 54 * g.z;
+    const unlocked = new Set(S.unlocked), cardsAll = B ? B.CARD_IDS : [];
+    const icons = S.icons || {};
+    const logItems = S.msgs.map(m => {
+      const typing = S.typingId === m.id, shown = typing ? m.text.slice(0, typed) : m.text;
+      return { isUser: m.role === 'user', isLisa: m.role === 'lisa', isAside: m.role === 'aside', text: m.text, shown, hidden: typing ? m.text.slice(typed) : '', hasCards: !typing && (m.cards || []).length > 0, cards: chipsOf(m.cards) };
+    });
+    const cardObj = S.card && B ? B.card(S.card) : null;
+    return {
+      stageRef: this.stageRef, canvasRef: this.canvasRef, tailRef: this.tailRef, logRef: this.logRef, inputRef: this.inputRef,
+      rootH: P.safeTop != null ? '100%' : S.vvH ? S.vvH + 'px' : '100dvh', rootTop: P.safeTop != null ? 0 : (S.vvTop || 0), st, sb, status: S.status, cardCount: S.unlocked.length, soundOn: S.soundOn, soundOff: !S.soundOn,
+      isBubble, isLog, showChatBtn: !isLog && !isWeb, maxW: isWeb ? 'none' : '560px', topR: isWeb ? pw + 36 : 14,
+      showActions: isBubble || isWeb, actL: isWeb ? '16px' : 'auto', actR: isWeb ? 'auto' : '14px', actT: isPhone ? Math.round(headSafe + 30) + 'px' : '40%',
+      showPanel: isLog || isWeb, pnL: isWeb ? 'auto' : '12px', pnR: isWeb ? '18px' : '12px', pnW: isWeb ? pw + 'px' : 'auto', pnT: isWeb ? 26 : Math.round(safeH * 0.56), pnB: isWeb ? 18 : 8,
+      dockL: isWeb ? g.w - 18 - pw + 14 : isLog ? 26 : 14, dockR: isWeb ? 32 : isLog ? 26 : 14, shMax: isWeb ? '720px' : 'none',
+      actions: ACTIONS.map(([act, ic, label]) => ({ label, icon: icons[ic] ? icons[ic].url : 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', w: icons[ic] ? icons[ic].w * 2 : 0, h: icons[ic] ? icons[ic].h * 2 : 0, go: () => { this.unlockAudio(); if (this.stage && this.stage.request(act)) this.blip(660); } })),
+      showBubble: isBubble && (thinking || !!cur), bubbleBottom: Math.round(safeH - (headSafe - 16)), bubbleMax: Math.max(96, Math.round(headSafe - 16 - 62)),
+      thinking, hasCur: !!cur && !thinking, shown: txt.slice(0, typed), hidden: txt.slice(typed),
+      showCurCards: !!cur && typingDone && (cur.cards || []).length > 0, curCards: chipsOf(cur ? cur.cards : []),
+      skipTyping: () => { if (this.finishTyping) this.finishTyping(); },
+      panelTop: Math.round(safeH * 0.56), logPad: dockChips ? 128 : 76, logItems,
+      showDialog: dialogOn, dialogMax: Math.max(120, Math.round(safeH - 70 - faceBottom - 10)), showChoices: choicesOn,
+      choices: choicesOn ? nextQs.slice(0, 2).map(t => ({ text: t, go: e => { e && e.stopPropagation && e.stopPropagation(); this.send(t); } })) : [],
+      showCaret: isClose && !!cur && typingDone && !choicesOn,
+      dockY: isWeb ? 30 : isLog ? 20 : 10,
+      hasChips: dockChips, chips: dockChips ? nextQs.slice(0, 4).map(t => ({ text: t, go: go(t) })) : [],
+      input: S.input, sendOff: !S.input.trim() || busyNow, sendOpacity: !S.input.trim() || busyNow ? 0.55 : 1,
+      onInput: e => { this.setState({ input: e.target.value }); this.unlockAudio(); this.listen(); },
+      onKey: e => { if (e.key === 'Enter') { e.preventDefault(); this.send(); } },
+      onFocus: () => { this.setState({ focus: true }); this.listen(); },
+      onBlur: () => { this.setState({ focus: false }); if (!this.state.input) this.unlisten(2600); },
+      onSend: () => this.send(),
+      onStagePointer: e => {
+        if (!this.stage) return; const el = this.stageRef.current, r = el.getBoundingClientRect();
+        const kx = r.width / (el.offsetWidth || 1), ky = r.height / (el.offsetHeight || 1);
+        this.unlockAudio(); this.stage.tap((e.clientX - r.left) / kx, (e.clientY - r.top) / ky);
+      },
+      toggleSound: () => { this.unlockAudio(); if (S.soundOn) this.stopClip(); this.setState(s => ({ soundOn: !s.soundOn }), () => this.mix()); if (!S.soundOn) setTimeout(() => this.blip(700), 30); else try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) { } },
+      openCards: () => this.setState({ sheet: 'cards' }), openChat: () => this.setState({ sheet: 'chat' }), closeSheet: () => this.setState({ sheet: null }),
+      sheetOpen: !!S.sheet, sheetChat: S.sheet === 'chat', sheetCards: S.sheet === 'cards', sheetPad: sb + 20,
+      tabs: [['chat', 'Chat'], ['cards', 'Toolkit']].map(([k, label]) => ({ label, bg: S.sheet === k ? '#e8c27e' : '#fffaf0', go: () => this.setState({ sheet: k }) })),
+      noMsgs: !S.msgs.some(m => m.role !== 'aside'), hasMsgs: S.msgs.length > 0,
+      historyItems: S.msgs.filter(m => m.role !== 'aside').map(m => ({ who: m.role === 'user' ? 'YOU' : 'LISA', whoColor: m.role === 'user' ? '#6b6252' : '#8a5a14', text: this.fullText(m) })),
+      clearChat: () => { this.setState({ msgs: [], cur: null, chips: null }); },
+      sections: B ? B.SECTIONS.map(s => ({ title: s.title, items: chipsOf(s.ids) })) : [],
+      cardOpen: !!cardObj, cardId: cardObj ? cardObj.id : '', cardText: cardObj ? cardObj.text : '', cardSrc: cardObj ? 'Source · ' + cardObj.src : '',
+      closeCard: () => this.setState({ card: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

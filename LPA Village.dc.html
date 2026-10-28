@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/styles.css">
+<script src="_ds/classical-33378b50-5c03-42d7-a376-d353bf97a1c9/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  body { margin: 0; background: var(--color-bg); }
+  a { color: var(--color-accent-700); text-decoration-thickness: 1px; }
+  a:hover { color: var(--color-accent); }
+  @keyframes om-bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-3px) } }
+  @keyframes om-hop { 0%,49% { transform: translateY(0) } 50%,100% { transform: translateY(-5px) } }
+  @keyframes om-shine { 0%,100% { opacity: 0.25 } 50% { opacity: 0.7 } }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);padding:0 32px 80px">
+  <div style="max-width:2240px;margin:0 auto">
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0 14px;border-bottom:1px solid var(--color-divider)">
+      <div style="font-family:var(--font-heading);font-size:15px;letter-spacing:0.02em">Lasting Power of Attorney</div>
+      <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 50%, transparent)">Playable prototype · Singapore</div>
+    </div>
+
+    <div style="padding:48px 0 30px;border-bottom:1px solid var(--color-divider)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--color-accent);border-radius:2px;color:var(--color-accent-700)">Placeholder script</span>
+        <span style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 45%, transparent)">Twenty-five residents · Thirteen to convince</span>
+      </div>
+      <h1 style="font-family:var(--font-heading);font-weight:400;font-size:66px;line-height:1.03;letter-spacing:-0.02em;margin:0 0 18px;max-width:16ch">Kampong Bakti</h1>
+      <p style="font-size:18px;line-height:1.55;max-width:60ch;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Walk the kampong, then go inside. Twenty-five people live across seven rooms and twelve of them have a Lasting Power of Attorney. Hear out the other thirteen, pick the argument that lands, and see how many you can convince.</p>
+    </div>
+
+    <div ref="{{shellRef}}" style="padding:30px 0 0">
+
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 45%, transparent);margin-right:4px">Load a room</div>
+        <sc-for list="{{roomTabs}}" as="r" hint-placeholder-count="7">
+          <button type="button" class="btn btn-secondary" style="font-size:11.5px;padding:5px 10px;border-color:{{r.bc}};color:{{r.ink}};background:{{r.bg}}" onClick="{{r.pick}}">{{r.label}}</button>
+        </sc-for>
+      </div>
+
+      <div tabIndex="0" onKeyDown="{{onKeyDown}}" onMouseDown="{{focusMap}}" style="border:7px solid var(--color-surface);outline:1px solid var(--color-divider);width:{{stageW}}px;cursor:pointer">
+        <div style="position:relative;width:{{stageW}}px;height:{{stageH}}px;overflow:hidden;background:{{stageBg}}">
+
+          <div style="position:absolute;left:{{roomL}}px;top:{{roomT}}px;width:{{roomW}}px;height:{{roomH}}px;box-shadow:{{roomEdge}};transition:left 150ms linear, top 150ms linear">
+
+            <div style="position:absolute;left:0;top:0;width:{{roomW}}px;height:{{roomH}}px;background:{{roomBase}};background-image:{{roomGrain}}"></div>
+
+            <sc-for list="{{tiles}}" as="t" hint-placeholder-count="500">
+              <div style="position:absolute;left:{{t.l}}px;top:{{t.t}}px;width:{{t.w}}px;height:{{t.h}}px;background:{{t.bg}};border-radius:{{t.r}};box-shadow:{{t.edge}}"></div>
+            </sc-for>
+
+            <sc-for list="{{blades}}" as="b" hint-placeholder-count="40">
+              <div style="position:absolute;left:{{b.l}}px;top:{{b.t}}px;width:2px;height:{{b.h}}px;color:oklch(0.47 0.068 150);box-shadow:{{b.shadow}}"></div>
+            </sc-for>
+
+            <sc-for list="{{shine}}" as="w" hint-placeholder-count="14">
+              <div style="position:absolute;left:{{w.l}}px;top:{{w.t}}px;width:{{w.w}}px;height:2px;background:oklch(0.92 0.03 224);animation:om-shine {{w.dur}}s ease-in-out infinite"></div>
+            </sc-for>
+
+            <sc-for list="{{flowers}}" as="f" hint-placeholder-count="10">
+              <div style="position:absolute;left:{{f.l}}px;top:{{f.t}}px;width:3px;height:3px;color:{{f.color}};box-shadow:{{f.shadow}}"></div>
+            </sc-for>
+
+            <sc-for list="{{rocks}}" as="r" hint-placeholder-count="5">
+              <div style="position:absolute;left:{{r.l}}px;top:{{r.t}}px;width:{{r.w}}px;height:{{r.h}}px;background:var(--color-neutral-500);border-radius:44% 52% 40% 48%;box-shadow:inset 3px 3px 0 0 var(--color-neutral-400), inset -2px -3px 0 0 var(--color-neutral-700), 2px 3px 0 0 var(--color-neutral-300)"></div>
+            </sc-for>
+
+            <div style="position:absolute;display:{{fountainOn}};left:{{fountain.l}}px;top:{{fountain.t}}px;width:{{fountain.w}}px;height:{{fountain.h}}px">
+              <div style="position:absolute;left:0;top:{{fountain.rimY}}px;width:{{fountain.w}}px;height:{{fountain.rimH}}px;background:var(--color-neutral-300);border-radius:46%;box-shadow:inset 0 4px 0 0 var(--color-neutral-200), inset 0 -5px 0 0 var(--color-neutral-500), 3px 5px 0 0 var(--color-neutral-400)"></div>
+              <div style="position:absolute;left:{{fountain.inX}}px;top:{{fountain.inY}}px;width:{{fountain.inW}}px;height:{{fountain.inH}}px;background:oklch(0.66 0.07 228);border-radius:46%;box-shadow:inset 0 3px 0 0 oklch(0.54 0.075 231)"></div>
+              <div style="position:absolute;left:{{fountain.stX}}px;top:{{fountain.stY}}px;width:{{fountain.stW}}px;height:{{fountain.stH}}px;background:var(--color-neutral-500);border-radius:44% 50% 42% 48%;box-shadow:inset 3px 3px 0 0 var(--color-neutral-400), inset -2px -3px 0 0 var(--color-neutral-700)"></div>
+              <div style="position:absolute;left:{{fountain.spX}}px;top:{{fountain.spY}}px;width:{{fountain.spW}}px;height:2px;background:var(--color-neutral-100);animation:om-shine 2.4s ease-in-out infinite"></div>
+            </div>
+
+            <sc-for list="{{trees}}" as="t" hint-placeholder-count="16">
+              <div style="position:absolute;left:{{t.l}}px;top:{{t.t}}px;width:{{t.w}}px;height:{{t.h}}px;z-index:{{t.z}}">
+                <sc-for list="{{t.parts}}" as="p" hint-placeholder-count="8">
+                  <div style="position:absolute;left:{{p.l}}px;top:{{p.t}}px;width:{{p.w}}px;height:{{p.h}}px;background:{{p.bg}};border-radius:{{p.r}};box-shadow:{{p.sh}};opacity:{{p.o}};transform:{{p.tr}};transform-origin:{{p.to}}"></div>
+                </sc-for>
+              </div>
+            </sc-for>
+
+            <sc-for list="{{buildings}}" as="b" hint-placeholder-count="14">
+              <div style="position:absolute;left:{{b.l}}px;top:{{b.t}}px;width:{{b.w}}px;height:{{b.h}}px;z-index:{{b.z}}">
+                <sc-for list="{{b.parts}}" as="p" hint-placeholder-count="14">
+                  <div style="position:absolute;left:{{p.l}}px;top:{{p.t}}px;width:{{p.w}}px;height:{{p.h}}px;background:{{p.bg}};border-radius:{{p.r}};box-shadow:{{p.sh}};opacity:{{p.o}}"></div>
+                </sc-for>
+                <div style="position:absolute;left:{{b.signX}}px;top:{{b.signY}}px;width:{{b.signW}}px;height:{{b.signH}}px;background:var(--color-neutral-100);box-shadow:inset 0 0 0 2px var(--color-neutral-800), 0 2px 0 0 var(--color-neutral-400);display:{{b.signOn}};font-family:var(--font-heading);font-size:{{b.signFs}}px;line-height:{{b.signH}}px;text-align:center;color:var(--color-neutral-900);white-space:nowrap;overflow:hidden">{{b.name}}</div>
+              </div>
+            </sc-for>
+
+            <sc-for list="{{npcs}}" as="n" hint-placeholder-count="6">
+              <div style="position:absolute;left:{{n.l}}px;top:{{n.t}}px;width:{{n.cw}}px;height:{{n.ch}}px;z-index:{{n.z}}">
+                <div style="position:absolute;left:{{n.shX}}px;top:{{n.shY}}px;width:{{n.shW}}px;height:5px;background:var(--color-neutral-400);opacity:0.5;border-radius:50%"></div>
+                <div style="position:absolute;left:0;top:0;width:{{n.cw}}px;height:{{n.ch}}px;animation:om-bob {{n.bob}}s steps(2) infinite">
+                  <sc-for list="{{n.layers}}" as="ly" hint-placeholder-count="5">
+                    <div style="position:absolute;left:0;top:0;width:{{ly.px}}px;height:{{ly.px}}px;color:{{ly.color}};box-shadow:{{ly.shadow}}"></div>
+                  </sc-for>
+                </div>
+                <div style="position:absolute;left:{{n.bubX}}px;top:-18px;width:18px;height:16px;opacity:{{n.markOn}};animation:{{n.markAnim}}">
+                  <div style="position:absolute;left:0;top:0;width:18px;height:14px;background:var(--color-neutral-100);box-shadow:inset 0 0 0 2px var(--color-neutral-900);font-family:var(--font-heading);font-size:12px;line-height:13px;text-align:center;color:var(--color-accent-700)">!</div>
+                  <div style="position:absolute;left:5px;top:13px;width:4px;height:3px;background:var(--color-neutral-100);box-shadow:0 2px 0 0 var(--color-neutral-900)"></div>
+                </div>
+                <div style="position:absolute;left:-40px;top:{{n.tagY}}px;width:{{n.tagW}}px;text-align:center;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-900);opacity:{{n.tagOn}}">{{n.short}}</div>
+                <div style="position:absolute;left:-5px;top:-9px;width:13px;height:13px;background:{{n.pipBg}};color:{{n.pipInk}};box-shadow:inset 0 0 0 2px {{n.pipBr}};font-family:var(--font-heading);font-size:10px;line-height:13px;text-align:center">{{n.pipMark}}</div>
+              </div>
+            </sc-for>
+
+            <sc-for list="{{critters}}" as="c" hint-placeholder-count="16">
+              <div style="position:absolute;left:{{c.l}}px;top:{{c.t}}px;width:{{c.w}}px;height:{{c.h}}px;z-index:{{c.z}};animation:{{c.anim}}">
+                <sc-for list="{{c.layers}}" as="ly" hint-placeholder-count="3">
+                  <div style="position:absolute;left:0;top:0;width:{{ly.px}}px;height:{{ly.px}}px;color:{{ly.color}};box-shadow:{{ly.shadow}}"></div>
+                </sc-for>
+              </div>
+            </sc-for>
+
+            <div style="position:absolute;left:{{player.l}}px;top:{{player.t}}px;width:{{player.cw}}px;height:{{player.ch}}px;z-index:{{player.z}};transition:left 140ms linear, top 140ms linear">
+              <div style="position:absolute;left:{{player.shX}}px;top:{{player.shY}}px;width:{{player.shW}}px;height:5px;background:var(--color-neutral-500);opacity:0.45;border-radius:50%"></div>
+              <div style="position:absolute;left:0;top:0;width:{{player.cw}}px;height:{{player.ch}}px;transform:{{player.flip}}">
+                <sc-for list="{{player.layers}}" as="ly" hint-placeholder-count="5">
+                  <div style="position:absolute;left:0;top:0;width:{{ly.px}}px;height:{{ly.px}}px;color:{{ly.color}};box-shadow:{{ly.shadow}}"></div>
+                </sc-for>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="position:absolute;left:14px;top:12px;z-index:800;font-family:var(--font-heading);font-size:13px;letter-spacing:0.02em;color:var(--color-neutral-900);background:var(--color-neutral-100);box-shadow:0 0 0 2px var(--color-neutral-900);padding:3px 9px">{{roomName}}</div>
+
+          <div style="position:absolute;right:14px;top:12px;z-index:800;display:flex;align-items:center;gap:9px;background:var(--color-neutral-100);box-shadow:0 0 0 2px var(--color-neutral-900);padding:4px 11px">
+            <div style="font-family:var(--font-heading);font-size:17px;line-height:1;font-feature-settings:'tnum';color:var(--color-accent-700)">{{hudSigned}}<span style="color:var(--color-neutral-600)">/{{hudTotal}}</span></div>
+            <div style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-neutral-800)">have an LPA</div>
+          </div>
+
+          <div style="position:absolute;left:14px;right:14px;bottom:14px;z-index:900;display:{{boxOn}};background:var(--color-neutral-100);box-shadow:0 0 0 3px var(--color-neutral-900), 0 0 0 6px var(--color-neutral-100), 0 0 0 8px var(--color-neutral-900);padding:16px 20px 14px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px">
+              <div style="display:flex;align-items:baseline;gap:12px">
+                <div style="font-family:var(--font-heading);font-size:22px;line-height:1">{{speaker}}</div>
+                <div style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 45%, transparent)">{{speakerRole}}</div>
+              </div>
+              <button type="button" class="btn btn-ghost" style="font-size:11px;padding:4px 8px" onClick="{{closeTalk}}">Leave ✕</button>
+            </div>
+            <p style="margin:0;font-size:16px;line-height:1.55;min-height:3.1em;text-wrap:pretty">{{line}}</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+              <sc-for list="{{choices}}" as="c" hint-placeholder-count="2">
+                <button type="button" class="btn btn-primary" style="font-family:var(--font-body);font-size:13px;padding:8px 12px;white-space:normal;text-align:left;line-height:1.35;max-width:44ch" onClick="{{c.pick}}">{{c.label}}</button>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px">
+              <div style="font-size:11px;color:color-mix(in srgb, var(--color-text) 45%, transparent)">{{prompt}}</div>
+              <button type="button" class="btn btn-secondary" style="font-size:12px;opacity:{{contOn}}" onClick="{{action}}">Continue ▸</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="display:flex;gap:22px;align-items:center;margin-top:16px;flex-wrap:wrap">
+        <div style="display:grid;grid-template-columns:repeat(3,36px);grid-template-rows:repeat(2,32px);gap:4px">
+          <div></div>
+          <button type="button" class="btn btn-secondary" style="padding:0;font-size:12px" onClick="{{up}}">▲</button>
+          <div></div>
+          <button type="button" class="btn btn-secondary" style="padding:0;font-size:12px" onClick="{{left}}">◀</button>
+          <button type="button" class="btn btn-secondary" style="padding:0;font-size:12px" onClick="{{down}}">▼</button>
+          <button type="button" class="btn btn-secondary" style="padding:0;font-size:12px" onClick="{{right}}">▶</button>
+        </div>
+        <button type="button" class="btn btn-primary" style="height:44px;min-width:110px" onClick="{{action}}">{{actionLabel}}</button>
+        <div style="font-size:11.5px;line-height:1.5;color:{{hintInk}};max-width:34ch">{{hint}}</div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:16px;margin-top:20px">
+        <div style="display:flex;gap:3px;flex:1">
+          <sc-for list="{{pips}}" as="p" hint-placeholder-count="25">
+            <div title="{{p.title}}" style="flex:1;height:15px;background:{{p.bg}};box-shadow:inset 0 0 0 1px {{p.br}}"></div>
+          </sc-for>
+        </div>
+        <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);font-feature-settings:'tnum';white-space:nowrap">{{hudLeft}} still to convince</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px 24px;padding:34px 0 0">
+      <sc-for list="{{stats}}" as="s" hint-placeholder-count="4">
+        <div style="padding-left:12px;border-left:2px solid {{s.rule}}">
+          <div style="font-family:var(--font-heading);font-size:28px;line-height:1;font-feature-settings:'tnum';color:{{s.ink}}">{{s.value}}</div>
+          <div style="font-size:11px;line-height:1.4;margin-top:6px;color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{s.label}}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="height:1px;background:var(--color-divider);margin:26px 0 20px"></div>
+
+    <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 45%, transparent);margin-bottom:16px">Residents, by room</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:26px 32px">
+      <sc-for list="{{groups}}" as="g" hint-placeholder-count="7">
+        <div>
+          <div style="font-family:var(--font-heading);font-size:16px;padding-bottom:6px;margin-bottom:9px;border-bottom:1px solid var(--color-divider);display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+            <span>{{g.room}}</span>
+            <span style="font-size:10px;letter-spacing:0.08em;font-feature-settings:'tnum';color:color-mix(in srgb, var(--color-text) 45%, transparent)">{{g.count}}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <sc-for list="{{g.people}}" as="r" hint-placeholder-count="4">
+              <div style="display:flex;align-items:baseline;gap:9px;font-size:12.5px;opacity:{{r.opacity}}">
+                <div style="width:9px;height:9px;flex:0 0 auto;background:{{r.dot}};box-shadow:inset 0 0 0 1px {{r.dotBr}}"></div>
+                <div style="flex:1;line-height:1.3">{{r.name}}</div>
+                <div style="font-size:9.5px;letter-spacing:0.08em;text-transform:uppercase;color:{{r.stateInk}}">{{r.state}}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{showSlots}}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:36px 0 0">
+        <div class="card" style="padding:18px 20px">
+          <div style="font-family:var(--font-heading);font-size:19px;margin-bottom:7px">The script</div>
+          <p style="margin:0;font-size:13.5px;line-height:1.6;text-align:justify;hyphens:auto">Twenty-five residents: an opening, two questions, and for the thirteen without an LPA a closing pitch of three arguments, one of which lands. The arguments are the part to test on real people.</p>
+        </div>
+        <div class="card" style="padding:18px 20px">
+          <div style="font-family:var(--font-heading);font-size:19px;margin-bottom:7px">The art</div>
+          <p style="margin:0;font-size:13.5px;line-height:1.6;text-align:justify;hyphens:auto">Terrain, buildings, interiors and characters are all drawn from coloured blocks and pixel maps — no image files. What is missing is walk-cycle frames, so everyone still slides rather than steps.</p>
+        </div>
+        <div class="card" style="padding:18px 20px">
+          <div style="font-family:var(--font-heading);font-size:19px;margin-bottom:7px">The ending</div>
+          <p style="margin:0;font-size:13.5px;line-height:1.6;text-align:justify;hyphens:auto">What happens when all twenty-five are signed — and what happens if some are not. The years pass, and the kampong is shown again. That is where the <a href="One Hundred People.dc.html">hundred-person grid</a> would come in.</p>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:2300},&quot;tileSize&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:44,&quot;min&quot;:24,&quot;max&quot;:60,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;World&quot;},&quot;typeSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:16,&quot;min&quot;:6,&quot;max&quot;:40,&quot;step&quot;:2,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Dialogue&quot;},&quot;showSlots&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+const MW = 46, MH = 30;
+
+const BUILDINGS = [
+  { x: 4, y: 4, w: 6, h: 4, name: 'Kopitiam', door: 6, kind: 'shophouse', room: 'kopi' },
+  { x: 14, y: 3, w: 6, h: 4, name: 'Clinic', door: 16, kind: 'shed', room: 'clinic' },
+  { x: 27, y: 4, w: 6, h: 4, name: 'Bank', door: 29, kind: 'colonnade', room: 'bank' },
+  { x: 33, y: 5, w: 3, h: 4, name: 'Market', door: 34, kind: 'shophouse' },
+  { x: 4, y: 15, w: 5, h: 6, name: 'Block 12', door: 6, kind: 'block', room: 'block' },
+  { x: 29, y: 15, w: 6, h: 5, name: 'Public Guardian', door: 31, kind: 'block', room: 'opg' },
+  { x: 18, y: 19, w: 6, h: 4, name: 'Void Deck', door: 20, kind: 'pavilion' },
+  { x: 10, y: 19, w: 5, h: 4, name: 'Community Club', door: 12, kind: 'shed', room: 'cc' },
+  { x: 37, y: 4, w: 5, h: 5, name: 'Masjid', door: 39, kind: 'dome' },
+  { x: 37, y: 14, w: 6, h: 4, name: 'Hawker Centre', door: 39, kind: 'pavilion' },
+  { x: 36, y: 21, w: 2, h: 2, name: 'Bus Stop', door: 36, kind: 'stop' },
+  { x: 9, y: 24, w: 4, h: 2, name: 'Wet Market', door: 10, kind: 'shed' },
+  { x: 27, y: 23, w: 5, h: 3, name: 'Kindergarten', door: 29, kind: 'shophouse' }
+];
+const FOREST = [
+  { x: 12, y: 2, w: 2, h: 2 }, { x: 24, y: 2, w: 2, h: 2 },
+  { x: 2, y: 12, w: 1, h: 3 }, { x: 2, y: 21, w: 3, h: 1 }, { x: 2, y: 5, w: 1, h: 3 },
+  { x: 43, y: 14, w: 1, h: 3 }, { x: 43, y: 6, w: 1, h: 2 }, { x: 2, y: 24, w: 2, h: 1 }
+];
+const PAVED = [{ x: 13, y: 9, w: 12, h: 8 }];
+const COURT = [{ x: 20, y: 23, w: 6, h: 3 }];
+const SAND = [{ x: 14, y: 24, w: 3, h: 2 }];
+const GARDEN = [{ x: 32, y: 24, w: 4, h: 2 }];
+const LAMPS = [[12, 8], [25, 8], [13, 18], [25, 17], [38, 10], [19, 25], [31, 22]];
+const BENCH = [[15, 12], [16, 15], [37, 20], [42, 26]];
+const DIRT = [
+  { x: 16, y: 7, w: 2, h: 2 }, { x: 6, y: 8, w: 2, h: 14 }, { x: 6, y: 11, w: 7, h: 2 },
+  { x: 25, y: 11, w: 11, h: 2 }, { x: 29, y: 8, w: 2, h: 4 }, { x: 34, y: 9, w: 1, h: 2 },
+  { x: 35, y: 13, w: 1, h: 7 }, { x: 31, y: 20, w: 5, h: 1 },
+  { x: 17, y: 17, w: 2, h: 9 }, { x: 12, y: 23, w: 6, h: 1 }, { x: 18, y: 23, w: 3, h: 1 },
+  { x: 6, y: 8, w: 2, h: 19 }, { x: 5, y: 26, w: 36, h: 1 }, { x: 39, y: 9, w: 1, h: 17 },
+  { x: 35, y: 13, w: 5, h: 1 }, { x: 36, y: 23, w: 4, h: 1 }
+];
+const WATER = [{ x: 9, y: 14, w: 4, h: 4 }, { x: 2, y: 27, w: 42, h: 1 }];
+const TALL = [
+  { x: 21, y: 5, w: 4, h: 3 }, { x: 25, y: 18, w: 4, h: 4 },
+  { x: 10, y: 5, w: 3, h: 3 }, { x: 33, y: 21, w: 3, h: 2 },
+  { x: 41, y: 5, w: 2, h: 3 }, { x: 42, y: 18, w: 2, h: 2 }, { x: 3, y: 22, w: 2, h: 1 }
+];
+const FENCE = [{ x: 21, y: 17, w: 4, h: 1 }, { x: 32, y: 23, w: 4, h: 1 }];
+const FOUNTAIN = { x: 17, y: 11, w: 4, h: 3 };
+const TREES = [[10, 8], [12, 9], [20, 8], [25, 9], [8, 13, 'palm'], [15, 18], [30, 13], [26, 15],
+  [36, 12, 'palm'], [42, 12], [43, 21, 'palm'], [4, 23, 'palm'], [26, 21], [43, 4], [34, 8], [21, 21]];
+
+const SPRITES = {
+  hen: { s: 3.0, pal: { h: 'oklch(0.96 0.012 90)', a: 'oklch(0.62 0.16 30)' }, anim: 'om-hop 1.6s steps(2) infinite', rows: [
+    '..ao....', '.ohho...', '.ohhhao.', 'ohhhhhho', 'ohhhhhho', '.ohhhho.', '..o..o..'] },
+  chick: { s: 2.2, pal: { h: 'oklch(0.90 0.13 92)' }, anim: 'om-hop 1.05s steps(2) infinite', rows: [
+    '.ooo.', 'ohhho', 'ohhho', '.o.o.'] },
+  cat: { s: 3.0, pal: { h: 'oklch(0.73 0.075 58)' }, anim: 'om-bob 3.4s ease-in-out infinite', rows: [
+    '.oo..oo.', 'ohhoohho', 'ohhhhhho', 'ohhhhhho', '.oooooo.'] },
+  bird: { s: 2.2, pal: { h: 'oklch(0.46 0.035 250)' }, anim: 'om-hop 1.2s steps(2) infinite', rows: [
+    '.ooo.', 'ohhho', 'ohhho', '.o.o.'] },
+  koi: { s: 2.4, pal: { h: 'oklch(0.72 0.14 45)' }, anim: 'om-bob 3.1s ease-in-out infinite', rows: [
+    '.oo..', 'ohhho', '.oo.o'] },
+  fly: { s: 3.4, pal: { h: 'oklch(0.78 0.15 62)', a: 'oklch(0.34 0.02 60)' }, anim: 'om-bob 0.8s ease-in-out infinite', rows: [
+    'oo.oo', 'ohaho', 'ohaho', '.o.o.'] },
+  kite: { s: 3.0, pal: { h: 'oklch(0.68 0.14 28)', a: 'oklch(0.86 0.10 92)' }, anim: 'om-bob 2.8s ease-in-out infinite', rows: [
+    '...o...', '..ooo..', '.ohhho.', 'ohhhhho', '.ohhho.', '..ooo..', '...o...', '...a...', '..a....', '...a...', '....a..', '...a...'] }
+};
+const DECOR = [
+  { k: 'hen', x: 3, y: 10 }, { k: 'hen', x: 4, y: 11 }, { k: 'chick', x: 3, y: 11 }, { k: 'chick', x: 4, y: 10 },
+  { k: 'hen', x: 15, y: 7 }, { k: 'hen', x: 36, y: 18 },
+  { k: 'cat', x: 16, y: 20 }, { k: 'cat', x: 38, y: 22 },
+  { k: 'bird', x: 12, y: 4 }, { k: 'bird', x: 28, y: 3 },
+  { k: 'koi', x: 10, y: 15 }, { k: 'koi', x: 11, y: 16 },
+  { k: 'fly', x: 5, y: 20 }, { k: 'fly', x: 24, y: 20 }, { k: 'fly', x: 40, y: 7 },
+  { k: 'kite', x: 22, y: 5, sky: true }
+];
+const ROCKS = [[22, 8], [12, 18], [31, 22], [8, 22], [27, 9], [3, 26], [42, 25], [15, 22], [40, 20]];
+const FLOWERS = [[3, 4], [11, 13], [21, 8], [26, 13], [3, 18], [16, 19], [34, 14], [24, 22], [9, 22], [30, 22],
+  [33, 26], [20, 26], [41, 8], [38, 20], [5, 22], [44, 24], [23, 22], [8, 26], [28, 26], [13, 26]];
+
+/* Interiors: W wall, F floor, R mat, X exit mat, C counter, U furniture,
+   S shelf, P plant. Perimeter walls are generated; feats paint over the floor. */
+const ROOMS = [
+  { id: 'village', name: 'Kampong Bakti', out: true, w: MW, h: MH, spawn: [17, 17] },
+  {
+    id: 'kopi', name: 'Kopitiam', w: 18, h: 12, spawn: [8, 9], exit: 8,
+    feats: [
+      { x: 1, y: 2, w: 6, h: 1, c: 'S' }, { x: 1, y: 4, w: 6, h: 1, c: 'C' },
+      { x: 8, y: 3, w: 8, h: 7, c: 'R' },
+      { x: 9, y: 4, w: 2, h: 1, c: 'U' }, { x: 13, y: 4, w: 2, h: 1, c: 'U' },
+      { x: 9, y: 8, w: 2, h: 1, c: 'U' }, { x: 13, y: 8, w: 2, h: 1, c: 'U' },
+      { x: 16, y: 2, w: 1, h: 1, c: 'P' }
+    ]
+  },
+  {
+    id: 'clinic', name: 'Clinic', w: 16, h: 11, spawn: [8, 8], exit: 8,
+    feats: [
+      { x: 1, y: 2, w: 4, h: 1, c: 'S' }, { x: 2, y: 4, w: 3, h: 1, c: 'U' },
+      { x: 12, y: 3, w: 1, h: 4, c: 'U' }, { x: 14, y: 2, w: 1, h: 1, c: 'P' }
+    ]
+  },
+  {
+    id: 'bank', name: 'Bank', w: 16, h: 11, spawn: [8, 8], exit: 8,
+    feats: [
+      { x: 1, y: 2, w: 3, h: 1, c: 'S' }, { x: 1, y: 4, w: 9, h: 1, c: 'C' },
+      { x: 12, y: 6, w: 2, h: 1, c: 'U' }, { x: 14, y: 2, w: 1, h: 1, c: 'P' }
+    ]
+  },
+  {
+    id: 'opg', name: 'Office of the Public Guardian', w: 16, h: 11, spawn: [8, 8], exit: 8,
+    feats: [
+      { x: 1, y: 2, w: 6, h: 1, c: 'S' }, { x: 2, y: 4, w: 4, h: 1, c: 'U' },
+      { x: 10, y: 7, w: 3, h: 1, c: 'U' }, { x: 14, y: 2, w: 1, h: 1, c: 'P' }
+    ]
+  },
+  {
+    id: 'block', name: 'Block 12, fourth floor', w: 16, h: 11, spawn: [8, 8], exit: 8,
+    feats: [
+      { x: 3, y: 4, w: 8, h: 4, c: 'R' }, { x: 4, y: 3, w: 3, h: 1, c: 'U' },
+      { x: 11, y: 3, w: 2, h: 1, c: 'S' }, { x: 6, y: 6, w: 2, h: 1, c: 'U' },
+      { x: 1, y: 2, w: 1, h: 1, c: 'P' }, { x: 14, y: 2, w: 1, h: 1, c: 'P' }
+    ]
+  },
+  {
+    id: 'cc', name: 'Community Club hall', w: 18, h: 12, spawn: [9, 10], exit: 9,
+    feats: [
+      { x: 4, y: 2, w: 10, h: 2, c: 'C' },
+      { x: 4, y: 6, w: 10, h: 1, c: 'U' }, { x: 4, y: 8, w: 10, h: 1, c: 'U' },
+      { x: 1, y: 2, w: 1, h: 1, c: 'P' }, { x: 16, y: 2, w: 1, h: 1, c: 'P' }
+    ]
+  }
+];
+
+/* World palette. The page chrome stays on the design system's tokens; the
+   pixel world gets a wider set of muted hues, derived in OKLCH at low chroma
+   so they sit beside the gold accent rather than shouting over it. */
+const C = {
+  grass: 'oklch(0.87 0.038 122)', grassLn: 'oklch(0.81 0.05 122)',
+  hedge: 'oklch(0.58 0.07 146)', hedgeLt: 'oklch(0.67 0.062 142)', hedgeDk: 'oklch(0.45 0.06 150)', hedgeSd: 'oklch(0.51 0.065 148)',
+  leaf: 'oklch(0.62 0.08 140)', leafLt: 'oklch(0.72 0.072 134)', leafDk: 'oklch(0.47 0.068 150)', leafHl: 'oklch(0.79 0.06 130)',
+  trunk: 'oklch(0.45 0.055 58)', trunkDk: 'oklch(0.35 0.05 54)',
+  water: 'oklch(0.62 0.07 228)', waterDk: 'oklch(0.49 0.075 233)', waterLt: 'oklch(0.80 0.055 224)', waterRim: 'oklch(0.55 0.075 231)',
+  path: 'oklch(0.88 0.042 76)', pathDk: 'oklch(0.79 0.055 70)',
+  stone: 'oklch(0.93 0.008 90)', stoneDk: 'oklch(0.85 0.012 88)',
+  wall: 'oklch(0.95 0.016 88)', wall2: 'oklch(0.90 0.03 74)',
+  wood: 'oklch(0.43 0.062 54)', woodLt: 'oklch(0.55 0.07 58)', woodDk: 'oklch(0.33 0.05 50)',
+  win: 'oklch(0.87 0.08 86)', winLit: 'oklch(0.91 0.095 82)',
+  sand: 'oklch(0.91 0.04 84)', sandDk: 'oklch(0.83 0.05 78)',
+  soil: 'oklch(0.57 0.055 58)', soilDk: 'oklch(0.46 0.05 54)',
+  bloom1: 'oklch(0.68 0.13 20)', bloom2: 'oklch(0.85 0.115 92)', bloom3: 'oklch(0.66 0.10 320)'
+};
+
+/* Per-room interior tints: a (floor), b (floor alt), w (wall), wt (wall top),
+   wd (skirting). Each room reads as a different place. */
+const TINT = {
+  def: { a: 'oklch(0.95 0.01 90)', b: 'oklch(0.91 0.014 88)', w: 'oklch(0.86 0.02 85)', wt: 'oklch(0.92 0.015 85)', wd: 'oklch(0.70 0.025 82)' },
+  kopi: { a: 'oklch(0.93 0.03 78)', b: 'oklch(0.86 0.05 62)', w: 'oklch(0.84 0.05 168)', wt: 'oklch(0.90 0.04 168)', wd: 'oklch(0.66 0.06 170)' },
+  clinic: { a: 'oklch(0.96 0.008 220)', b: 'oklch(0.92 0.015 220)', w: 'oklch(0.87 0.035 225)', wt: 'oklch(0.93 0.025 225)', wd: 'oklch(0.68 0.05 230)' },
+  bank: { a: 'oklch(0.94 0.012 250)', b: 'oklch(0.89 0.018 250)', w: 'oklch(0.85 0.03 250)', wt: 'oklch(0.91 0.022 250)', wd: 'oklch(0.62 0.045 252)' },
+  opg: { a: 'oklch(0.95 0.012 110)', b: 'oklch(0.90 0.02 108)', w: 'oklch(0.86 0.035 110)', wt: 'oklch(0.92 0.025 110)', wd: 'oklch(0.66 0.05 112)' },
+  block: { a: 'oklch(0.93 0.02 70)', b: 'oklch(0.88 0.03 62)', w: 'oklch(0.88 0.035 60)', wt: 'oklch(0.93 0.025 62)', wd: 'oklch(0.68 0.055 55)' },
+  cc: { a: 'oklch(0.90 0.035 66)', b: 'oklch(0.85 0.045 60)', w: 'oklch(0.86 0.04 148)', wt: 'oklch(0.92 0.03 148)', wd: 'oklch(0.66 0.055 150)' }
+};
+
+const BODY_FRONT = [
+  '....oooo....', '..oohhhhoo..', '.ohhhhhhhho.', 'ohhhhhhhhhho',
+  'ohhsssssshho', 'ossossssosso', 'ossssoosssso', '..oossssoo..',
+  '.occcccccco.', 'occcaaaaccco', 'osccaaaaccso', 'osccccccccso',
+  '.ooccccccoo.', '..oddddddo..', '..oddo.oddo.', '..oooo.oooo.'
+];
+const BODY_BACK = [
+  '....oooo....', '..oohhhhoo..', '.ohhhhhhhho.', 'ohhhhhhhhhho',
+  'ohhhhhhhhhho', 'ohhhhhhhhhho', 'ohhhhhhhhhho', '..oohhhhoo..',
+  '.occcccccco.', 'occcccccccco', 'osccccccccso', 'osccccccccso',
+  '.ooccccccoo.', '..oddddddo..', '..oddo.oddo.', '..oooo.oooo.'
+];
+const BODY_SIDE = [
+  '....oooo....', '..oohhhhoo..', '.ohhhhhhhho.', 'ohhhhhhhhhho',
+  'ohhhhhssssho', 'ohhhhssossso', 'ohhhhsssssoo', '..oossssoo..',
+  '.occcccccco.', 'occcaaaaccco', 'occcaaaaccso', 'occcccccccso',
+  '.ooccccccoo.', '..oddddddo..', '..oddo.oddo.', '..oooo.oooo.'
+];
+
+function variant(rows, flags) {
+  const out = rows.slice();
+  if (flags && flags.cap) {
+    out[1] = '..oaaaaaao..'; out[2] = '.oaaaaaaaao.'; out[3] = 'oaaaaaaaaaao';
+    if (out[4] === 'ohhsssssshho') out[4] = 'oaassssssaao';
+  }
+  if (flags && flags.long) {
+    for (let i = 8; i <= 11; i++) {
+      const r = out[i].split('');
+      if (r[1] && r[1] !== '.') r[1] = 'h';
+      if (r[10] && r[10] !== '.') r[10] = 'h';
+      out[i] = r.join('');
+    }
+  }
+  return out;
+}
+
+const OUTLINE = 'var(--color-neutral-900)';
+function layersOf(rows, pal, s) {
+  const buckets = {};
+  rows.forEach(function (row, y) {
+    row.split('').forEach(function (ch, x) {
+      if (ch === '.') return;
+      const key = ch === 'o' ? '_o' : ch;
+      (buckets[key] = buckets[key] || []).push((x * s) + 'px ' + (y * s) + 'px 0 0 currentColor');
+    });
+  });
+  return ['_o', 'h', 's', 'c', 'd', 'a'].filter(function (k) { return buckets[k]; }).map(function (k) {
+    return { px: s, color: k === '_o' ? OUTLINE : pal[k], shadow: buckets[k].join(',') };
+  });
+}
+
+const PALS = [
+  { h: 'oklch(0.34 0.02 60)', s: 'oklch(0.82 0.045 68)', c: 'oklch(0.96 0.012 90)', d: 'oklch(0.72 0.02 240)', a: 'var(--color-accent-700)' },
+  { h: 'oklch(0.66 0.012 90)', s: 'oklch(0.84 0.04 70)', c: 'oklch(0.72 0.085 22)', d: 'oklch(0.40 0.04 60)', a: 'oklch(0.86 0.07 92)' },
+  { h: 'oklch(0.28 0.02 50)', s: 'oklch(0.74 0.055 62)', c: 'oklch(0.58 0.08 245)', d: 'oklch(0.34 0.03 250)', a: 'oklch(0.88 0.05 230)' },
+  { h: 'oklch(0.30 0.025 55)', s: 'oklch(0.79 0.05 66)', c: 'oklch(0.63 0.078 150)', d: 'oklch(0.36 0.04 148)', a: 'oklch(0.87 0.06 140)' },
+  { h: 'oklch(0.45 0.015 90)', s: 'oklch(0.86 0.035 72)', c: 'oklch(0.44 0.055 252)', d: 'oklch(0.30 0.03 250)', a: 'oklch(0.94 0.012 90)' },
+  { h: 'oklch(0.32 0.025 45)', s: 'oklch(0.76 0.055 60)', c: 'oklch(0.60 0.105 45)', d: 'oklch(0.34 0.045 45)', a: 'oklch(0.88 0.07 85)' },
+  { h: 'oklch(0.58 0.012 90)', s: 'oklch(0.81 0.045 68)', c: 'oklch(0.67 0.062 112)', d: 'oklch(0.40 0.04 110)', a: 'oklch(0.42 0.05 55)' },
+  { h: 'oklch(0.38 0.02 40)', s: 'oklch(0.78 0.05 64)', c: 'oklch(0.55 0.075 322)', d: 'oklch(0.33 0.035 320)', a: 'oklch(0.89 0.05 320)' }
+];
+
+/* d = [opening, choice A, reply A, choice B, reply B, closing] */
+const PEOPLE = [
+  { id: 'siti', n: 'Siti', r: 'Daughter, waiting on a court date', room: 'village', x: 22, y: 14, p: 2, look: { long: true }, d: [
+    'My father had his stroke in March. He is still here, he just cannot tell anyone what he wants. We are eight months into the deputyship application.',
+    'Eight months?', 'Six to twelve is normal, they told me. [Placeholder: the emotional centre of the piece, and the one speech that should be written last and best.]',
+    'What can you not do meanwhile?', 'Sell his flat to pay for his care, for one. [Placeholder: the concrete, unglamorous consequences — the bank, the hospital, the CPF.]',
+    'If you talk to anyone else today, tell them not to wait for a reason.'] },
+  { id: 'hafiz', n: 'Hafiz', r: 'Delivery rider, 27', room: 'village', x: 13, y: 11, p: 5, look: {}, d: [
+    'Six deliveries in this block alone. My mother says paperwork is for people with time. I am the one without time.',
+    'Have you done yours?', 'Me? I am twenty-seven. Ask me again at fifty, lah.',
+    'What about your mother?', 'She says the same thing she said about the will. Later, later.',
+    'If you find the argument that works on her, come back and tell me.'] },
+  { id: 'kaur', n: 'Mrs Kaur', r: 'Grassroots volunteer', room: 'village', x: 19, y: 15, p: 1, look: { long: true }, d: [
+    'I knock on four hundred doors a year for this. Two hundred and eighty do not open.',
+    'What do the ones that open say?', 'That they will do it when they are older. The oldest resident I signed up was ninety-one.',
+    'Does the knocking work?', 'It works when a neighbour stands beside me. Alone, no.',
+    'Come to the talk at the club. Bring somebody who does not want to come.'] },
+  { id: 'weijie', n: 'Wei Jie', r: 'Polytechnic, twenty-one next month', room: 'village', x: 20, y: 10, p: 3, look: {}, d: [
+    'My grandfather cannot talk since last year. My mother is always on the phone with the bank now.',
+    'Is she getting anywhere?', 'She says a court will decide. It has been a long time already.',
+    'Do you know what an LPA is?', 'A form. My lecturer said adults should do it. Nobody in my house did.',
+    'If you see my mother, tell her I finished my homework.'] },
+  { id: 'chandran', n: 'Uncle Chandran', r: 'Taxi, thirty years', room: 'village', x: 7, y: 13, p: 6, look: {}, d: [
+    'Thirty years driving. I have taken more people to the hospital than the ambulance has, I think.',
+    'Have you signed one?', 'My wife signed. I keep saying next month. Next month is a long road.',
+    'What do your passengers say?', 'The ones coming back from visiting hours all say the same thing. Do it now.',
+    'Flag me down if you need a ride to the clinic.'] },
+  { id: 'nurul', n: 'Nurul', r: 'Ward nurse, on break', room: 'village', x: 24, y: 12, p: 0, look: { long: true }, d: [
+    'Fifteen minutes and I am back on the ward. Half my patients cannot speak for themselves and two of them have anything in writing.',
+    'What happens to the others?', 'We wait. The family argues in the corridor and we wait.',
+    'Have you done yours?', 'First week on the job. I watched one corridor argument and went home and did it.',
+    'Break is over. Talk to Dr Tan inside, she certifies them.'] },
+
+  { id: 'raj', n: 'Uncle Raj', r: 'Kopitiam, thirty-one years', room: 'kopi', x: 4, y: 5, p: 3, look: {}, d: [
+    'You want kopi? No? Then you want to talk about paperwork. Everybody who stands there with that face wants to talk about paperwork.',
+    'Have you signed one?', 'Not yet. [Placeholder: Uncle Raj carries the cost objection — and Form 1 registration now being free for citizens is the answer he has not heard.]',
+    'What is stopping you?', 'Time, mostly. Who has a free morning? [Placeholder: one appointment, three to six weeks, done once.]',
+    'Come back tomorrow. I am always here. That is the whole problem, actually.'] },
+  { id: 'goh', n: 'Mdm Goh', r: 'Same table, twenty years', room: 'kopi', x: 9, y: 5, p: 1, look: { long: true }, d: [
+    'Same table, same seat. My husband passed in April. Everything was in his name.',
+    'What happened after?', 'Six months of letters. I am seventy-eight and I was learning what a probate is.',
+    'Did that change your mind?', 'I signed mine in June. My daughter is the donee. It cost me one morning.',
+    'Tell Raj to stop stalling. He listens to nobody, but tell him.'] },
+  { id: 'kelvin', n: 'Kelvin', r: 'Son, every Sunday', room: 'kopi', x: 11, y: 5, p: 4, look: {}, d: [
+    'I brought my father here every Sunday for eleven years. Now I bring the forms and he pushes them back across the table.',
+    'Why does he refuse?', 'He thinks it means I am waiting for something. It means the opposite.',
+    'Tried a different way?', 'I stopped asking him. I signed mine first and showed him. He is thinking about it.',
+    'Sunday again next week. We will see.'] },
+  { id: 'osman', n: 'Pak Osman', r: 'Dominoes since 1998', room: 'kopi', x: 13, y: 9, p: 7, look: {}, d: [
+    'Dominoes at this table since 1998. Four of us started. Two are left, and one of us cannot remember the rules.',
+    'What happened to him?', 'Slowly, then all at once. His son is still in the court queue.',
+    'And your own arrangements?', 'Both my daughters, jointly and severally. The lawyer explained it twice.',
+    'Sit, sit. Your turn is after mine.'] },
+
+  { id: 'tan', n: 'Dr Tan', r: 'Certificate issuer', room: 'clinic', x: 3, y: 5, p: 0, look: { long: true }, d: [
+    'I certify these all week. The appointment is short — I check that you understand what you are signing, and that nobody is standing behind you making you sign it.',
+    'What do people get wrong?', 'They wait. [Placeholder: Dr Tan is the practical voice — mechanics without pity, and the fact that once capacity is gone she cannot help at all.]',
+    'Who is allowed to witness it?', 'An accredited doctor, a practising lawyer, or a psychiatrist. [Placeholder: her fee is her own, not the OPG\u2019s.]',
+    'Send Auntie Mei to me. I have Saturday mornings.'] },
+  { id: 'faridah', n: 'Nurse Faridah', r: 'Books the appointments', room: 'clinic', x: 6, y: 3, p: 1, look: { long: true }, d: [
+    'I book the certification appointments. Twenty minutes each, and half of them are cancelled the day before.',
+    'Why cancelled?', 'Cold feet, mostly. They rebook eventually. Or they do not.',
+    'What should someone bring?', 'NRIC, the donee\u2019s details, and the form already filled in. That is all.',
+    'Saturday mornings still have slots, if you know anyone.'] },
+  { id: 'yeo', n: 'Mr Yeo', r: 'Waiting, under protest', room: 'clinic', x: 11, y: 5, p: 6, look: {}, d: [
+    'My wife made the appointment for both of us. I am only here because she drove.',
+    'You are not convinced?', 'I am seventy-one and healthy. She says that is exactly the point.',
+    'What is the worry?', 'That signing hands over the keys today. Dr Tan says no, it sits in a drawer until it is needed.',
+    'She is inside now. I suppose I am next.'] },
+
+  { id: 'lim', n: 'Mr Lim', r: 'Branch officer', room: 'bank', x: 3, y: 3, p: 4, look: {}, d: [
+    'I am the one who has to say no. Daughter comes in with her mother\u2019s bank book and a doctor\u2019s letter, and I still cannot let her touch the account.',
+    'Why not?', 'Because a letter is not authority. [Placeholder: Mr Lim explains, flatly, what an institution can and cannot accept.]',
+    'What would let you say yes?', 'A registered LPA and the medical certification. [Placeholder: then it is a five-minute counter transaction.]',
+    'I would rather have this conversation with you now than with your children later.'] },
+  { id: 'jocelyn', n: 'Jocelyn', r: 'Teller, three weeks in', room: 'bank', x: 6, y: 3, p: 2, look: { long: true }, d: [
+    'Three weeks on the counter and I have already turned away two families. Nobody trains you for the crying part.',
+    'What do you tell them?', 'The truth, which is that I cannot help, and the address of the Public Guardian.',
+    'Does anyone come back?', 'One did, months later, with the registration. Five minutes and it was done.',
+    'Mr Lim says I will get used to it. I hope not.'] },
+  { id: 'chua', n: 'Mdm Chua', r: 'Turned away in February', room: 'bank', x: 5, y: 6, p: 1, look: { long: true }, d: [
+    'The account has my mother\u2019s name and my money in it. I have been paying her nursing home out of my own pocket since February.',
+    'You cannot access it?', 'Not without authority. A doctor\u2019s letter is not authority, they keep telling me.',
+    'What are you doing now?', 'Applying to the court. Thousands in fees and a wait I cannot plan around.',
+    'Do not let this happen in your family. That is all I will say.'] },
+
+  { id: 'clerk', n: 'The Clerk', r: 'Office of the Public Guardian', room: 'opg', x: 4, y: 3, p: 5, look: { cap: true }, d: [
+    'Form 1 covers almost everybody: up to two donees, one replacement, personal welfare and property, both or either. Form 2 is for the complicated lives, and needs a lawyer.',
+    'And the fee?', 'For citizens on Form 1, waived. [Placeholder: state it plainly and let the reader feel the size of the remaining excuse.]',
+    'When does it start working?', 'Not until two doctors certify that you have lost capacity. [Placeholder: until then you keep every decision yourself.]',
+    'Sign it on a day when it feels unnecessary. That is the correct day.'] },
+  { id: 'devi', n: 'Ms Devi', r: 'Case officer', room: 'opg', x: 8, y: 3, p: 2, look: { long: true }, d: [
+    'I read applications all day. The ones that come back to me are almost always the same three mistakes.',
+    'Which three?', 'Wrong witness, missing certificate, and a donee who never agreed to be one.',
+    'How long does registration take?', 'Three weeks if it is clean. Longer if I have to write to you.',
+    'Read the form twice before you sign it once.'] },
+  { id: 'ang', n: 'Mr Ang', r: 'Walk-in, wrong form', room: 'opg', x: 11, y: 6, p: 6, look: {}, d: [
+    'I printed the wrong form. Came all this way and printed the wrong one.',
+    'Which did you need?', 'Form 1, apparently. I had Form 2, which is for the complicated ones with a lawyer.',
+    'Will you come back?', 'Tomorrow. I told my daughter I would finish it this week.',
+    'The queue number machine is behind you.'] },
+
+  { id: 'mei', n: 'Auntie Mei', r: 'Grandmother, Block 12', room: 'block', x: 7, y: 5, p: 1, look: { long: true }, d: [
+    'Aiyah, you walked all this way in this heat? Sit first. My son keeps asking me to sign some LPA thing. I told him I am not dying yet, so what is the rush.',
+    'It is not about dying.', 'Then what is it about? [Placeholder: the line that lands here has to do the whole job in one breath — capacity, not death.]',
+    'What exactly did he ask for?', 'He wants to be the donee, he says. Very official. [Placeholder: Auntie Mei is not resistant, she is uninformed.]',
+    'Alright, alright. Come back and tell me more when you have talked to the others, ah.'] },
+  { id: 'hock', n: 'Ah Hock', r: 'Same corridor, forty years', room: 'block', x: 11, y: 6, p: 7, look: {}, d: [
+    'Fourth floor, same corridor, forty years. I watch her door. She watches mine.',
+    'Has she mentioned the LPA?', 'She mentions her son mentioning it. That is not the same as mentioning it.',
+    'Have you got one?', 'Me? No children, no spouse. I named my nephew. Somebody has to be able to decide.',
+    'Knock next door while you are here. She likes visitors.'] },
+  { id: 'shanti', n: 'Shanti', r: 'Caregiver, eight years', room: 'block', x: 4, y: 6, p: 2, look: { long: true }, d: [
+    'I look after the uncle in 12-14. Eight years now. His daughter is in Perth.',
+    'Who decides things for him?', 'Nobody, officially. Every decision goes to Perth by phone and comes back late.',
+    'Did he sign anything?', 'He was going to. Then the fall, and after the fall it was too late.',
+    'Please. Tell the young ones it is not a document for old people.'] },
+
+  { id: 'grace', n: 'Grace Lau', r: 'Roadshow volunteer', room: 'cc', x: 9, y: 5, p: 5, look: { long: true }, d: [
+    'Free registration, free talk, and I still have empty chairs. Thirty-two people signed up last Saturday, though.',
+    'How do you get them in?', 'Food, honestly. And the neighbour effect. One signs, four follow.',
+    'What do people ask most?', 'Whether they can change their mind. They can, any time they still have capacity.',
+    'Take a form. Take two, one for somebody at home.'] },
+  { id: 'foo', n: 'Mr Foo', r: 'Retired teacher, sceptical', room: 'cc', x: 15, y: 7, p: 4, look: {}, d: [
+    'I taught for thirty-eight years. I do not sign things because a poster tells me to.',
+    'What would convince you?', 'Somebody explaining what happens if I do not. Nobody at these talks starts there.',
+    'You came anyway.', 'I came for the air-conditioning. I am still listening.',
+    'Go on, then. Explain it properly.'] },
+  { id: 'amirah', n: 'Amirah', r: 'Signed at twenty-nine', room: 'cc', x: 3, y: 7, p: 2, look: { long: true }, d: [
+    'Did mine at twenty-nine. Everyone said I was morbid. Then a colleague my age had an accident on the expressway.',
+    'Was it difficult?', 'One evening and one appointment. Cheaper than I expected. Free, actually.',
+    'Who did you name?', 'My sister for welfare, my mother for property. They know, which is the part people skip.',
+    'Tell your friends. They will laugh, and then two of them will do it.'] }
+];
+
+/* Twelve residents already hold an LPA — they are the allies. The other
+   thirteen each end their conversation with a pitch: three arguments, one of
+   which lands. A losing argument ends the talk and can be retried later. */
+const HAS = { nurul: 1, kaur: 1, goh: 1, osman: 1, tan: 1, lim: 1, clerk: 1, devi: 1, hock: 1, grace: 1, amirah: 1, kelvin: 1 };
+
+const PITCH = {
+  siti: { q: 'Mine? I have not even thought about mine. I am too busy fixing his.', p: [
+    ['You are the one person here who knows exactly what happens if you do not.', 'That is a cruel thing to say and it is also true. Give me the form.', 1],
+    ['It only takes one morning.', 'I do not have a morning. That is not the reason, but it is the excuse I will use today.'],
+    ['The court queue is only getting longer.', 'I know. I am standing in it. That is not an argument, that is my life.']],
+    k: 'I will do mine before his hearing. Then at least one of us is protected.' },
+  hafiz: { q: 'So why should a twenty-seven-year-old with nothing to his name sign anything?', p: [
+    ['Capacity, not assets. A lorry on Jalan Bakti does not check your age.', 'I ride for a living. Alright. That one I cannot argue with.', 1],
+    ['Registration is free for citizens.', 'Free things still cost an afternoon, boss.'],
+    ['Your mother would follow your lead.', 'My mother follows nobody. Nice try.']],
+    k: 'Send me the link. I will do it between shifts tonight.' },
+  weijie: { q: 'I turn twenty-one next month. Can someone like me even do one?', p: [
+    ['At twenty-one, yes — and it is the cheapest insurance you will ever sign.', 'Then I will do it on my birthday. Nobody in my family has one.', 1],
+    ['Your mother would want you to.', 'My mother wants me to study. She is not thinking about forms for me.'],
+    ['Everyone your age is doing it.', 'That is not true and you know it.']],
+    k: 'Birthday, then. And I will put the form in front of my mother after.' },
+  chandran: { q: 'Next month, I said. What is wrong with next month?', p: [
+    ['Every passenger you drive to the hospital also thought they had next month.', 'I have driven that route four hundred times. Enough. Alright.', 1],
+    ['It only costs one appointment.', 'Cost was never it. Time was never it either, honestly.'],
+    ['Your wife has already signed hers.', 'She signs everything first. That is not a reason for me.']],
+    k: 'Saturday, before my shift. Write the address on this receipt.' },
+  raj: { q: 'So convince me. What does an old man with one shop need it for?', p: [
+    ['Form 1 registration is free for citizens — and the shop is exactly what somebody would have to decide about.', 'Free? Nobody told me free. And yes. The shop. Who signs for the shop.', 1],
+    ['Everybody should have one.', 'Everybody should also exercise. Try again.'],
+    ['All your customers have one.', 'My customers cannot agree on kopi. They agree on nothing.']],
+    k: 'Fine. Saturday I close early and I go with Mdm Goh. Do not tell her I said so.' },
+  yeo: { q: 'Explain the drawer thing again. Why sign today what only matters later?', p: [
+    ['Because it only works if you sign it while you still can. Afterwards it is a court case.', 'So the day it becomes useful is the day I could no longer make it. That is the whole thing, isn\u2019t it.', 1],
+    ['Your wife has already booked it.', 'She books my dentist too. I still argue in the car park.'],
+    ['It is quick.', 'Everything here is quick. That was never my objection.']],
+    k: 'Alright. I will go in with her rather than sit out here.' },
+  chua: { q: 'You think I have the energy for my own, after all this?', p: [
+    ['Your children will be sitting exactly where you are sitting, unless you do.', 'That stopped me. I have two of them. Alright.', 1],
+    ['It is free.', 'I have spent thousands already. Free is not a word I am hearing today.'],
+    ['It only takes a morning.', 'I have spent eight months of mornings on my mother\u2019s.']],
+    k: 'Both children as donees. I will do it the same week the court answers me.' },
+  ang: { q: 'You watched me print the wrong form. What makes you think tomorrow is different?', p: [
+    ['Ms Devi will check it at the counter before you sign. Come back with Form 1.', 'She will? Then I am wasting one more trip, not five.', 1],
+    ['Just try again.', 'That is what I told myself last month too.'],
+    ['Get a lawyer to do it.', 'A lawyer is for Form 2. I am not complicated, only disorganised.']],
+    k: 'Tomorrow. Form 1, and I will queue before lunch.' },
+  mei: { q: 'So tell me properly, then. What is this thing my son keeps asking for?', p: [
+    ['It is you choosing who speaks for you, while you can still choose. Not him taking over.', 'Oh. I thought I was signing myself away. He never said it like that.', 1],
+    ['It is what everyone does at your age.', 'At my age we also did not have handphones. So?'],
+    ['The government wants everyone to have one.', 'The government wants many things, dear.']],
+    k: 'Then I choose him. Dr Tan on Saturday, you said? Write it down for me.' },
+  shanti: { q: 'I arrange his whole life. Mine, I never think about.', p: [
+    ['You have watched for eight years what the gap costs. You are the last person who should have it.', 'Eight years of watching. Yes. I will not repeat his mistake.', 1],
+    ['It is free and quick.', 'Nothing about paperwork has ever been quick for me.'],
+    ['His daughter could help you with it.', 'She cannot manage his from Perth, let alone mine.']],
+    k: 'I will ask at the club talk on Saturday. They said they help with the form.' },
+  foo: { q: 'Go on, then. Start where the posters do not.', p: [
+    ['If you lose capacity without one, nobody you chose decides. A court appoints someone, years later.', 'There. That is the sentence the poster should have opened with. Thank you.', 1],
+    ['It is free, so there is no reason not to.', 'Price was never my objection. I taught economics.'],
+    ['Everyone in this hall has one.', 'Half this hall came for the air-conditioning, same as me.']],
+    k: 'Give me a form. And tell your volunteer to start with that sentence.' },
+  jocelyn: { q: 'I turn people away all day. Do I look like somebody who has done her own?', p: [
+    ['You have watched two families learn it the hard way. You are three weeks ahead of them.', 'Three weeks ahead and no excuse. You are right.', 1],
+    ['You work at a bank, it must be easy for you.', 'The bank cannot do it for me. That is rather the point.'],
+    ['You are young, there is no rush.', 'The last woman I turned away said the same about her mother.']],
+    k: 'Lunch break tomorrow. I will bring Mr Lim the form to check.' },
+  faridah: { q: 'Twenty appointments a week and none of them mine. Say it plainly.', p: [
+    ['You are the only person here who could book it in the next thirty seconds.', 'Ha. There is a nine o\u2019clock slot on Saturday. I have just put my own name in it.', 1],
+    ['You know the process better than anyone.', 'Knowing it is not the same as doing it. Ask any of my cancellations.'],
+    ['It would set a good example.', 'Nobody signs a form to set an example.']],
+    k: 'Nine o\u2019clock Saturday. Dr Tan is going to laugh at me.' }
+};
+
+function treeOf(p) {
+  const d = p.d, pit = HAS[p.id] ? null : PITCH[p.id];
+  const t = {
+    start: { text: d[0], choices: [{ label: d[1], to: 'a' }, { label: d[3], to: 'b' }] },
+    a: { text: d[2], to: 'close' },
+    b: { text: d[4], to: 'close' },
+    close: { text: d[5], to: pit ? 'pitch' : null }
+  };
+  if (pit) {
+    t.pitch = { text: pit.q, choices: pit.p.map(function (o, i) { return { label: o[0], to: 'r' + i }; }) };
+    pit.p.forEach(function (o, i) { t['r' + i] = { text: o[1], to: o[2] ? 'ok' : null }; });
+    t.ok = { text: pit.k, to: null, sign: true };
+  }
+  return t;
+}
+const NPCS = PEOPLE.map(function (p) {
+  return { id: p.id, name: p.n, role: p.r, short: p.n, room: p.room, x: p.x, y: p.y, look: p.look, pal: PALS[p.p], color: PALS[p.p].c, tree: treeOf(p), has: !!HAS[p.id] };
+});
+const SIGNED0 = {}; NPCS.forEach(function (n) { if (n.has) SIGNED0[n.id] = true; });
+const BY_ID = {}; NPCS.forEach(function (n) { BY_ID[n.id] = n; });
+const ROOM_BY_ID = {}; ROOMS.forEach(function (r) { ROOM_BY_ID[r.id] = r; });
+const DOOR_ROOM = {};
+BUILDINGS.forEach(function (b) { if (b.room) DOOR_ROOM[b.door + ',' + (b.y + b.h - 1)] = b; });
+
+const DIRS = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+
+class Component extends DCLogic {
+  state = { room: 'village', px: 17, py: 17, dir: 'up', talk: null, node: null, revealed: 0, met: {}, signed: Object.assign({}, SIGNED0), seen: { village: true }, focused: false, avail: 0 };
+
+  measure() {
+    const el = this.shellRef && this.shellRef.current;
+    if (!el) return;
+    const w = el.clientWidth;
+    if (w && w !== this.state.avail) this.setState({ avail: w });
+  }
+
+  /* Built on first use per room, never in a lifecycle hook — a hot reload of
+     this class does not re-run componentDidMount, which would leave the world
+     undefined and silently block all movement. */
+  world(id) {
+    this._worlds = this._worlds || {};
+    if (this._worlds[id]) return this._worlds[id];
+    const room = ROOM_BY_ID[id];
+    const W = room.w, H = room.h;
+    const g = [];
+    const fill = function (rects, ch) {
+      rects.forEach(function (r) {
+        for (let x = r.x; x < r.x + r.w; x++) for (let y = r.y; y < r.y + r.h; y++) {
+          if (g[y] && g[y][x] !== undefined) g[y][x] = ch;
+        }
+      });
+    };
+
+    if (room.out) {
+      for (let y = 0; y < H; y++) {
+        const row = [];
+        for (let x = 0; x < W; x++) row.push(x < 2 || y < 2 || x >= W - 2 || y >= H - 2 ? '#' : '.');
+        g.push(row);
+      }
+      fill(FOREST, '#'); fill(TALL, '"'); fill(PAVED, '='); fill(COURT, '='); fill(SAND, 'p');
+      fill(DIRT, ','); fill(WATER, '~'); fill(GARDEN, 'g'); fill(FENCE, 'f');
+      LAMPS.forEach(function (p) { if (g[p[1]]) g[p[1]][p[0]] = 'l'; });
+      BENCH.forEach(function (p) { if (g[p[1]]) g[p[1]][p[0]] = 'n'; });
+      BUILDINGS.forEach(function (b) { if (g[b.y + b.h]) g[b.y + b.h][b.door] = ','; });
+    } else {
+      for (let y = 0; y < H; y++) {
+        const row = [];
+        for (let x = 0; x < W; x++) row.push(x < 1 || y < 2 || x >= W - 1 || y >= H - 1 ? 'W' : 'F');
+        g.push(row);
+      }
+      (room.feats || []).forEach(function (f) { fill([f], f.c); });
+      g[H - 1][room.exit] = 'X';
+    }
+
+    const solid = {};
+    const put = function (x, y) { solid[x + ',' + y] = true; };
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const c = g[y][x];
+      if ('#~fWCUSPgln'.indexOf(c) >= 0) put(x, y);
+    }
+    if (room.out) {
+      BUILDINGS.forEach(function (b) {
+        for (let x = b.x; x < b.x + b.w; x++) for (let y = b.y; y < b.y + b.h; y++) put(x, y);
+      });
+      for (let x = FOUNTAIN.x; x < FOUNTAIN.x + FOUNTAIN.w; x++) for (let y = FOUNTAIN.y; y < FOUNTAIN.y + FOUNTAIN.h; y++) put(x, y);
+      TREES.forEach(function (t) { put(t[0], t[1]); });
+      ROCKS.forEach(function (r) { put(r[0], r[1]); });
+    }
+    NPCS.filter(function (n) { return n.room === id; }).forEach(function (n) { put(n.x, n.y); });
+
+    this._worlds[id] = { g: g, solid: solid, room: room };
+    return this._worlds[id];
+  }
+
+  handleKey(e) {
+    const k = (e.key || '').toLowerCase();
+    const map = { arrowup: 'up', w: 'up', arrowdown: 'down', s: 'down', arrowleft: 'left', a: 'left', arrowright: 'right', d: 'right' };
+    if (map[k]) { e.preventDefault(); this.move(map[k]); return; }
+    if (k === ' ' || k === 'spacebar' || k === 'enter' || k === 'e') { e.preventDefault(); this.action(); return; }
+    if (k === 'escape') this.setState({ talk: null, node: null, revealed: 0 });
+  }
+
+  componentDidMount() {
+    // Never resume a conversation left open by a previous session: an open
+    // dialogue blocks movement, which would look like broken controls.
+    if (this.state.talk) this.setState({ talk: null, node: null, revealed: 0 });
+    this.onKey = (e) => { this.handleKey(e); };
+    this.onResize = () => { this.measure(); };
+    // One listener only: document + window capture both fire for the same
+    // keydown, which would move the player two tiles per press.
+    window.addEventListener('keydown', this.onKey, true);
+    window.addEventListener('resize', this.onResize);
+    requestAnimationFrame(() => {
+      this.measure();
+      const el = this.shellRef && this.shellRef.current;
+      if (el && typeof ResizeObserver !== 'undefined') {
+        this.ro = new ResizeObserver(() => { this.measure(); });
+        this.ro.observe(el);
+      } else {
+        requestAnimationFrame(() => this.measure());
+      }
+    });
+  }
+  componentDidUpdate() { if (!this.state.avail) this.measure(); }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onKey, true);
+    window.removeEventListener('resize', this.onResize);
+    if (this.ro) this.ro.disconnect();
+    clearInterval(this.typer);
+  }
+
+  load(id, at, dir) {
+    const room = ROOM_BY_ID[id];
+    const spot = at || room.spawn;
+    clearInterval(this.typer);
+    this.setState(function (s) {
+      const seen = Object.assign({}, s.seen); seen[id] = true;
+      return { room: id, px: spot[0], py: spot[1], dir: dir || 'up', talk: null, node: null, revealed: 0, seen: seen };
+    });
+  }
+
+  exitTo(roomId) {
+    const b = BUILDINGS.filter(function (x) { return x.room === roomId; })[0];
+    if (b) this.load('village', [b.door, b.y + b.h], 'down');
+    else this.load('village');
+  }
+
+  move(dir) {
+    if (this.state.talk) return;
+    const w = this.world(this.state.room);
+    const room = w.room;
+    const d = DIRS[dir];
+    const nx = this.state.px + d[0], ny = this.state.py + d[1];
+    if (nx < 0 || ny < 0 || nx >= room.w || ny >= room.h) { this.setState({ dir: dir }); return; }
+    if (w.solid[nx + ',' + ny]) { this.setState({ dir: dir }); return; }
+    if (!room.out && w.g[ny][nx] === 'X') { this.exitTo(room.id); return; }
+    this.setState({ px: nx, py: ny, dir: dir });
+  }
+
+  facingCell() {
+    const d = DIRS[this.state.dir];
+    return [this.state.px + d[0], this.state.py + d[1]];
+  }
+  facing() {
+    const f = this.facingCell(), id = this.state.room;
+    return NPCS.filter(function (n) { return n.room === id && n.x === f[0] && n.y === f[1]; })[0] || null;
+  }
+  facingDoor() {
+    if (this.state.room !== 'village') return null;
+    const f = this.facingCell();
+    return DOOR_ROOM[f[0] + ',' + f[1]] || null;
+  }
+
+  type(npc, nodeId) {
+    clearInterval(this.typer);
+    this.setState({ talk: npc.id, node: nodeId, revealed: 0 });
+    const total = npc.tree[nodeId].text.length;
+    const step = Math.max(6, Math.round(this.props.typeSpeed != null ? this.props.typeSpeed : 16));
+    this.typer = setInterval(() => {
+      this.setState(function (s) {
+        if (s.revealed >= total) return null;
+        return { revealed: Math.min(total, s.revealed + 2) };
+      });
+    }, step);
+  }
+
+  action() {
+    if (!this.state.talk) {
+      const door = this.facingDoor();
+      if (door && !this.facing()) { this.load(door.room); return; }
+    }
+    const npc = this.state.talk ? BY_ID[this.state.talk] : this.facing();
+    if (!npc) return;
+    if (!this.state.talk) { this.type(npc, 'start'); return; }
+    const node = npc.tree[this.state.node];
+    if (this.state.revealed < node.text.length) {
+      clearInterval(this.typer);
+      this.setState({ revealed: node.text.length });
+      return;
+    }
+    if (node.choices) return;
+    // Somebody already convinced is never pitched again — the tree is built
+    // once, so the skip has to happen here.
+    const skipPitch = node.to === 'pitch' && this.state.signed[npc.id];
+    if (node.to && !skipPitch) { this.type(npc, node.to); return; }
+    const met = Object.assign({}, this.state.met); met[npc.id] = true;
+    const signed = Object.assign({}, this.state.signed); if (node.sign) signed[npc.id] = true;
+    clearInterval(this.typer);
+    this.setState({ talk: null, node: null, revealed: 0, met: met, signed: signed });
+  }
+
+  renderVals() {
+    if (!this.shellRef) this.shellRef = React.createRef();
+    const w = this.world(this.state.room);
+    const room = w.room, g = w.g, out = !!room.out;
+    // Tile size is derived from the room actually on screen, not from the
+    // village, so a small interior fills the frame instead of floating in it.
+    const cap = this.props.tileSize != null ? Number(this.props.tileSize) : 44;
+    const capHere = out ? cap : Math.round(cap * 1.6);
+    const availW = this.state.avail ? this.state.avail - 16 : room.w * capHere;
+    const target = Math.min(room.w, out ? 22 : 15);
+    const T = Math.max(20, Math.min(capHere, Math.floor(availW / target)));
+    const s = Math.max(2, Math.round(T / 13));
+    const cw = 12 * s, ch = 16 * s;
+    const PLAYER_PAL = { h: 'oklch(0.30 0.02 55)', s: 'oklch(0.80 0.05 66)', c: 'oklch(0.52 0.085 250)', d: 'oklch(0.32 0.035 248)', a: 'var(--color-accent-600)' };
+
+    const at = function (x, y) { return (g[y] && g[y][x]) || '.'; };
+    const edges = function (x, y, kin, color, px) {
+      const o = [];
+      if (kin.indexOf(at(x, y - 1)) < 0) o.push('inset 0 ' + px + 'px 0 0 ' + color);
+      if (kin.indexOf(at(x, y + 1)) < 0) o.push('inset 0 -' + px + 'px 0 0 ' + color);
+      if (kin.indexOf(at(x - 1, y)) < 0) o.push('inset ' + px + 'px 0 0 0 ' + color);
+      if (kin.indexOf(at(x + 1, y)) < 0) o.push('inset -' + px + 'px 0 0 0 ' + color);
+      return o;
+    };
+
+    const tiles = [], blades = [], shine = [];
+    const tn = TINT[room.id] || TINT.def;
+    for (let y = 0; y < room.h; y++) for (let x = 0; x < room.w; x++) {
+      const c = g[y][x], l = x * T, t = y * T;
+      if (c === '.') continue;
+      if (c === '#') {
+        tiles.push({
+          l: l, t: t, w: T, h: T, bg: C.hedge, r: '0',
+          edge: ['inset 0 5px 0 0 ' + C.hedgeLt].concat(
+            at(x, y + 1) !== '#' ? ['inset 0 -6px 0 0 ' + C.hedgeDk] : [],
+            at(x - 1, y) !== '#' ? ['inset 4px 0 0 0 ' + C.hedgeSd] : [],
+            at(x + 1, y) !== '#' ? ['inset -4px 0 0 0 ' + C.hedgeDk] : []
+          ).join(',')
+        });
+      } else if (c === ',') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: C.path, r: '0', edge: edges(x, y, [',', '='], C.pathDk, 3).join(',') || 'none' });
+      } else if (c === '=') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: C.stone, r: '0', edge: edges(x, y, ['=', ','], C.stoneDk, 3).concat(['inset -1px -1px 0 0 ' + C.stoneDk]).join(',') });
+      } else if (c === '~') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: C.water, r: '0', edge: edges(x, y, ['~'], C.waterDk, 4).join(',') || 'none' });
+        if ((x * 3 + y * 5) % 3 === 0) shine.push({ l: l + Math.round(T * 0.18), t: t + Math.round(T * (0.3 + ((x + y) % 3) * 0.18)), w: Math.round(T * 0.5), dur: 2 + ((x * 7 + y * 3) % 5) * 0.4 });
+      } else if (c === '"') {
+        const hs = (x * 7 + y * 13) % 4;
+        const bw = Math.round(T * 0.96), bh = Math.round(T * 0.72);
+        tiles.push({ l: l + Math.round(T * 0.02), t: t + T - bh, w: bw, h: bh, bg: C.leaf, r: '52% 48% 40% 44% / 60% 56% 34% 38%', edge: 'inset 0 7px 0 0 ' + C.leafLt + ', inset -5px -7px 0 0 ' + C.leafDk });
+        tiles.push({ l: l + Math.round(T * (hs % 2 ? 0.02 : 0.36)), t: t + Math.round(T * 0.1), w: Math.round(T * 0.6), h: Math.round(T * 0.52), bg: C.leaf, r: '50%', edge: 'inset 0 6px 0 0 ' + C.leafLt + ', inset -4px -5px 0 0 ' + C.leafDk });
+        if (hs === 1) tiles.push({ l: l + Math.round(T * 0.24), t: t + Math.round(T * 0.42), w: Math.round(T * 0.11), h: Math.round(T * 0.11), bg: C.bloom1, r: '50%', edge: '0 0 0 0 transparent, ' + Math.round(T * 0.3) + 'px ' + Math.round(T * 0.16) + 'px 0 0 ' + C.bloom1 });
+        if (hs === 3) tiles.push({ l: l + Math.round(T * 0.5), t: t + Math.round(T * 0.3), w: Math.round(T * 0.1), h: Math.round(T * 0.1), bg: C.bloom2, r: '50%', edge: 'none' });
+      } else if (c === 'p') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: C.sand, r: '0', edge: edges(x, y, ['p'], C.sandDk, 4).join(',') || 'none' });
+        tiles.push({ l: l + Math.round(T * (0.24 + (x % 2) * 0.34)), t: t + Math.round(T * (0.3 + (y % 2) * 0.3)), w: Math.round(T * 0.12), h: Math.round(T * 0.12), bg: C.sandDk, r: '50%', edge: 'none' });
+      } else if (c === 'g') {
+        const ra = Math.round(T * 0.34), rb = Math.round(T * 0.68);
+        tiles.push({ l: l, t: t, w: T, h: T, bg: C.soil, r: '0', edge: ['inset 0 0 0 2px ' + C.soilDk, 'inset 0 ' + ra + 'px 0 -' + (ra - 2) + 'px ' + C.soilDk, 'inset 0 ' + rb + 'px 0 -' + (rb - 2) + 'px ' + C.soilDk].join(',') });
+        const crop = (x * 5 + y * 3) % 3;
+        if (crop === 0) {
+          blades.push({
+            l: l + Math.round(T * 0.2), t: t + Math.round(T * 0.12), h: Math.round(T * 0.18),
+            shadow: ['0 0 0 0 currentColor', Math.round(T * 0.3) + 'px ' + Math.round(T * 0.34) + 'px 0 0 currentColor', Math.round(T * 0.58) + 'px ' + Math.round(T * 0.68) + 'px 0 0 currentColor'].join(',')
+          });
+        } else if (crop === 1) {
+          tiles.push({ l: l + Math.round(T * 0.16), t: t + Math.round(T * 0.14), w: Math.round(T * 0.3), h: Math.round(T * 0.26), bg: C.leaf, r: '50%', edge: 'inset 0 4px 0 0 ' + C.leafLt });
+          tiles.push({ l: l + Math.round(T * 0.54), t: t + Math.round(T * 0.52), w: Math.round(T * 0.3), h: Math.round(T * 0.26), bg: C.leaf, r: '50%', edge: 'inset 0 4px 0 0 ' + C.leafLt });
+        } else {
+          tiles.push({ l: l + Math.round(T * 0.2), t: t + Math.round(T * 0.2), w: Math.round(T * 0.6), h: Math.round(T * 0.2), bg: C.leafDk, r: '50%', edge: 'none' });
+          tiles.push({ l: l + Math.round(T * 0.3), t: t + Math.round(T * 0.5), w: Math.round(T * 0.14), h: Math.round(T * 0.14), bg: C.bloom1, r: '50%', edge: '0 0 0 0 transparent, ' + Math.round(T * 0.28) + 'px ' + Math.round(T * 0.08) + 'px 0 0 ' + C.bloom1 });
+        }
+      } else if (c === 'l' || c === 'n') {
+        const nb = [at(x, y - 1), at(x, y + 1), at(x - 1, y), at(x + 1, y)];
+        const gbg = nb.indexOf('=') >= 0 ? C.stone : (nb.indexOf(',') >= 0 ? C.path : C.grass);
+        tiles.push({ l: l, t: t, w: T, h: T, bg: gbg, r: '0', edge: 'none' });
+        if (c === 'l') {
+          tiles.push({ l: l + Math.round(T * 0.44), t: t - Math.round(T * 0.9), w: Math.round(T * 0.12), h: Math.round(T * 1.6), bg: 'var(--color-neutral-600)', r: '0', edge: 'inset -2px 0 0 0 var(--color-neutral-800)' });
+          tiles.push({ l: l + Math.round(T * 0.28), t: t - Math.round(T * 1.06), w: Math.round(T * 0.44), h: Math.round(T * 0.3), bg: C.win, r: '42% 42% 18% 18%', edge: 'inset 0 0 0 2px var(--color-neutral-800), inset 0 4px 0 0 ' + C.winLit });
+        } else {
+          tiles.push({ l: l + Math.round(T * 0.1), t: t + Math.round(T * 0.16), w: Math.round(T * 0.8), h: Math.round(T * 0.14), bg: C.woodLt, r: '0', edge: 'inset 0 0 0 2px ' + C.woodDk });
+          tiles.push({ l: l + Math.round(T * 0.1), t: t + Math.round(T * 0.36), w: Math.round(T * 0.8), h: Math.round(T * 0.2), bg: C.wood, r: '0', edge: 'inset 0 0 0 2px ' + C.woodDk + ', inset 0 4px 0 0 ' + C.woodLt });
+          tiles.push({ l: l + Math.round(T * 0.16), t: t + Math.round(T * 0.56), w: Math.round(T * 0.1), h: Math.round(T * 0.2), bg: C.woodDk, r: '0', edge: 'none' });
+          tiles.push({ l: l + Math.round(T * 0.74), t: t + Math.round(T * 0.56), w: Math.round(T * 0.1), h: Math.round(T * 0.2), bg: C.woodDk, r: '0', edge: 'none' });
+        }
+      } else if (c === 'f') {
+        tiles.push({ l: l, t: t + Math.round(T * 0.34), w: T, h: T, bg: 'transparent', r: '0', edge: 'inset 0 5px 0 0 ' + C.woodLt + ', inset 0 7px 0 0 ' + C.wood });
+        tiles.push({ l: l + Math.round(T * 0.42), t: t + Math.round(T * 0.28), w: Math.round(T * 0.16), h: Math.round(T * 0.5), bg: C.wood, r: '0', edge: 'inset 2px 0 0 0 ' + C.woodLt });
+      } else if (c === 'W') {
+        tiles.push({
+          l: l, t: t, w: T, h: T, bg: tn.w, r: '0',
+          edge: ['inset 0 0 0 1px ' + tn.wd].concat(
+            at(x, y - 1) !== 'W' ? ['inset 0 ' + Math.round(T * 0.18) + 'px 0 0 ' + tn.wt] : [],
+            at(x, y + 1) !== 'W' ? ['inset 0 -' + Math.round(T * 0.26) + 'px 0 0 ' + tn.wd, 'inset 0 -' + Math.round(T * 0.32) + 'px 0 0 ' + C.woodDk] : []
+          ).join(',')
+        });
+      } else if (c === 'F') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: (x + y) % 2 ? tn.a : tn.b, r: '0', edge: 'inset 0 0 0 1px color-mix(in srgb, ' + tn.wd + ' 22%, transparent)' });
+      } else if (c === 'R') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: 'oklch(0.72 0.085 28)', r: '0', edge: edges(x, y, ['R'], 'oklch(0.58 0.10 26)', 3).join(',') || 'none' });
+      } else if (c === 'X') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: 'var(--color-accent-200)', r: '0', edge: 'inset 0 0 0 3px var(--color-accent-600), inset 0 0 0 6px var(--color-accent-100)' });
+      } else if (c === 'C') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: C.wall2, r: '0', edge: 'inset 0 0 0 2px ' + C.woodDk + ', inset 0 6px 0 0 ' + C.wall + ', inset 0 -6px 0 0 ' + C.wood });
+      } else if (c === 'U') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: C.wood, r: '0', edge: 'inset 0 0 0 2px ' + C.woodDk + ', inset 0 5px 0 0 ' + C.woodLt + ', inset 0 -5px 0 0 ' + C.woodDk });
+      } else if (c === 'S') {
+        const a = Math.round(T * 0.34), b = Math.round(T * 0.68);
+        tiles.push({ l: l, t: t, w: T, h: T, bg: C.wall, r: '0', edge: ['inset 0 0 0 2px ' + C.woodDk, 'inset 0 ' + a + 'px 0 -' + (a - 2) + 'px ' + C.wood, 'inset 0 ' + b + 'px 0 -' + (b - 2) + 'px ' + C.wood].join(',') });
+      } else if (c === 'P') {
+        tiles.push({ l: l, t: t, w: T, h: T, bg: (x + y) % 2 ? tn.a : tn.b, r: '0', edge: 'inset 0 0 0 1px color-mix(in srgb, ' + tn.wd + ' 22%, transparent)' });
+        tiles.push({ l: l + Math.round(T * 0.28), t: t + Math.round(T * 0.5), w: Math.round(T * 0.44), h: Math.round(T * 0.42), bg: 'oklch(0.62 0.10 42)', r: '0', edge: 'inset 0 0 0 2px ' + C.woodDk + ', inset 0 4px 0 0 oklch(0.72 0.09 45)' });
+        tiles.push({ l: l + Math.round(T * 0.12), t: t + Math.round(T * 0.1), w: Math.round(T * 0.76), h: Math.round(T * 0.52), bg: C.leaf, r: '48% 52% 40% 44%', edge: 'inset 0 5px 0 0 ' + C.leafLt + ', inset -4px -5px 0 0 ' + C.leafDk });
+      }
+    }
+
+    const flowers = out ? FLOWERS.map(function (f, i) {
+      return {
+        l: f[0] * T + Math.round(T * 0.28), t: f[1] * T + Math.round(T * 0.42),
+        color: i % 3 === 0 ? C.bloom1 : (i % 3 === 1 ? C.bloom2 : C.bloom3),
+        shadow: ['0 0 0 0 currentColor', Math.round(T * 0.2) + 'px ' + Math.round(T * 0.14) + 'px 0 0 currentColor', Math.round(T * 0.36) + 'px -' + Math.round(T * 0.06) + 'px 0 0 currentColor'].join(',')
+      };
+    }) : [];
+
+    const rocks = out ? ROCKS.map(function (r) {
+      return { l: r[0] * T + Math.round(T * 0.12), t: r[1] * T + Math.round(T * 0.2), w: Math.round(T * 0.72), h: Math.round(T * 0.6) };
+    }) : [];
+
+    const part = function (o) {
+      return { l: o.l, t: o.t, w: o.w, h: o.h, bg: o.bg, r: o.r || '0', sh: o.sh || 'none', o: o.o == null ? 1 : o.o, tr: o.tr || 'none', to: o.to || '50% 50%' };
+    };
+    const trees = out ? TREES.map(function (p) {
+      const palm = p[2] === 'palm';
+      const tw = Math.round(T * (palm ? 1.7 : 1.55)), th = Math.round(T * (palm ? 2.7 : 2.45));
+      const parts = [];
+      parts.push(part({ l: Math.round(tw * 0.1), t: th - Math.round(tw * 0.2), w: Math.round(tw * 0.8), h: Math.round(tw * 0.26), bg: 'oklch(0.74 0.045 120)', r: '50%', o: 0.5 }));
+      if (palm) {
+        const seg = Math.round(th * 0.075);
+        parts.push(part({
+          l: Math.round(tw * 0.44), t: Math.round(th * 0.22), w: Math.round(tw * 0.15), h: Math.round(th * 0.78),
+          bg: 'repeating-linear-gradient(180deg, ' + C.trunk + ' 0 ' + (seg - 2) + 'px, ' + C.trunkDk + ' ' + (seg - 2) + 'px ' + seg + 'px)',
+          r: '3px 3px 2px 2px', sh: 'inset -3px 0 0 0 ' + C.trunkDk + ', inset 2px 0 0 0 oklch(0.53 0.055 60)'
+        }));
+        const cx = Math.round(tw * 0.48), cy = Math.round(th * 0.2);
+        [-172, -146, -118, -62, -34, -8].forEach(function (ang, i) {
+          parts.push(part({
+            l: cx, t: cy, w: Math.round(tw * (i % 2 ? 0.5 : 0.44)), h: Math.round(th * 0.15),
+            bg: C.leaf, r: '0 72% 72% 0 / 0 50% 50% 0', to: '0% 50%', tr: 'rotate(' + ang + 'deg)',
+            sh: 'inset 0 5px 0 0 ' + C.leafLt + ', inset 0 -5px 0 0 ' + C.leafDk
+          }));
+        });
+        parts.push(part({ l: cx - Math.round(tw * 0.09), t: cy - Math.round(th * 0.04), w: Math.round(tw * 0.2), h: Math.round(th * 0.07), bg: C.leafDk, r: '50%' }));
+        parts.push(part({ l: cx - Math.round(tw * 0.12), t: cy + Math.round(th * 0.02), w: Math.round(tw * 0.13), h: Math.round(tw * 0.13), bg: 'oklch(0.42 0.05 56)', r: '50%' }));
+        parts.push(part({ l: cx + Math.round(tw * 0.02), t: cy + Math.round(th * 0.04), w: Math.round(tw * 0.11), h: Math.round(tw * 0.11), bg: 'oklch(0.38 0.045 54)', r: '50%' }));
+      } else {
+        const ch2 = Math.round(th * 0.62);
+        parts.push(part({ l: Math.round(tw * 0.42), t: Math.round(th * 0.48), w: Math.round(tw * 0.17), h: Math.round(th * 0.52), bg: C.trunk, r: '2px 2px 3px 3px', sh: 'inset -4px 0 0 0 ' + C.trunkDk + ', inset 3px 0 0 0 oklch(0.53 0.055 60)' }));
+        parts.push(part({ l: Math.round(tw * 0.3), t: th - Math.round(th * 0.07), w: Math.round(tw * 0.4), h: Math.round(th * 0.07), bg: C.trunk, r: '46% 46% 18% 18%', sh: 'inset -3px 0 0 0 ' + C.trunkDk }));
+        parts.push(part({ l: 0, t: 0, w: tw, h: ch2, bg: C.leaf, r: '50% 50% 44% 46% / 56% 54% 40% 42%', sh: 'inset 0 8px 0 0 ' + C.leafLt + ', inset -6px -9px 0 0 ' + C.leafDk }));
+        parts.push(part({ l: -Math.round(tw * 0.05), t: Math.round(ch2 * 0.32), w: Math.round(tw * 0.54), h: Math.round(ch2 * 0.6), bg: C.leaf, r: '50%', sh: 'inset 0 5px 0 0 ' + C.leafLt + ', inset -3px -6px 0 0 ' + C.leafDk }));
+        parts.push(part({ l: Math.round(tw * 0.51), t: Math.round(ch2 * 0.34), w: Math.round(tw * 0.54), h: Math.round(ch2 * 0.58), bg: C.leaf, r: '50%', sh: 'inset 0 5px 0 0 ' + C.leafLt + ', inset -4px -6px 0 0 ' + C.leafDk }));
+        parts.push(part({ l: Math.round(tw * 0.16), t: Math.round(ch2 * 0.14), w: Math.round(tw * 0.24), h: Math.round(ch2 * 0.2), bg: C.leafHl, r: '50%', o: 0.85 }));
+        parts.push(part({ l: Math.round(tw * 0.58), t: Math.round(ch2 * 0.3), w: Math.round(tw * 0.15), h: Math.round(ch2 * 0.13), bg: C.leafHl, r: '50%', o: 0.55 }));
+      }
+      return {
+        l: p[0] * T - Math.round((tw - T) / 2), t: (p[1] + 1) * T - th + Math.round(T * 0.2),
+        w: tw, h: th, z: p[1] + 10, parts: parts
+      };
+    }) : [];
+
+    /* Fixed props: court markings, playground, laundry, market crates. */
+    if (out) {
+      const ct = COURT[0], cl = ct.x * T, cT = ct.y * T, cW = ct.w * T, cH = ct.h * T;
+      const line = 'oklch(0.68 0.12 58)';
+      tiles.push({ l: cl + 6, t: cT + 6, w: cW - 12, h: cH - 12, bg: 'transparent', r: '0', edge: 'inset 0 0 0 3px ' + line });
+      tiles.push({ l: cl + Math.round(cW / 2) - 2, t: cT + 6, w: 4, h: cH - 12, bg: line, r: '0', edge: 'none' });
+      tiles.push({ l: cl + Math.round(cW / 2) - Math.round(T * 0.5), t: cT + Math.round(cH / 2) - Math.round(T * 0.5), w: T, h: T, bg: 'transparent', r: '50%', edge: 'inset 0 0 0 3px ' + line });
+      tiles.push({ l: cl + 6, t: cT + Math.round(cH * 0.28), w: Math.round(T * 1.1), h: Math.round(cH * 0.44), bg: 'transparent', r: '0', edge: 'inset 0 0 0 3px ' + line });
+      tiles.push({ l: cl + cW - 6 - Math.round(T * 1.1), t: cT + Math.round(cH * 0.28), w: Math.round(T * 1.1), h: Math.round(cH * 0.44), bg: 'transparent', r: '0', edge: 'inset 0 0 0 3px ' + line });
+      tiles.push({ l: cl + Math.round(cW / 2) - Math.round(T * 0.36), t: cT - Math.round(T * 0.5), w: Math.round(T * 0.72), h: Math.round(T * 0.42), bg: C.wall, r: '0', edge: 'inset 0 0 0 2px var(--color-neutral-800)' });
+      tiles.push({ l: cl + Math.round(cW / 2) - Math.round(T * 0.18), t: cT - Math.round(T * 0.12), w: Math.round(T * 0.36), h: Math.round(T * 0.16), bg: 'transparent', r: '0 0 50% 50%', edge: 'inset 0 0 0 3px oklch(0.62 0.15 40)' });
+
+      const sd = SAND[0], sl = sd.x * T, sT = sd.y * T;
+      tiles.push({ l: sl + Math.round(T * 0.2), t: sT - Math.round(T * 0.5), w: Math.round(T * 0.14), h: Math.round(T * 1.5), bg: 'var(--color-neutral-600)', r: '0', edge: 'inset -2px 0 0 0 var(--color-neutral-800)' });
+      tiles.push({ l: sl + Math.round(T * 1.5), t: sT - Math.round(T * 0.5), w: Math.round(T * 0.14), h: Math.round(T * 1.5), bg: 'var(--color-neutral-600)', r: '0', edge: 'inset -2px 0 0 0 var(--color-neutral-800)' });
+      tiles.push({ l: sl + Math.round(T * 0.2), t: sT - Math.round(T * 0.5), w: Math.round(T * 1.44), h: Math.round(T * 0.14), bg: 'var(--color-neutral-500)', r: '0', edge: 'inset 0 2px 0 0 var(--color-neutral-400)' });
+      [0.5, 1.05].forEach(function (o) {
+        tiles.push({ l: sl + Math.round(T * o), t: sT - Math.round(T * 0.36), w: 3, h: Math.round(T * 0.6), bg: 'var(--color-neutral-700)', r: '0', edge: 'none' });
+        tiles.push({ l: sl + Math.round(T * (o - 0.1)), t: sT + Math.round(T * 0.24), w: Math.round(T * 0.28), h: Math.round(T * 0.1), bg: C.wood, r: '2px', edge: 'inset 0 0 0 2px ' + C.woodDk });
+      });
+      tiles.push({ l: sl + Math.round(T * 1.9), t: sT + Math.round(T * 1.0), w: Math.round(T * 0.16), h: Math.round(T * 0.16), bg: 'var(--color-neutral-500)', r: '50%', edge: 'none' });
+      tiles.push({ l: sl + Math.round(T * 1.94), t: sT + Math.round(T * 0.62), w: Math.round(T * 0.9), h: Math.round(T * 0.12), bg: C.wood, r: '2px', edge: 'inset 0 0 0 2px ' + C.woodDk + ', inset 0 3px 0 0 ' + C.woodLt });
+      tiles.push({ l: sl + Math.round(T * 2.0), t: sT + Math.round(T * 0.98), w: Math.round(T * 0.78), h: Math.round(T * 0.12), bg: C.wood, r: '2px', edge: 'inset 0 0 0 2px ' + C.woodDk + ', inset 0 3px 0 0 ' + C.woodLt });
+
+      const lx = 15 * T, ly = 21 * T;
+      [0, 2].forEach(function (dx) {
+        tiles.push({ l: lx + dx * T + Math.round(T * 0.4), t: ly - Math.round(T * 0.9), w: Math.round(T * 0.12), h: Math.round(T * 1.7), bg: C.wood, r: '0', edge: 'inset -2px 0 0 0 ' + C.woodDk });
+      });
+      tiles.push({ l: lx + Math.round(T * 0.4), t: ly - Math.round(T * 0.86), w: Math.round(T * 2.1), h: 3, bg: C.woodDk, r: '0', edge: 'none' });
+      ['oklch(0.72 0.10 24)', 'oklch(0.80 0.07 230)', 'oklch(0.90 0.05 92)', 'oklch(0.70 0.07 150)'].forEach(function (cc, i) {
+        tiles.push({ l: lx + Math.round(T * (0.55 + i * 0.45)), t: ly - Math.round(T * 0.82), w: Math.round(T * 0.32), h: Math.round(T * 0.72), bg: cc, r: '0 0 3px 3px', edge: 'inset 0 4px 0 0 color-mix(in srgb, ' + cc + ' 70%, white)' });
+      });
+
+      [[13, 24], [13, 25]].forEach(function (cr, i) {
+        const bl = cr[0] * T, bt = cr[1] * T;
+        tiles.push({ l: bl + Math.round(T * 0.12), t: bt + Math.round(T * 0.3), w: Math.round(T * 0.76), h: Math.round(T * 0.56), bg: C.wood, r: '2px', edge: 'inset 0 0 0 2px ' + C.woodDk + ', inset 0 5px 0 0 ' + C.woodLt });
+        tiles.push({ l: bl + Math.round(T * 0.22), t: bt + Math.round(T * 0.16), w: Math.round(T * 0.24), h: Math.round(T * 0.22), bg: i ? C.bloom1 : C.leaf, r: '50%', edge: 'none' });
+        tiles.push({ l: bl + Math.round(T * 0.5), t: bt + Math.round(T * 0.2), w: Math.round(T * 0.22), h: Math.round(T * 0.2), bg: i ? C.bloom2 : C.leafLt, r: '50%', edge: 'none' });
+      });
+    }
+
+    const ROOF = {
+      shophouse: { bg: 'oklch(0.55 0.11 42)', light: 'oklch(0.66 0.10 46)', dark: 'oklch(0.42 0.09 38)', f: 0.4 },
+      shed: { bg: 'oklch(0.52 0.12 28)', light: 'oklch(0.63 0.11 30)', dark: 'oklch(0.40 0.10 26)', f: 0.38 },
+      colonnade: { bg: 'oklch(0.55 0.06 246)', light: 'oklch(0.65 0.05 246)', dark: 'oklch(0.43 0.055 248)', f: 0.26 },
+      block: { bg: 'oklch(0.59 0.045 112)', light: 'oklch(0.69 0.04 112)', dark: 'oklch(0.46 0.045 114)', f: 0.17 },
+      pavilion: { bg: 'oklch(0.49 0.075 166)', light: 'oklch(0.60 0.07 164)', dark: 'oklch(0.38 0.065 168)', f: 0.42 },
+      dome: { bg: 'oklch(0.53 0.06 192)', light: 'oklch(0.65 0.055 192)', dark: 'oklch(0.41 0.06 196)', f: 0.46, r: '50% 50% 8% 8% / 74% 74% 10% 10%' },
+      stop: { bg: 'oklch(0.51 0.07 250)', light: 'oklch(0.62 0.06 250)', dark: 'oklch(0.40 0.065 252)', f: 0.42 }
+    };
+    const INK = 'oklch(0.31 0.045 48)';
+
+    const buildings = out ? BUILDINGS.map(function (bd) {
+      const W = bd.w * T, H = bd.h * T, rf = ROOF[bd.kind];
+      const open = bd.kind === 'pavilion' || bd.kind === 'stop';
+      const roofH = Math.max(Math.round(T * 0.6), Math.round(H * rf.f));
+      const wallH = H - roofH;
+      const eave = Math.round(T * (bd.kind === 'block' ? 0.08 : 0.3));
+      const ps = [];
+      const push = function (o) {
+        ps.push({
+          l: Math.round(o.l), t: Math.round(o.t), w: Math.round(o.w), h: Math.round(o.h),
+          bg: o.bg, r: o.r || '0', sh: o.sh || 'none', o: o.o == null ? 1 : o.o
+        });
+      };
+
+      /* cast shadow, then the wall box with its plinth */
+      push({ l: T * 0.18, t: T * 0.22, w: W, h: H, bg: 'var(--color-neutral-400)', o: 0.4 });
+      const plinth = Math.max(4, Math.round(T * 0.16));
+      push({
+        l: 0, t: roofH, w: W, h: wallH, bg: open ? C.wall2 : C.wall,
+        sh: ['inset 0 0 0 2px ' + INK, 'inset 0 -' + plinth + 'px 0 0 ' + C.wall2, 'inset 0 -' + (plinth + 3) + 'px 0 0 oklch(0.76 0.04 70)'].join(',')
+      });
+      push({ l: W - T * 0.3, t: roofH + 2, w: T * 0.3, h: wallH - 4, bg: 'oklch(0.25 0.02 60)', o: 0.07 });
+      push({ l: 0, t: roofH, w: W, h: T * 0.16, bg: 'oklch(0.25 0.02 60)', o: 0.13 });
+
+      const doorW = Math.round(T * 0.8);
+      const doorH = Math.min(Math.round(T * 1.5), Math.round(wallH * 0.72));
+      const dx = (bd.door - bd.x) * T + Math.round((T - doorW) / 2);
+      const doorT = roofH + wallH - doorH;
+
+      if (bd.kind === 'block') {
+        push({ l: dx - T * 0.16, t: roofH, w: doorW + T * 0.32, h: wallH, bg: 'var(--color-neutral-300)', sh: 'inset 0 0 0 2px ' + INK });
+      }
+
+      /* windows: proper panes with mullions and sills */
+      const rws = bd.kind === 'block' ? Math.max(2, bd.h - 2) : (bd.kind === 'shophouse' ? 2 : 1);
+      const winW = Math.round(T * 0.6), winH = Math.round(T * 0.46);
+      const winTop = roofH + Math.round(T * 0.66);
+      const step = rws > 1 ? Math.round((wallH - Math.round(T * 0.85) - winH) / (rws - 1)) : 0;
+      if (!open) {
+        for (let rw = 0; rw < rws; rw++) {
+          const wy = winTop + rw * step;
+          for (let i = 0; i < bd.w; i++) {
+            const cx = i * T + Math.round((T - winW) / 2);
+            if (Math.abs(cx - dx) < T * 0.9 && wy + winH > doorT - Math.round(T * 0.5)) continue;
+            push({
+              l: cx, t: wy, w: winW, h: winH, bg: (rw % 2 && bd.kind === 'block') ? C.win : C.winLit,
+              sh: ['inset 0 0 0 2px ' + INK,
+                'inset 0 ' + Math.round(winH * 0.5) + 'px 0 -' + (Math.round(winH * 0.5) - 2) + 'px ' + INK,
+                'inset ' + Math.round(winW * 0.5) + 'px 0 0 -' + (Math.round(winW * 0.5) - 2) + 'px ' + INK].join(',')
+            });
+            push({ l: cx - 2, t: wy + winH, w: winW + 4, h: Math.max(3, Math.round(T * 0.09)), bg: 'oklch(0.86 0.03 74)', sh: 'inset 0 0 0 1px ' + INK });
+          }
+        }
+      }
+
+      if (bd.kind === 'block') {
+        for (let rw = 0; rw < rws; rw++) {
+          push({
+            l: 2, t: winTop + rw * step + winH + Math.round(T * 0.14), w: W - 4, h: Math.max(3, Math.round(T * 0.1)),
+            bg: 'oklch(0.74 0.035 200)', sh: 'inset 0 0 0 1px ' + INK
+          });
+        }
+      }
+
+      /* door, frame, handle, step */
+      if (!open) {
+        push({ l: dx - 3, t: doorT - 4, w: doorW + 6, h: doorH + 4, bg: 'oklch(0.86 0.03 74)', sh: 'inset 0 0 0 2px ' + INK });
+        push({
+          l: dx, t: doorT, w: doorW, h: doorH, bg: C.wood,
+          sh: ['inset 0 0 0 2px ' + C.woodDk,
+            'inset 0 ' + Math.round(doorH * 0.28) + 'px 0 -' + (Math.round(doorH * 0.28) - 2) + 'px ' + C.woodLt,
+            'inset 4px 0 0 0 ' + C.woodLt].join(',')
+        });
+        push({
+          l: dx + doorW - Math.round(T * 0.24), t: doorT + Math.round(doorH * 0.46),
+          w: Math.max(3, Math.round(T * 0.1)), h: Math.max(3, Math.round(T * 0.1)),
+          bg: bd.room ? 'var(--color-accent)' : 'oklch(0.82 0.03 80)', r: '50%'
+        });
+        push({ l: dx - Math.round(T * 0.2), t: H - Math.round(T * 0.12), w: doorW + Math.round(T * 0.4), h: Math.round(T * 0.16), bg: 'var(--color-neutral-300)', sh: 'inset 0 0 0 2px var(--color-neutral-500)' });
+      }
+
+      /* shop awning, hung above the doorway */
+      if ((bd.kind === 'shophouse' || bd.kind === 'shed') && !open) {
+        const aw = doorW + Math.round(T * 1.0), ah = Math.round(T * 0.3), ax = dx - Math.round(T * 0.5);
+        push({
+          l: ax, t: doorT - ah - Math.round(T * 0.16), w: aw, h: ah,
+          bg: 'repeating-linear-gradient(90deg, oklch(0.62 0.13 26) 0 ' + Math.round(T * 0.22) + 'px, oklch(0.94 0.02 80) ' + Math.round(T * 0.22) + 'px ' + Math.round(T * 0.44) + 'px)',
+          sh: 'inset 0 0 0 2px ' + INK + ', inset 0 -4px 0 0 oklch(0.32 0.06 26)'
+        });
+        push({ l: ax, t: doorT - Math.round(T * 0.16), w: aw, h: Math.round(T * 0.12), bg: 'oklch(0.25 0.02 60)', o: 0.12 });
+      }
+
+      /* colonnade and open shelters: capped pillars */
+      if (bd.kind === 'colonnade' || open) {
+        const pw = Math.round(T * (open ? 0.22 : 0.2));
+        const ph = wallH - Math.round(T * 0.18);
+        for (let i = 0; i < bd.w; i++) {
+          const cx = i * T + Math.round((T - pw) / 2);
+          if (open && Math.abs(cx - dx) < T * 0.5) continue;
+          push({ l: cx, t: roofH + Math.round(T * 0.08), w: pw, h: ph, bg: 'oklch(0.95 0.016 88)', sh: 'inset 0 0 0 2px ' + INK + ', inset -3px 0 0 0 oklch(0.84 0.025 80)' });
+          push({ l: cx - 3, t: roofH + Math.round(T * 0.08), w: pw + 6, h: Math.max(3, Math.round(T * 0.11)), bg: 'oklch(0.92 0.02 84)', sh: 'inset 0 0 0 2px ' + INK });
+          push({ l: cx - 3, t: roofH + ph - Math.round(T * 0.04), w: pw + 6, h: Math.max(3, Math.round(T * 0.11)), bg: 'oklch(0.92 0.02 84)', sh: 'inset 0 0 0 2px ' + INK });
+        }
+      }
+
+      /* roof: slab, ridge cap, tile ribs, fascia board */
+      push({
+        l: -eave, t: 0, w: W + eave * 2, h: roofH, bg: rf.bg, r: rf.r || '0',
+        sh: ['inset 0 0 0 2px ' + INK, 'inset 0 ' + Math.round(roofH * 0.2) + 'px 0 0 ' + rf.light, 'inset 0 -' + Math.round(roofH * 0.26) + 'px 0 0 ' + rf.dark].join(',')
+      });
+      if (!rf.r) {
+        push({
+          l: -eave + 3, t: Math.round(roofH * 0.22), w: W + eave * 2 - 6, h: Math.max(4, roofH - Math.round(roofH * 0.5)),
+          bg: 'repeating-linear-gradient(90deg, transparent 0 ' + Math.round(T * 0.24) + 'px, ' + rf.dark + ' ' + Math.round(T * 0.24) + 'px ' + Math.round(T * 0.3) + 'px)', o: 0.6
+        });
+        push({ l: -eave, t: 0, w: W + eave * 2, h: Math.max(4, Math.round(roofH * 0.17)), bg: rf.light, sh: 'inset 0 0 0 2px ' + INK });
+      }
+      push({ l: -eave, t: roofH - Math.max(3, Math.round(T * 0.11)), w: W + eave * 2, h: Math.max(3, Math.round(T * 0.11)), bg: rf.dark, sh: 'inset 0 0 0 2px ' + INK });
+
+      if (bd.kind === 'block' || bd.kind === 'colonnade') {
+        push({ l: -Math.round(eave / 2), t: 0, w: W + eave, h: Math.max(4, Math.round(T * 0.18)), bg: 'var(--color-neutral-400)', sh: 'inset 0 0 0 2px ' + INK + ', inset 0 -3px 0 0 var(--color-neutral-500)' });
+      }
+      if (bd.kind === 'dome') {
+        push({ l: W / 2 - Math.round(T * 0.05), t: -Math.round(T * 0.44), w: Math.max(3, Math.round(T * 0.1)), h: Math.round(T * 0.46), bg: 'var(--color-accent-600)' });
+        push({ l: W / 2 - Math.round(T * 0.15), t: -Math.round(T * 0.66), w: Math.round(T * 0.3), h: Math.round(T * 0.3), bg: 'transparent', r: '50%', sh: 'inset 0 0 0 3px var(--color-accent-600)' });
+      }
+
+      const signFs = Math.max(7, Math.round(T * 0.3));
+      const signH = Math.max(signFs + 5, Math.round(T * 0.52));
+      const signW = Math.round(signFs * 0.62 * bd.name.length) + 14;
+      return {
+        l: bd.x * T, t: bd.y * T, w: W, h: H, z: bd.y + bd.h, name: bd.name, parts: ps,
+        signX: Math.round((W - signW) / 2), signY: roofH + Math.round(T * 0.06), signW: signW, signH: signH,
+        signFs: signFs, signOn: T < 13 ? 'none' : 'block'
+      };
+    }) : [];
+
+    const place = function (gx, gy) {
+      return { l: gx * T + Math.round((T - cw) / 2), t: (gy + 1) * T - ch + Math.round(T * 0.18) };
+    };
+    const near = this.facing();
+    const talking = this.state.talk;
+    const here = NPCS.filter((n) => n.room === this.state.room);
+    const sgn = this.state.signed;
+
+    const npcs = here.map(function (n, i) {
+      const p = place(n.x, n.y);
+      const on = near && near.id === n.id && !talking;
+      return {
+        l: p.l, t: p.t, cw: cw, ch: ch, z: n.y + 40,
+        layers: layersOf(variant(BODY_FRONT, n.look), n.pal, s), bob: 1.4 + i * 0.17,
+        shX: Math.round(cw * 0.18), shY: ch - 4, shW: Math.round(cw * 0.64),
+        bubX: cw - 4, markOn: on ? 1 : 0,
+        markAnim: on ? 'om-hop 0.9s steps(2) infinite' : 'none',
+        pipBg: sgn[n.id] ? 'var(--color-accent)' : 'var(--color-neutral-100)',
+        pipBr: sgn[n.id] ? 'var(--color-accent-800)' : 'var(--color-neutral-700)',
+        pipInk: sgn[n.id] ? 'var(--color-neutral-100)' : 'var(--color-neutral-700)',
+        pipMark: sgn[n.id] ? '\u2713' : '?',
+        tagY: ch + 2, tagW: cw + 80, tagOn: talking === n.id ? 1 : 0, short: n.short
+      };
+    });
+
+    const dir = this.state.dir;
+    const base = dir === 'up' ? BODY_BACK : (dir === 'down' ? BODY_FRONT : BODY_SIDE);
+    const pp = place(this.state.px, this.state.py);
+    const player = {
+      l: pp.l, t: pp.t, cw: cw, ch: ch, z: this.state.py + 41,
+      shX: Math.round(cw * 0.18), shY: ch - 4, shW: Math.round(cw * 0.64),
+      flip: dir === 'left' ? 'scaleX(-1)' : 'none',
+      layers: layersOf(variant(base, { cap: true }), PLAYER_PAL, s)
+    };
+
+    const critters = out ? DECOR.map(function (d) {
+      const sp = SPRITES[d.k];
+      const ss = Math.max(2, Math.round((T / 44) * sp.s));
+      const cwid = sp.rows[0].length * ss, chgt = sp.rows.length * ss;
+      return {
+        l: d.x * T + Math.round((T - cwid) / 2), t: d.sky ? d.y * T - Math.round(T * 1.2) : (d.y + 1) * T - chgt + Math.round(T * 0.16),
+        w: cwid, h: chgt, z: d.sky ? 700 : d.y + 39, anim: sp.anim,
+        layers: layersOf(sp.rows, sp.pal, ss)
+      };
+    }) : [];
+
+    const npc = talking ? BY_ID[talking] : null;
+    const node = npc ? npc.tree[this.state.node] : null;
+    const full = node ? node.text : '';
+    const done = node ? this.state.revealed >= full.length : false;
+    const choices = (node && node.choices && done) ? node.choices.map((c) => ({ label: c.label, pick: () => this.type(npc, c.to) })) : [];
+    const metCount = Object.keys(this.state.met).length;
+    const signedCount = Object.keys(this.state.signed).length;
+    const replyPrompt = this.state.node === 'pitch' ? 'Pick the argument that will land' : 'Choose a reply';
+    const seenCount = Object.keys(this.state.seen).length;
+    const door = this.facingDoor();
+
+    const roomW = room.w * T, roomH = room.h * T;
+    const camCols = Math.min(room.w, Math.max(8, Math.floor(availW / T)));
+    const camRows = Math.min(room.h, Math.max(7, Math.round(camCols * 0.62)));
+    const clampN = function (v, lo, hi) { return Math.max(lo, Math.min(hi, v)); };
+    const camX = Math.round(clampN(this.state.px - (camCols - 1) / 2, 0, room.w - camCols) * T);
+    const camY = Math.round(clampN(this.state.py - (camRows - 1) / 2, 0, room.h - camRows) * T);
+    const stageW = camCols * T, stageH = camRows * T;
+
+    return {
+      stageW: stageW, stageH: stageH, shellRef: this.shellRef,
+      stageBg: out ? C.grass : tn.b,
+      roomL: -camX, roomT: -camY,
+      roomW: roomW, roomH: roomH, roomName: room.name,
+      roomEdge: 'none',
+      roomBase: out ? C.grass : tn.a,
+      roomGrain: out ? 'repeating-linear-gradient(0deg, ' + C.grassLn + ' 0 2px, transparent 2px ' + Math.round(T / 2) + 'px)' : 'none',
+      tiles: tiles, blades: blades, shine: shine, flowers: flowers, rocks: rocks,
+      trees: trees, buildings: buildings, npcs: npcs, player: player, critters: critters,
+      fountainOn: out ? 'block' : 'none',
+      fountain: {
+        l: FOUNTAIN.x * T, t: FOUNTAIN.y * T, w: FOUNTAIN.w * T, h: FOUNTAIN.h * T,
+        rimY: Math.round(T * 0.3), rimH: Math.round(FOUNTAIN.h * T - T * 0.5),
+        inX: Math.round(T * 0.5), inY: Math.round(T * 0.62), inW: Math.round(FOUNTAIN.w * T - T), inH: Math.round(FOUNTAIN.h * T - T * 1.15),
+        stX: Math.round(FOUNTAIN.w * T * 0.36), stY: Math.round(FOUNTAIN.h * T * 0.34), stW: Math.round(FOUNTAIN.w * T * 0.28), stH: Math.round(FOUNTAIN.h * T * 0.3),
+        spX: Math.round(FOUNTAIN.w * T * 0.26), spY: Math.round(FOUNTAIN.h * T * 0.7), spW: Math.round(FOUNTAIN.w * T * 0.48)
+      },
+      roomTabs: ROOMS.map((r) => {
+        const cur = r.id === this.state.room;
+        return {
+          label: r.id === 'opg' ? 'Public Guardian' : (r.id === 'block' ? 'Block 12' : r.name),
+          bc: cur ? 'var(--color-accent)' : 'var(--color-divider)',
+          ink: cur ? 'var(--color-accent-700)' : 'color-mix(in srgb, var(--color-text) 65%, transparent)',
+          bg: cur ? 'var(--color-accent-100)' : 'transparent',
+          pick: () => this.load(r.id)
+        };
+      }),
+      speaker: npc ? npc.name : room.name,
+      speakerRole: npc ? npc.role : 'Placeholder script',
+      line: npc ? full.slice(0, this.state.revealed) : '',
+      choices: choices,
+      prompt: npc ? (done ? (node.choices ? replyPrompt : ((node.to && !(node.to === 'pitch' && this.state.signed[npc.id])) ? 'Space to continue' : 'Space to leave')) : 'Space to skip ahead') : '',
+      contOn: (npc && done && !node.choices) ? 1 : 0.25,
+      actionLabel: talking ? 'Continue' : (door && !near ? 'Enter' : 'Talk'),
+      boxOn: talking ? 'block' : 'none',
+      closeTalk: () => { clearInterval(this.typer); this.setState({ talk: null, node: null, revealed: 0 }); },
+      up: () => this.move('up'), down: () => this.move('down'), left: () => this.move('left'), right: () => this.move('right'),
+      action: () => this.action(),
+      onKeyDown: (e) => { this.handleKey(e); },
+      focusMap: (e) => { if (e && e.currentTarget && e.currentTarget.focus) e.currentTarget.focus(); this.setState({ focused: true }); },
+      hint: this.state.focused
+        ? (out ? 'Arrow keys or WASD to walk. Face a lit door and press Space to go inside.' : 'Space to talk. Step onto the mat at the bottom to go back out.')
+        : 'Click the map once, then arrow keys or WASD. The buttons work either way.',
+      hintInk: this.state.focused ? 'color-mix(in srgb, var(--color-text) 55%, transparent)' : 'var(--color-accent-700)',
+      hudSigned: signedCount, hudTotal: NPCS.length, hudLeft: NPCS.length - signedCount,
+      pips: NPCS.map((n) => ({
+        title: n.name + (this.state.signed[n.id] ? ' — has an LPA' : ' — no LPA yet'),
+        bg: this.state.signed[n.id] ? 'var(--color-accent)' : 'var(--color-neutral-200)',
+        br: this.state.signed[n.id] ? 'var(--color-accent-800)' : 'var(--color-neutral-400)'
+      })),
+      stats: [
+        { value: signedCount + '/25', label: 'Residents with an LPA', rule: 'var(--color-accent)', ink: 'var(--color-accent-700)' },
+        { value: String(NPCS.length - signedCount), label: 'Still to convince', rule: 'var(--color-accent)', ink: 'var(--color-accent-700)' },
+        { value: metCount + '/25', label: 'Residents spoken to', rule: 'var(--color-divider)', ink: 'var(--color-text)' },
+        { value: seenCount + '/7', label: 'Rooms entered', rule: 'var(--color-divider)', ink: 'var(--color-text)' }
+      ],
+      groups: ROOMS.map((r) => {
+        const people = NPCS.filter((n) => n.room === r.id);
+        const sc = people.filter((n) => this.state.signed[n.id]).length;
+        return {
+          room: r.id === 'opg' ? 'Public Guardian' : (r.id === 'village' ? 'Outside' : r.name),
+          count: sc + '/' + people.length,
+          people: people.map((n) => {
+            const sg = !!this.state.signed[n.id];
+            const met = !!this.state.met[n.id];
+            return {
+              name: n.name,
+              dot: sg ? 'var(--color-accent)' : 'transparent',
+              dotBr: sg ? 'var(--color-accent-800)' : 'var(--color-neutral-500)',
+              opacity: sg ? 1 : (met ? 0.9 : 0.6),
+              state: sg ? 'Has LPA' : 'No LPA',
+              stateInk: sg ? 'var(--color-accent-700)' : 'color-mix(in srgb, var(--color-text) 40%, transparent)'
+            };
+          })
+        };
+      }),
+      showSlots: this.props.showSlots !== false
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Raw source material and test files (kept local, not published)
+uploads/
+_scratch/
+
+# macOS
+.DS_Store

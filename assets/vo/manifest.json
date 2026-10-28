@@ -1,0 +1,1081 @@
+{
+  "model": "Chatterbox TTS (ResembleAI/Chatterbox)",
+  "voice": {
+    "name": "Lisa",
+    "reference": "https://storage.googleapis.com/chatterbox-demo-samples/mtl_prompts/ms_f.flac",
+    "exaggeration": 0.6,
+    "cfg_weight": 0.5,
+    "temperature": 0.8
+  },
+  "notes": "text = the on-screen line the clip belongs to (must match the video exactly); say = what Chatterbox reads, respelled for pronunciation. When two entries share a text, the later one plays (ElevenLabs takes are listed last and override the Chatterbox ones).",
+  "lines": [
+    {
+      "id": "lisa-01",
+      "seed": 101,
+      "text": "Wait. Before you press Start.",
+      "say": "Wait. Before you press Start."
+    },
+    {
+      "id": "lisa-02",
+      "seed": 102,
+      "text": "Hi! I'm Lisa. Around Tenang they call me LPA Lisa.",
+      "say": "Hi! I'm Lisa. Around Tuh-nahng, they call me L-P-A Lisa."
+    },
+    {
+      "id": "lisa-03",
+      "seed": 103,
+      "text": "I'm a social-work student on placement at the Tenang Community Club.",
+      "say": "I'm a social work student on placement at the Tuh-nahng Community Club."
+    },
+    {
+      "id": "lisa-04",
+      "seed": 104,
+      "text": "My job this week is to get my neighbours to make a Lasting Power of Attorney.",
+      "say": "My job this week is to get my neighbours to make a Lasting Power of Attorney."
+    },
+    {
+      "id": "lisa-05",
+      "seed": 105,
+      "text": "Why the rush? Take Andy. He's twenty-three.",
+      "say": "Why the rush? Take Andy. He's twenty-three."
+    },
+    {
+      "id": "lisa-06",
+      "seed": 106,
+      "text": "The years go by. Forty-five. Sixty-eight. Eighty-two.",
+      "say": "The years go by. Forty-five. Sixty-eight. Eighty-two."
+    },
+    {
+      "id": "lisa-07",
+      "seed": 107,
+      "text": "One day he may lose mental capacity, and can no longer decide for himself.",
+      "say": "One day he may lose mental capacity, and can no longer decide for himself."
+    },
+    {
+      "id": "lisa-08",
+      "seed": 108,
+      "text": "By then it's too late to make an LPA. So I start this week.",
+      "say": "By then, it's too late to make an L-P-A. So I start this week."
+    },
+    {
+      "id": "lisa-09",
+      "seed": 109,
+      "text": "This is Tenang: kampung houses, HDB blocks and a hawker centre.",
+      "say": "This is Tuh-nahng: kahm-pong houses, H-D-B blocks, and a hawker centre."
+    },
+    {
+      "id": "lisa-10",
+      "seed": 110,
+      "text": "On Sunday at 09:00 the CC holds Legacy Day, with a doctor and lawyer to certify.",
+      "say": "On Sunday at nine a.m., the C-C holds Legacy Day, with a doctor and lawyer to certify."
+    },
+    {
+      "id": "lisa-11",
+      "seed": 111,
+      "text": "I have six days to get twelve neighbours there.",
+      "say": "I have six days to get twelve neighbours there."
+    },
+    {
+      "id": "lisa-12",
+      "seed": 112,
+      "text": "Twelve neighbours, from Andy, 23, to Fauzi, 59.",
+      "say": "Twelve neighbours, from Andy, twenty-three, to Fow-zee, fifty-nine."
+    },
+    {
+      "id": "lisa-13",
+      "seed": 113,
+      "text": "Each has three Doubts: the reasons they haven't made one yet.",
+      "say": "Each has three Doubts: the reasons they haven't made one yet."
+    },
+    {
+      "id": "lisa-14",
+      "seed": 114,
+      "text": "Clear all three and they're booked. Let's try Dinesh.",
+      "say": "Clear all three, and they're booked. Let's try Dih-nesh."
+    },
+    {
+      "id": "lisa-15",
+      "seed": 115,
+      "text": "In I go!",
+      "say": "In I go!"
+    },
+    {
+      "id": "lisa-16",
+      "seed": 116,
+      "text": "The clock runs while I walk, and stops while we talk.",
+      "say": "The clock runs while I walk, and stops while we talk."
+    },
+    {
+      "id": "lisa-17",
+      "seed": 117,
+      "text": "Three replies: one convinces, one is true but off the point, one is a myth.",
+      "say": "Three replies: one convinces, one is true but off the point, one is a myth."
+    },
+    {
+      "id": "lisa-18",
+      "seed": 118,
+      "text": "The right reply clears a Doubt and unlocks a Fact Card.",
+      "say": "The right reply clears a Doubt and unlocks a Fact Card."
+    },
+    {
+      "id": "lisa-19",
+      "seed": 119,
+      "text": "A myth backfires: I lose thirty minutes, and he needs space till the next phase.",
+      "say": "A myth backfires: I lose thirty minutes, and he needs space till the next phase."
+    },
+    {
+      "id": "lisa-20",
+      "seed": 120,
+      "text": "Third Doubt cleared. Dinesh takes a flyer, and he's booked!",
+      "say": "Third Doubt cleared. Dih-nesh takes a flyer, and he's booked!"
+    },
+    {
+      "id": "lisa-21",
+      "seed": 121,
+      "text": "One day here is six real minutes, and everyone keeps a routine.",
+      "say": "One day here is six real minutes, and everyone keeps a routine."
+    },
+    {
+      "id": "lisa-22",
+      "seed": 122,
+      "text": "My Notebook keeps a hint of where everyone was seen.",
+      "say": "My Notebook keeps a hint of where everyone was seen."
+    },
+    {
+      "id": "lisa-23",
+      "seed": 123,
+      "text": "The week has news of its own.",
+      "say": "The week has news of its own."
+    },
+    {
+      "id": "lisa-24",
+      "seed": 124,
+      "text": "Pick a pace. Kampung gives hints, Heartland is the standard, Kiasu is short and harsh.",
+      "say": "Pick a pace. Kahm-pong gives hints, Heartland is the standard, Kee-ah-soo is short and harsh."
+    },
+    {
+      "id": "lisa-25",
+      "seed": 125,
+      "text": "Five neighbours want a game before they talk.",
+      "say": "Five neighbours want a game before they talk."
+    },
+    {
+      "id": "lisa-26",
+      "seed": 126,
+      "text": "The MRT. Seats come and go, like capacity. Giving up the priority seat is what a donee does.",
+      "say": "The M-R-T. Seats come and go, like capacity. Giving up the priority seat is what a doh-nee does."
+    },
+    {
+      "id": "lisa-27",
+      "seed": 127,
+      "text": "The hawker centre. Chope a table before the music stops: sign while you still can.",
+      "say": "The hawker centre. Chope a table before the music stops: sign while you still can."
+    },
+    {
+      "id": "lisa-28",
+      "seed": 128,
+      "text": "Chicken rice, cut as ordered. A donee shares out your money by your rules.",
+      "say": "Chicken rice, cut as ordered. A doh-nee shares out your money by your rules."
+    },
+    {
+      "id": "lisa-29",
+      "seed": 129,
+      "text": "Tray return. Remind people in time. A plan works when people know about it.",
+      "say": "Tray return. Remind people in time. A plan works when people know about it."
+    },
+    {
+      "id": "lisa-30",
+      "seed": 130,
+      "text": "Fishing. Pull too hard and the line snaps. Pressure backfires with people too.",
+      "say": "Fishing. Pull too hard and the line snaps. Pressure backfires with people too."
+    },
+    {
+      "id": "lisa-31",
+      "seed": 131,
+      "text": "Whoa! Heads up!",
+      "say": "Whoa! Heads up!"
+    },
+    {
+      "id": "lisa-32",
+      "seed": 132,
+      "text": "Sorry! A glitch in the fishing game. That fish wasn't meant to leave the jetty.",
+      "say": "Sorry! A glitch in the fishing game. That fish wasn't meant to leave the jetty."
+    },
+    {
+      "id": "lisa-33",
+      "seed": 133,
+      "text": "Sport is optional: football, basketball and badminton. Step into a glowing marker to play.",
+      "say": "Sport is optional: football, basketball and badminton. Step into a glowing marker to play."
+    },
+    {
+      "id": "lisa-34",
+      "seed": 134,
+      "text": "None of it counts toward Sunday. It's just Tenang being Tenang.",
+      "say": "None of it counts toward Sunday. It's just Tuh-nahng being Tuh-nahng."
+    },
+    {
+      "id": "lisa-35",
+      "seed": 135,
+      "text": "Watch above their heads. Question marks are Doubts left, a cloud means not now, a tick means booked.",
+      "say": "Watch above their heads. Question marks are Doubts left, a cloud means not now, a tick means booked."
+    },
+    {
+      "id": "lisa-36",
+      "seed": 136,
+      "text": "Six booked is Bronze, nine is Silver, twelve is Gold. No backfires at all for Platinum.",
+      "say": "Six booked is Bronze, nine is Silver, twelve is Gold. No backfires at all for Platinum."
+    },
+    {
+      "id": "lisa-37",
+      "seed": 137,
+      "text": "There's no game over. Legacy Day happens with whoever turns up.",
+      "say": "There's no game over. Legacy Day happens with whoever turns up."
+    },
+    {
+      "id": "lisa-38",
+      "seed": 138,
+      "text": "Proud of your week? You can share your progress any time.",
+      "say": "Proud of your week? You can share your progress any time."
+    },
+    {
+      "id": "lisa-39",
+      "seed": 139,
+      "text": "Send your card to a group chat, or post it to your story.",
+      "say": "Send your card to a group chat, or post it to your story."
+    },
+    {
+      "id": "lisa-40",
+      "seed": 140,
+      "text": "Then race your friends to Gold. Who gets all twelve to Legacy Day?",
+      "say": "Then race your friends to Gold. Who gets all twelve to Legacy Day?"
+    },
+    {
+      "id": "lisa-41",
+      "seed": 141,
+      "text": "Six days. Twelve neighbours. You choose what I say.",
+      "say": "Six days. Twelve neighbours. You choose what I say."
+    },
+    {
+      "id": "dt-01",
+      "seed": 201,
+      "text": "Hi! I'm Lisa. This is my web page, Ask Lisa: Donee Talk.",
+      "say": "Hi! I'm Lisa. This is my web page, Ask Lisa: Doh-nee Talk."
+    },
+    {
+      "id": "dt-02",
+      "seed": 202,
+      "text": "It helps you ask someone you trust to be your donee.",
+      "say": "It helps you ask someone you trust to be your doh-nee."
+    },
+    {
+      "id": "dt-03",
+      "seed": 203,
+      "text": "Your donee makes decisions for you if you ever lose mental capacity.",
+      "say": "Your doh-nee makes decisions for you, if you ever lose mental capacity."
+    },
+    {
+      "id": "dt-04",
+      "seed": 204,
+      "text": "Asking is a big conversation, and many people don't know how to start.",
+      "say": "Asking is a big conversation, and many people don't know how to start."
+    },
+    {
+      "id": "dt-05",
+      "seed": 205,
+      "text": "And the person you ask may have worries of their own.",
+      "say": "And the person you ask may have worries of their own."
+    },
+    {
+      "id": "dt-06",
+      "seed": 206,
+      "text": "Type your question, or what they said to you.",
+      "say": "Type your question, or what they said to you."
+    },
+    {
+      "id": "dt-07",
+      "seed": 207,
+      "text": "I answer with lines from the toolkit, word for word.",
+      "say": "I answer with lines from the toolkit, word for word."
+    },
+    {
+      "id": "dt-08",
+      "seed": 208,
+      "text": "Starters for the talk, replies to their worries, and principles.",
+      "say": "Starters for the talk, replies to their worries, and principles."
+    },
+    {
+      "id": "dt-09",
+      "seed": 209,
+      "text": "Copy any line to use it. The whole toolkit is always here.",
+      "say": "Copy any line to use it. The whole toolkit is always here."
+    },
+    {
+      "id": "dt-10",
+      "seed": 210,
+      "text": "Let me show you. In I go!",
+      "say": "Let me show you. In I go!"
+    },
+    {
+      "id": "dt-11",
+      "seed": 211,
+      "text": "Say you want to ask someone. Type your question.",
+      "say": "Say you want to ask someone. Type your question."
+    },
+    {
+      "id": "dt-12",
+      "seed": 212,
+      "text": "Five conversation starters, to open the talk.",
+      "say": "Five conversation starters, to open the talk."
+    },
+    {
+      "id": "dt-13",
+      "seed": 213,
+      "text": "If they have worries, there's a reply for each.",
+      "say": "If they have worries, there's a reply for each."
+    },
+    {
+      "id": "dt-14",
+      "seed": 214,
+      "text": "And three principles to guide the conversation.",
+      "say": "And three principles to guide the conversation."
+    },
+    {
+      "id": "dt-15",
+      "seed": 215,
+      "text": "Asking is easier when you know what to say. Try Ask Lisa!",
+      "say": "Asking is easier when you know what to say. Try Ask Lisa!"
+    },
+    {
+      "id": "dt-16",
+      "seed": 216,
+      "text": "So, who will you ask?",
+      "say": "So, who will you ask?"
+    },
+    {
+      "id": "dt-17",
+      "seed": 217,
+      "text": "That's where Ask Lisa comes in.",
+      "say": "That's where Ask Lisa comes in."
+    },
+    {
+      "id": "dt-18",
+      "seed": 218,
+      "text": "Copy any line to use it.",
+      "say": "Copy any line to use it."
+    },
+    {
+      "id": "dt3-01",
+      "seed": 301,
+      "text": "Hi! I'm Lisa. This is Ask Lisa: Donee Talk.",
+      "say": "Hi! I'm Lisa. This is Ask Lisa: Doh-nee Talk."
+    },
+    {
+      "id": "dt3-02",
+      "seed": 302,
+      "text": "It helps you ask someone to be your donee. Come, I'll show you!",
+      "say": "It helps you ask someone to be your doh-nee. Come, I'll show you!"
+    },
+    {
+      "id": "dt3-03",
+      "seed": 303,
+      "text": "Say I want to ask Mei Ling to be my donee.",
+      "say": "Say I want to ask May Ling to be my doh-nee."
+    },
+    {
+      "id": "dt3-04",
+      "seed": 304,
+      "text": "Asking is a big talk. She has worries, and I don't know what to say.",
+      "say": "Asking is a big talk. She has worries, and I don't know what to say."
+    },
+    {
+      "id": "dt3-05",
+      "seed": 305,
+      "text": "Ask Lisa works on my phone too.",
+      "say": "Ask Lisa works on my phone too."
+    },
+    {
+      "id": "dt3-06",
+      "seed": 306,
+      "text": "Let me ask it how to start.",
+      "say": "Let me ask it how to start."
+    },
+    {
+      "id": "dt3-07",
+      "seed": 307,
+      "text": "Asking is easier when you know what to say. Try Ask Lisa, on your computer or your phone!",
+      "say": "Asking is easier when you know what to say. Try Ask Lisa, on your computer or your phone!"
+    },
+    {
+      "id": "dt3-08",
+      "seed": 308,
+      "text": "Mei Ling, will you be my donee?",
+      "say": "May Ling, will you be my doh-nee?"
+    },
+    {
+      "id": "dt3-09",
+      "seed": 309,
+      "text": "I've been thinking about what would happen if I cannot make decisions",
+      "say": "I've been thinking about what would happen if I cannot make decisions"
+    },
+    {
+      "id": "dt3-10",
+      "seed": 310,
+      "text": "If you're concerned about making the wrong decision, don't worry - we can discuss my wishes and values now, and they guide you should you need to make a decision",
+      "say": "If you're concerned about making the wrong decision, don't worry - we can discuss my wishes and values now, and they guide you should you need to make a decision"
+    },
+    {
+      "id": "dt3-11",
+      "seed": 311,
+      "text": "I am asking because I trust you, not because you have an obligation.",
+      "say": "I am asking because I trust you, not because you have an obligation."
+    },
+    {
+      "id": "lisa-el-01",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60",
+      "text": "Wait. Before you press Start.",
+      "say": "[gasps] Wait. [whispers] Before you press Start."
+    },
+    {
+      "id": "lisa-el-02",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60",
+      "text": "Hi! I'm Lisa. Around Tenang they call me LPA Lisa.",
+      "say": "[cheerfully] Hi! I'm Lisa. [playfully] Around Tuh-nahng they call me LPA Lisa. [giggles]"
+    },
+    {
+      "id": "lisa-el-03",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60",
+      "text": "I'm a social-work student on placement at the Tenang Community Club.",
+      "say": "[warmly] I'm a social-work student on placement at the Tuh-nahng Community Club."
+    },
+    {
+      "id": "lisa-el-04",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "My job this week is to get my neighbours to make a Lasting Power of Attorney.",
+      "say": "[earnestly] My job this week is to get my neighbours to make a Lasting Power of Attorney."
+    },
+    {
+      "id": "lisa-el-05",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · 28 Oct 05:59 retake (kampong)",
+      "text": "This is Tenang: kampung houses, HDB blocks and a hawker centre.",
+      "say": "[proudly] This is Tuh-nahng: kampong houses, HDB blocks and a hawker centre."
+    },
+    {
+      "id": "lisa-el-06",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "On Sunday at 09:00 our CC is holding Legacy Day, with a doctor and lawyer coming to certify LPAs for us.",
+      "say": "[excited] On Sunday at nine a.m. our CC is holding Legacy Day, with a doctor and lawyer coming to certify LPAs for us."
+    },
+    {
+      "id": "lisa-el-07",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "I have six days to get twelve neighbours there.",
+      "say": "[determined] I have six days to get twelve neighbours there."
+    },
+    {
+      "id": "lisa-el-08",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Why the rush? Take Andy. He's twenty-three.",
+      "say": "[curious] Why the rush? Take Andy. He's twenty-three."
+    },
+    {
+      "id": "lisa-el-09",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "The years go by. Forty-five. Sixty-eight. Eighty-two.",
+      "say": "[wistfully] The years go by. Forty-five. Sixty-eight. Eighty-two."
+    },
+    {
+      "id": "lisa-el-10",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "One day he may lose mental capacity, and can no longer decide for himself.",
+      "say": "[gently] One day he may lose mental capacity, and can no longer decide for himself."
+    },
+    {
+      "id": "lisa-el-11",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "By then it's too late to make an LPA.",
+      "say": "[serious] By then it's too late to make an LPA."
+    },
+    {
+      "id": "lisa-el-12",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Twelve neighbours, from Andy, 23, to Fauzi, 59.",
+      "say": "[cheerfully] Twelve neighbours, from Andy, twenty-three, to Fow-zee, fifty-nine."
+    },
+    {
+      "id": "lisa-el-13",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Each has three Doubts: the reasons they haven't made one yet.",
+      "say": "[thoughtful] Each has three Doubts: the reasons they haven't made one yet."
+    },
+    {
+      "id": "lisa-el-14",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Clear all three and they're booked. Let's try Dinesh.",
+      "say": "[excited] Clear all three and they're booked. [mischievously] Let's try Dinesh."
+    },
+    {
+      "id": "lisa-el-15",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "In I go!",
+      "say": "[excited] In I go!"
+    },
+    {
+      "id": "lisa-el-16",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "The clock runs while I walk, and stops while we talk.",
+      "say": "[conversational] The clock runs while I walk, and stops while we talk."
+    },
+    {
+      "id": "lisa-el-17",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Of the three replies, one is right, one misses the point and one is a myth.",
+      "say": "[confidentially] Of the three replies, one is right, one misses the point and one is a myth."
+    },
+    {
+      "id": "lisa-el-18",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "The right reply clears a Doubt and unlocks a Fact Card.",
+      "say": "[pleased] The right reply clears a Doubt and unlocks a Fact Card."
+    },
+    {
+      "id": "lisa-el-19",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "A myth backfires! I lose thirty minutes, and he needs space till the next phase.",
+      "say": "[groans] A myth backfires! [sheepishly] I lose thirty minutes, and he needs space till the next phase."
+    },
+    {
+      "id": "lisa-el-20",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Third Doubt cleared. Dinesh takes a flyer, and he's booked!",
+      "say": "[triumphantly] Third Doubt cleared. Dinesh takes a flyer, and he's booked!"
+    },
+    {
+      "id": "lisa-el-21",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "One day here is six real minutes, and everyone keeps a routine.",
+      "say": "[casually] One day here is six real minutes, and everyone keeps a routine."
+    },
+    {
+      "id": "lisa-el-22",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "My Notebook keeps a hint of where everyone was seen.",
+      "say": "[helpfully] My Notebook keeps a hint of where everyone was seen."
+    },
+    {
+      "id": "lisa-el-23",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Let's see what's on this week!",
+      "say": "[excited] Let's see what's on this week!"
+    },
+    {
+      "id": "lisa-el-24",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · 28 Oct 05:59 retake (kampong)",
+      "text": "Pick a pace. Kampung gives hints, Heartland is the standard, Kiasu is short and harsh.",
+      "say": "[matter-of-fact] Pick a pace. kampong gives hints, Heartland is the standard, [teasing] Kee-ah-soo is short and harsh."
+    },
+    {
+      "id": "lisa-el-25",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Five neighbours want a game before they talk.",
+      "say": "[amused] Five neighbours want a game before they talk."
+    },
+    {
+      "id": "lisa-el-26",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "The MRT. Seats come and go, like capacity. Giving up the priority seat is what a donee does.",
+      "say": "[brightly] The MRT. Seats come and go, like capacity. [warmly] Giving up the priority seat is what a doh-nee does."
+    },
+    {
+      "id": "lisa-el-27",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "The hawker centre. Chope a table before the music stops: choose your donee while you still can.",
+      "say": "[excited] The hawker centre. Chope a table before the music stops: [earnestly] choose your doh-nee while you still can."
+    },
+    {
+      "id": "lisa-el-28",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Chicken rice, cut as ordered. A donee shares out your money by your rules.",
+      "say": "[playfully] Chicken rice, cut as ordered. A doh-nee shares out your money by your rules."
+    },
+    {
+      "id": "lisa-el-29",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Tray return. Remind people in time. A plan works when people know about it.",
+      "say": "[upbeat] Tray return. Remind people in time. A plan works when people know about it."
+    },
+    {
+      "id": "lisa-el-30",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Fishing. Pull too hard and the line snaps. Pressure backfires with people too.",
+      "say": "[calmly] Fishing. Pull too hard and the line snaps. Pressure backfires with people too."
+    },
+    {
+      "id": "lisa-el-31",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Whoa! Heads up!",
+      "say": "[startled] Whoa! [shouting] Heads up!"
+    },
+    {
+      "id": "lisa-el-32",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Sorry! A glitch in the fishing game. That fish wasn't meant to leave the jetty.",
+      "say": "[embarrassed laugh] Sorry! A glitch in the fishing game. That fish wasn't meant to leave the jetty."
+    },
+    {
+      "id": "lisa-el-33",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Sports are optional: football, basketball and badminton. Step into a glowing marker to play.",
+      "say": "[breezy] Sports are optional: football, basketball and badminton. Step into a glowing marker to play."
+    },
+    {
+      "id": "lisa-el-34",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Watch above their heads. Question marks are Doubts left, a cloud means not now, a tick means booked.",
+      "say": "[friendly, explaining] Watch above their heads. Question marks are Doubts left, a cloud means not now, a tick means booked."
+    },
+    {
+      "id": "lisa-el-35",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Six booked is Bronze, nine is Silver, twelve is Gold. No backfires at all for Platinum.",
+      "say": "[excited] Six booked is Bronze, nine is Silver, twelve is Gold. [whispers] No backfires at all for Platinum."
+    },
+    {
+      "id": "lisa-el-36",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Proud of your week? You can share your progress any time.",
+      "say": "[warmly] Proud of your week? You can share your progress any time."
+    },
+    {
+      "id": "lisa-el-37",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Send your card to a group chat, or post it to your story.",
+      "say": "[cheerfully] Send your card to a group chat, or post it to your story."
+    },
+    {
+      "id": "lisa-el-38",
+      "source": "ElevenLabs Eleven v4 · Fena · speed 1.04, stability 32, similarity 60 · cut from the 28 Oct full take",
+      "text": "Then race your friends to Platinum. Can you get all twelve there without a single backfire?",
+      "say": "[mischievously] Then race your friends to Platinum. [playful challenge] Can you get all twelve there without a single backfire?"
+    },
+    {
+      "id": "lisa-el-39",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · demo conversation take",
+      "text": "Sunday at the CC. Free, doctor and lawyer on site.",
+      "say": "[quickly] Sunday at the CC. Free, doctor and lawyer on site."
+    },
+    {
+      "id": "lisa-el-40",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · demo conversation take",
+      "text": "It's a cash-flow document. In hospital, a donee runs your account.",
+      "say": "[gently] It's a cash-flow document. In hospital, a doh-nee runs your account."
+    },
+    {
+      "id": "lisa-el-41",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · demo conversation take",
+      "text": "Yes, if he's twenty-one and not bankrupt.",
+      "say": "[brightly] Yes, if he's twenty-one and not bankrupt."
+    },
+    {
+      "id": "lisa-el-42",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · demo conversation take",
+      "text": "He means it, but the bank won't accept 'just handle'. An LPA, they will.",
+      "say": "[kindly] He means it, but the bank won't accept 'just handle'. An LPA, they will."
+    },
+    {
+      "id": "dinesh-el-01",
+      "who": "Dinesh",
+      "source": "ElevenLabs Eleven v4 · Prakash · speed 0.97, stability 6, similarity 55 · 28 Oct 05:55 take",
+      "text": "Hi, I'm Dinesh. I deliver food, so I'm quite busy.",
+      "say": "[friendly] Hi, I'm Dinesh. I deliver food, so I'm quite busy."
+    },
+    {
+      "id": "dinesh-el-02",
+      "who": "Dinesh",
+      "source": "ElevenLabs Eleven v4 · Prakash · speed 0.97, stability 6, similarity 55 · 28 Oct 05:55 take",
+      "text": "Oh, that's easy. Find me tonight, we can talk more.",
+      "say": "[relieved] Oh, that's easy. Find me tonight, we can talk more."
+    },
+    {
+      "id": "dinesh-el-03",
+      "who": "Dinesh",
+      "source": "ElevenLabs Eleven v4 · Prakash · speed 0.97, stability 6, similarity 55 · 28 Oct 05:55 take",
+      "text": "OK, I'm here. But I only rent a room. Is an LPA for me?",
+      "say": "[unsure] OK, I'm here. But I only rent a room. Is an LPA for me?"
+    },
+    {
+      "id": "dinesh-el-04",
+      "who": "Dinesh",
+      "source": "ElevenLabs Eleven v4 · Prakash · speed 0.97, stability 6, similarity 55 · 28 Oct 05:55 take",
+      "text": "Oh, I see. Can my brother be my donee?",
+      "say": "[curious] Oh, I see. Can my brother be my doh-nee?"
+    },
+    {
+      "id": "dt3el-l01",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "Hi! I'm Lisa. This is Ask Lisa: Donee Talk.",
+      "say": "Hi! I'm Lisa. This is Ask Lisa: Donee Talk."
+    },
+    {
+      "id": "dt3el-l02",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "It helps you ask someone to be your donee. Come, I'll show you!",
+      "say": "It helps you ask someone to be your donee. Come, I'll show you!"
+    },
+    {
+      "id": "dt3el-l03",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "Say I want to ask Mei Ling to be my donee.",
+      "say": "Say I want to ask Mei Ling to be my donee."
+    },
+    {
+      "id": "dt3el-l04",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "Mei Ling, will you be my donee?",
+      "say": "Mei Ling, will you be my donee?"
+    },
+    {
+      "id": "dt3el-l05",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "Asking isn't easy. She has worries, and I don't know what to say.",
+      "say": "Asking isn't easy. She has worries, and I don't know what to say."
+    },
+    {
+      "id": "dt3el-l06",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "Ask Lisa works on my phone too.",
+      "say": "Ask Lisa works on my phone too."
+    },
+    {
+      "id": "dt3el-l07",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "Let me give you a demonstration!",
+      "say": "Let me give you a demonstration!"
+    },
+    {
+      "id": "dt3el-l08",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "I've been thinking about what would happen if I cannot make decisions",
+      "say": "I've been thinking about what would happen if I cannot make decisions"
+    },
+    {
+      "id": "dt3el-l09",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "If you're concerned about making the wrong decision, don't worry - we can discuss my wishes and values now, and let them guide you should you need to make a decision",
+      "say": "If you're concerned about making the wrong decision, don't worry - we can discuss my wishes and values now, and let them guide you should you need to make a decision"
+    },
+    {
+      "id": "dt3el-l10",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "I am asking because I trust you. I believe you will decide what's best for me.",
+      "say": "I am asking because I trust you. I believe you will decide what's best for me."
+    },
+    {
+      "id": "dt3el-l11",
+      "who": "Lisa",
+      "source": "ElevenLabs Eleven v4 · Fena · Donee Talk take, 28 Oct 06:06",
+      "text": "Asking is easier when you know what to say and how to say it. Try Ask Lisa, on your computer or your phone!",
+      "say": "Asking is easier when you know what to say and how to say it. Try Ask Lisa, on your computer or your phone!"
+    },
+    {
+      "id": "dt3el-m01",
+      "who": "Mei Ling",
+      "source": "ElevenLabs Eleven v4 · Christine · Donee Talk take, 28 Oct 06:07",
+      "text": "Will I have to pay for you? / What if I decide wrong? / But you're still healthy! / Can I really cope?",
+      "say": "Will I have to pay for you? / What if I decide wrong? / But you're still healthy! / Can I really cope?"
+    },
+    {
+      "id": "dt3el-m02",
+      "who": "Mei Ling",
+      "source": "ElevenLabs Eleven v4 · Christine · Donee Talk take, 28 Oct 06:07",
+      "text": "What if I make the wrong decision for you?",
+      "say": "What if I make the wrong decision for you?"
+    },
+    {
+      "id": "dt3el-m03",
+      "who": "Mei Ling",
+      "source": "ElevenLabs Eleven v4 · Christine · Donee Talk take, 28 Oct 06:07",
+      "text": "Okay… but why me?",
+      "say": "Okay… but why me?"
+    },
+    {
+      "id": "dt3el-m04",
+      "who": "Mei Ling",
+      "source": "ElevenLabs Eleven v4 · Christine · Donee Talk take, 28 Oct 06:07",
+      "text": "Okay. Let's discuss the details.",
+      "say": "Okay. Let's discuss the details."
+    },
+    {
+      "id": "asklisa-01",
+      "file": "asklisa-01.wav",
+      "text": "Hi! I'm Lisa. Thinking of asking someone you trust to be your donee? I can help you start that conversation.",
+      "say": "Hi! I'm Lisa. Thinking of asking someone you trust to be your donee? I can help you start that conversation.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 0.00-7.48s"
+    },
+    {
+      "id": "asklisa-02",
+      "file": "asklisa-02.wav",
+      "text": "Welcome back! Want to keep practising the talk with your donee?",
+      "say": "Welcome back! Want to keep practising the talk with your donee?",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 7.52-11.30s"
+    },
+    {
+      "id": "asklisa-03",
+      "file": "asklisa-03.wav",
+      "text": "Take your time. I'm not going anywhere.",
+      "say": "Take your time. I'm not going anywhere.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 11.46-14.18s"
+    },
+    {
+      "id": "asklisa-04",
+      "file": "asklisa-04.wav",
+      "text": "Who would you trust with the big decisions?",
+      "say": "Who would you trust with the big decisions?",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 14.44-16.84s"
+    },
+    {
+      "id": "asklisa-05",
+      "file": "asklisa-05.wav",
+      "text": "Practising out loud really helps.",
+      "say": "Practising out loud really helps.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 17.20-19.30s"
+    },
+    {
+      "id": "asklisa-06",
+      "file": "asklisa-06.wav",
+      "text": "No rush. Big talks need a calm moment.",
+      "say": "No rush. Big talks need a calm moment.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 19.64-23.06s"
+    },
+    {
+      "id": "asklisa-07",
+      "file": "asklisa-07.wav",
+      "text": "Still here if you need me!",
+      "say": "Still here if you need me!",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 23.46-24.88s"
+    },
+    {
+      "id": "asklisa-08",
+      "file": "asklisa-08.wav",
+      "text": "Grow, little money plant!",
+      "say": "Grow, little money plant!",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 24.90-26.84s"
+    },
+    {
+      "id": "asklisa-09",
+      "file": "asklisa-09.wav",
+      "text": "Ahh, nothing like a hot cup of tea.",
+      "say": "Ahh, nothing like a hot cup of tea.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 26.94-29.94s"
+    },
+    {
+      "id": "asklisa-10",
+      "file": "asklisa-10.wav",
+      "text": "Mm... five more minutes...",
+      "say": "Mm... five more minutes...",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 30.32-32.50s"
+    },
+    {
+      "id": "asklisa-11",
+      "file": "asklisa-11.wav",
+      "text": "Hehe, that tickles!",
+      "say": "Hehe, that tickles!",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take.mp3 32.88-35.08s"
+    },
+    {
+      "id": "asklisa-12",
+      "file": "asklisa-12.wav",
+      "text": "Some conversation starters you can try are:",
+      "say": "Some conversation starters you can try are:",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 0.00-2.92s"
+    },
+    {
+      "id": "asklisa-13",
+      "file": "asklisa-13.wav",
+      "text": "Good question! Try opening with this one.",
+      "say": "Good question! Try opening with this one.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 2.96-6.00s"
+    },
+    {
+      "id": "asklisa-14",
+      "file": "asklisa-14.wav",
+      "text": "You could also try:",
+      "say": "You could also try:",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 6.08-7.62s"
+    },
+    {
+      "id": "asklisa-15",
+      "file": "asklisa-15.wav",
+      "text": "Here's another one.",
+      "say": "Here's another one.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 7.66-8.84s"
+    },
+    {
+      "id": "asklisa-16",
+      "file": "asklisa-16.wav",
+      "text": "One more:",
+      "say": "One more:",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 8.92-9.94s"
+    },
+    {
+      "id": "asklisa-17",
+      "file": "asklisa-17.wav",
+      "text": "What are they worried about? Tap the closest one, or type what they said.",
+      "say": "What are they worried about? Tap the closest one, or type what they said.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 10.16-14.92s"
+    },
+    {
+      "id": "asklisa-18",
+      "file": "asklisa-18.wav",
+      "text": "Money and caregiving? That one comes up a lot. You can say:",
+      "say": "Money and caregiving? That one comes up a lot. You can say:",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 15.06-19.48s"
+    },
+    {
+      "id": "asklisa-19",
+      "file": "asklisa-19.wav",
+      "text": "Afraid of getting it wrong? You can say:",
+      "say": "Afraid of getting it wrong? You can say:",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 19.54-22.38s"
+    },
+    {
+      "id": "asklisa-20",
+      "file": "asklisa-20.wav",
+      "text": "They think you're too healthy for this? You can say:",
+      "say": "They think you're too healthy for this? You can say:",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 22.40-25.70s"
+    },
+    {
+      "id": "asklisa-21",
+      "file": "asklisa-21.wav",
+      "text": "Worried they can't cope? You can say:",
+      "say": "Worried they can't cope? You can say:",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 25.76-28.52s"
+    },
+    {
+      "id": "asklisa-22",
+      "file": "asklisa-22.wav",
+      "text": "Guiding principles for conversations:",
+      "say": "Guiding principles for conversations:",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 28.60-31.02s"
+    },
+    {
+      "id": "asklisa-23",
+      "file": "asklisa-23.wav",
+      "text": "Keep these in mind when you talk.",
+      "say": "Keep these in mind when you talk.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take2.mp3 31.24-33.23s"
+    },
+    {
+      "id": "asklisa-24",
+      "file": "asklisa-24.wav",
+      "text": "Hmm, let me see.",
+      "say": "Hmm, let me see.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 0.00-2.12s"
+    },
+    {
+      "id": "asklisa-25",
+      "file": "asklisa-25.wav",
+      "text": "Ooh, good one!",
+      "say": "Ooh, good one!",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 2.52-4.20s"
+    },
+    {
+      "id": "asklisa-26",
+      "file": "asklisa-26.wav",
+      "text": "Pick a starter when you're ready.",
+      "say": "Pick a starter when you're ready.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 4.24-5.88s"
+    },
+    {
+      "id": "asklisa-27",
+      "file": "asklisa-27.wav",
+      "text": "Hmm, I wonder who you'll ask.",
+      "say": "Hmm, I wonder who you'll ask.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 6.08-8.34s"
+    },
+    {
+      "id": "asklisa-28",
+      "file": "asklisa-28.wav",
+      "text": "Talk early, talk often. Good advice, this book.",
+      "say": "Talk early, talk often. Good advice, this book.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 8.68-12.38s"
+    },
+    {
+      "id": "asklisa-29",
+      "file": "asklisa-29.wav",
+      "text": "Okay! Back to it.",
+      "say": "Okay! Back to it.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 12.42-14.08s"
+    },
+    {
+      "id": "asklisa-30",
+      "file": "asklisa-30.wav",
+      "text": "Want to try another one?",
+      "say": "Want to try another one?",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 14.20-15.46s"
+    },
+    {
+      "id": "asklisa-31",
+      "file": "asklisa-31.wav",
+      "text": "Try saying that one out loud.",
+      "say": "Try saying that one out loud.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 15.56-17.38s"
+    },
+    {
+      "id": "asklisa-32",
+      "file": "asklisa-32.wav",
+      "text": "Oi! Practise on me first, then on your donee.",
+      "say": "Oi! Practise on me first, then on your donee.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 17.48-21.22s"
+    },
+    {
+      "id": "asklisa-33",
+      "file": "asklisa-33.wav",
+      "text": "Eh, my hair! Okay, pick a starter.",
+      "say": "Eh, my hair! Okay, pick a starter.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 21.20-24.58s"
+    },
+    {
+      "id": "asklisa-34",
+      "file": "asklisa-34.wav",
+      "text": "Nervous? Tap a starter and we can practise.",
+      "say": "Nervous? Tap a starter and we can practise.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 24.66-27.50s"
+    },
+    {
+      "id": "asklisa-35",
+      "file": "asklisa-35.wav",
+      "text": "Money plant first, then the big talk.",
+      "say": "Money plant first, then the big talk.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 27.72-30.28s"
+    },
+    {
+      "id": "asklisa-36",
+      "file": "asklisa-36.wav",
+      "text": "Tea break! Call me when you want to practise.",
+      "say": "Tea break! Call me when you want to practise.",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 30.36-32.96s"
+    },
+    {
+      "id": "asklisa-37",
+      "file": "asklisa-37.wav",
+      "text": "Remember:",
+      "say": "Remember:",
+      "source": "ElevenLabs (Fena), assets/vo/asklisa-take3.mp3 33.20-34.27s"
+    }
+  ]
+}
